@@ -21,7 +21,7 @@ module.exports =
 		machine: 'odroid-c1'
 		image: 'resin-image'
 		fstype: 'resin-sdcard'
-		version: 'yocto-fido'
+		version: 'yocto-jethro'
 		deployArtifact: 'resin-image-odroid-c1.resin-sdcard'
 
 	configuration:
