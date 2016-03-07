@@ -6,7 +6,7 @@ module.exports =
 	aliases: [ 'odroid-c1' ]
 	name: 'ODROID-C1+'
 	arch: 'armv7hf'
-	state: 'preview'
+	state: 'released'
 
 	instructions: commonImg.instructions
 	gettingStartedLink:

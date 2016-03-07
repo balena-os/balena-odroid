@@ -6,7 +6,7 @@ module.exports =
 	aliases: [ 'odroid-ux3', 'odroid-u3+' ]
 	name: 'ODROID-XU4'
 	arch: 'armv7hf'
-	state: 'preview'
+	state: 'released'
 
 	instructions: commonImg.instructions
 	gettingStartedLink:
