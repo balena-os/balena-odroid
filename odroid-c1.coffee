@@ -23,6 +23,7 @@ module.exports =
 		fstype: 'resin-sdcard'
 		version: 'yocto-jethro'
 		deployArtifact: 'resin-image-odroid-c1.resin-sdcard'
+		compressed: true
 
 	configuration:
 		config:
