@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Add support for optional supervisor image [Andrei]
 * Update meta-resin to v1.2 [Andrei]
 * Bump meta-resin to HEAD [Andrei]
 * Bump yocto-resin-scripts to bring in improvements for in-docker builds [Andrei]
