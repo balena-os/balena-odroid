@@ -2,6 +2,7 @@ deviceTypesCommon = require '@resin.io/device-types/common'
 { networkOptions, commonImg, instructions } = deviceTypesCommon
 
 module.exports =
+	version: 1
 	slug: 'odroid-xu4'
 	aliases: [ 'odroid-ux3', 'odroid-u3+' ]
 	name: 'ODROID-XU4'
@@ -28,8 +29,7 @@ module.exports =
 	configuration:
 		config:
 			partition:
-				primary: 4
-				logical: 1
+				primary: 1
 			path: '/config.json'
 
 	initialization: commonImg.initialization
