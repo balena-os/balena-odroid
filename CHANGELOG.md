@@ -1,6 +1,23 @@
 Change log
 -----------
 
+# v1.24.0 - 2016-12-05
+
+* Update meta-resin to v1.24 [Florin]
+
+# v1.23.0 - 2016-12-05
+
+* Update meta-resin to v1.23 [Andrei]
+
+# v1.22.0 - 2016-11-29
+
+* Update meta-resin to v1.22 [Florin]
+* Update resin-yocto-scripts to include jenkins tty fixup [Florin]
+
+# v1.20.0 - 2016-11-15
+
+* Update meta-resin to v1.20 [Florin]
+
 # v1.16.0 - 2016-09-27
 
 * Update meta-resin to v1.16 [Florin]
