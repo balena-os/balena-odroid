@@ -4,7 +4,7 @@ deviceTypesCommon = require '@resin.io/device-types/common'
 module.exports =
 	version: 1
 	slug: 'odroid-xu4'
-	aliases: [ 'odroid-ux3', 'odroid-u3+' ]
+	aliases: [ 'odroid-xu3', 'odroid-u3+' ]
 	name: 'ODROID-XU4'
 	arch: 'armv7hf'
 	state: 'released'
@@ -19,11 +19,11 @@ module.exports =
 	options: [ networkOptions.group ]
 
 	yocto:
-		machine: 'odroid-ux3'
+		machine: 'odroid-xu3'
 		image: 'resin-image'
 		fstype: 'resin-sdcard'
 		version: 'yocto-jethro'
-		deployArtifact: 'resin-image-odroid-ux3.resin-sdcard'
+		deployArtifact: 'resin-image-odroid-xu3.resin-sdcard'
 		compressed: true
 
 	configuration:
