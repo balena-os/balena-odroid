@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Update kernel for odroid-ux4 from 3.x to 4.x [Theodor]
 * Update resin-yocto-scripts to HEAD of the master branch [Florin]
 
 # v2.0.0-beta.7 - 2016-12-05
