@@ -22,7 +22,7 @@ IMAGE_CMD_resin-sdcard_append_odroid-xu3 () {
     # odroid-xu3 needs bootloader files written at specific locations
     dd if=${DEPLOY_DIR_IMAGE}/bl1.bin.hardkernel of=${RESIN_SDIMG} conv=notrunc seek=${UBOOT_B1_POS}
     dd if=${DEPLOY_DIR_IMAGE}/bl2.bin.hardkernel of=${RESIN_SDIMG} conv=notrunc seek=${UBOOT_B2_POS}
-    dd if=${DEPLOY_DIR_IMAGE}/u-boot.${UBOOT_SUFFIX} of=${RESIN_SDIMG} conv=notrunc seek=${UBOOT_BIN_POS}
+    dd if=${DEPLOY_DIR_IMAGE}/u-boot-${MACHINE}.${UBOOT_SUFFIX} of=${RESIN_SDIMG} conv=notrunc seek=${UBOOT_BIN_POS}
     dd if=${DEPLOY_DIR_IMAGE}/tzsw.bin.hardkernel of=${RESIN_SDIMG} conv=notrunc seek=${UBOOT_TZSW_POS}
     dd if=/dev/zero of=${RESIN_SDIMG} seek=${UBOOT_ENV_POS} conv=notrunc count=32 bs=512
 }
