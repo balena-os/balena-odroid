@@ -1,25 +1,25 @@
 #
-# ODROID-UX4 / ODROID-UX3
+# ODROID-UX4 / ODROID-XU3
 #
 
-IMAGE_FSTYPES_append_odroid-ux3 = " resin-sdcard"
+IMAGE_FSTYPES_append_odroid-xu3 = " resin-sdcard"
 
 # Customize resin-sdcard
-RESIN_BOOT_PARTITION_FILES_odroid-ux3 = " \
+RESIN_BOOT_PARTITION_FILES_odroid-xu3 = " \
     boot.ini: \
     zImage: \
     zImage-exynos5422-odroidxu3.dtb:/exynos5422-odroidxu3.dtb \
     "
 
 # BOOT components
-UBOOT_B1_POS_odroid-ux3 ?= "1"
-UBOOT_B2_POS_odroid-ux3 ?= "31"
-UBOOT_BIN_POS_odroid-ux3 ?= "63"
-UBOOT_TZSW_POS_odroid-ux3 ?= "719"
-UBOOT_ENV_POS_odroid-ux3 ?= "1231"
+UBOOT_B1_POS_odroid-xu3 ?= "1"
+UBOOT_B2_POS_odroid-xu3 ?= "31"
+UBOOT_BIN_POS_odroid-xu3 ?= "63"
+UBOOT_TZSW_POS_odroid-xu3 ?= "719"
+UBOOT_ENV_POS_odroid-xu3 ?= "1231"
 
-IMAGE_CMD_resin-sdcard_append_odroid-ux3 () {
-    # odroid-ux3 needs bootloader files written at specific locations
+IMAGE_CMD_resin-sdcard_append_odroid-xu3 () {
+    # odroid-xu3 needs bootloader files written at specific locations
     dd if=${DEPLOY_DIR_IMAGE}/bl1.bin.hardkernel of=${RESIN_SDIMG} conv=notrunc seek=${UBOOT_B1_POS}
     dd if=${DEPLOY_DIR_IMAGE}/bl2.bin.hardkernel of=${RESIN_SDIMG} conv=notrunc seek=${UBOOT_B2_POS}
     dd if=${DEPLOY_DIR_IMAGE}/u-boot.${UBOOT_SUFFIX} of=${RESIN_SDIMG} conv=notrunc seek=${UBOOT_BIN_POS}
