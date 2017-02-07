@@ -15,8 +15,8 @@ RESIN_BOOT_PARTITION_FILES_odroid-xu3 = " \
 UBOOT_B1_POS_odroid-xu3 ?= "1"
 UBOOT_B2_POS_odroid-xu3 ?= "31"
 UBOOT_BIN_POS_odroid-xu3 ?= "63"
-UBOOT_TZSW_POS_odroid-xu3 ?= "719"
-UBOOT_ENV_POS_odroid-xu3 ?= "1231"
+UBOOT_TZSW_POS_odroid-xu3 ?= "2111"
+UBOOT_ENV_POS_odroid-xu3 ?= "2625"
 
 IMAGE_CMD_resin-sdcard_append_odroid-xu3 () {
     # odroid-xu3 needs bootloader files written at specific locations
