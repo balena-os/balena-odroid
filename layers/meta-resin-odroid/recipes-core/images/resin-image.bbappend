@@ -7,6 +7,7 @@ IMAGE_FSTYPES_append_odroid-xu3 = " resin-sdcard"
 # Customize resin-sdcard
 RESIN_BOOT_PARTITION_FILES_odroid-xu3 = " \
     boot.ini: \
+    boot.scr: \
     zImage: \
     zImage-exynos5422-odroidxu3.dtb:/exynos5422-odroidxu3.dtb \
     "
