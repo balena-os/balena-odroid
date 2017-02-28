@@ -21,9 +21,9 @@ module.exports =
 	yocto:
 		machine: 'odroid-ux3'
 		image: 'resin-image'
-		fstype: 'resin-sdcard'
+		fstype: 'resinos-img'
 		version: 'yocto-jethro'
-		deployArtifact: 'resin-image-odroid-ux3.resin-sdcard'
+		deployArtifact: 'resin-image-odroid-ux3.resinos-img'
 		compressed: true
 
 	configuration:
