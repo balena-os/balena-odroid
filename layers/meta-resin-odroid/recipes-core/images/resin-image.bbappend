@@ -20,11 +20,11 @@ UBOOT_ENV_POS_odroid-ux3 ?= "1231"
 
 IMAGE_CMD_resinos-img_append_odroid-ux3 () {
     # odroid-ux3 needs bootloader files written at specific locations
-    dd if=${DEPLOY_DIR_IMAGE}/bl1.bin.hardkernel of=${RESIN_SDIMG} conv=notrunc seek=${UBOOT_B1_POS}
-    dd if=${DEPLOY_DIR_IMAGE}/bl2.bin.hardkernel of=${RESIN_SDIMG} conv=notrunc seek=${UBOOT_B2_POS}
-    dd if=${DEPLOY_DIR_IMAGE}/u-boot.${UBOOT_SUFFIX} of=${RESIN_SDIMG} conv=notrunc seek=${UBOOT_BIN_POS}
-    dd if=${DEPLOY_DIR_IMAGE}/tzsw.bin.hardkernel of=${RESIN_SDIMG} conv=notrunc seek=${UBOOT_TZSW_POS}
-    dd if=/dev/zero of=${RESIN_SDIMG} seek=${UBOOT_ENV_POS} conv=notrunc count=32 bs=512
+    dd if=${DEPLOY_DIR_IMAGE}/bl1.bin.hardkernel of=${RESIN_RAW_IMG} conv=notrunc seek=${UBOOT_B1_POS}
+    dd if=${DEPLOY_DIR_IMAGE}/bl2.bin.hardkernel of=${RESIN_RAW_IMG} conv=notrunc seek=${UBOOT_B2_POS}
+    dd if=${DEPLOY_DIR_IMAGE}/u-boot.${UBOOT_SUFFIX} of=${RESIN_RAW_IMG} conv=notrunc seek=${UBOOT_BIN_POS}
+    dd if=${DEPLOY_DIR_IMAGE}/tzsw.bin.hardkernel of=${RESIN_RAW_IMG} conv=notrunc seek=${UBOOT_TZSW_POS}
+    dd if=/dev/zero of=${RESIN_RAW_IMG} seek=${UBOOT_ENV_POS} conv=notrunc count=32 bs=512
 }
 
 #
@@ -41,7 +41,7 @@ RESIN_BOOT_PARTITION_FILES_odroid-c1 = " \
     "
 
 IMAGE_CMD_resinos-img_append_odroid-c1 () {
-    dd if=${DEPLOY_DIR_IMAGE}/bl1.bin.hardkernel of=${RESIN_SDIMG} bs=1 count=442 conv=notrunc
-    dd if=${DEPLOY_DIR_IMAGE}/bl1.bin.hardkernel of=${RESIN_SDIMG} bs=512 skip=1 seek=1 conv=notrunc
-    dd if=${DEPLOY_DIR_IMAGE}/u-boot.bin of=${RESIN_SDIMG} bs=512 seek=64 conv=notrunc
+    dd if=${DEPLOY_DIR_IMAGE}/bl1.bin.hardkernel of=${RESIN_RAW_IMG} bs=1 count=442 conv=notrunc
+    dd if=${DEPLOY_DIR_IMAGE}/bl1.bin.hardkernel of=${RESIN_RAW_IMG} bs=512 skip=1 seek=1 conv=notrunc
+    dd if=${DEPLOY_DIR_IMAGE}/u-boot.bin of=${RESIN_RAW_IMG} bs=512 seek=64 conv=notrunc
 }
