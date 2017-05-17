@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Update resin-yocto-scripts to allow external meta-resin builds [Will]
 * Update resin-yocto-scripts [Will]
 
 # v2.0.0-beta12.rev1 - 2017-02-27
