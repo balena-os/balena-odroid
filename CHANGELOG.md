@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Update the resin-yocto-scripts submodule [Florin]
 * Update resin-yocto-scripts to allow external meta-resin builds [Will]
 * Update resin-yocto-scripts [Will]
 
