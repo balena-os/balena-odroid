@@ -1,6 +1,6 @@
 # Supported machines
 #MACHINE ?= "odroid-c1"
-#MACHINE ?= "odroid-ux3"
+#MACHINE ?= "odroid-xu4"
 
 # More info meta-resin/README.md
 #RESIN_CONNECTABLE ?= "1"
