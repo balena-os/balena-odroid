@@ -1,3 +1,7 @@
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+
+SRC_URI_append = " file://0001-Btrfs-fix-not-being-able-to-find-skinny-extents-duri.patch"
+
 #
 # Fix parsing on other boards
 #

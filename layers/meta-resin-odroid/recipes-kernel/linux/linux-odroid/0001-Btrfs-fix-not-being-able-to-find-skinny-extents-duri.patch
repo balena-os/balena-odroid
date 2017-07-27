@@ -1,0 +1,88 @@
+From aee68ee5f5427b91be5b23459993134ca64ecf00 Mon Sep 17 00:00:00 2001
+From: Josef Bacik <jbacik@fusionio.com>
+Date: Thu, 13 Jun 2013 13:50:23 -0400
+Subject: [PATCH] Btrfs: fix not being able to find skinny extents during
+ relocate
+
+We unconditionally search for the EXTENT_ITEM_KEY for metadata during balance,
+and then check the key that we found to see if it is actually a
+METADATA_ITEM_KEY, but this doesn't work right because METADATA is a higher key
+value, so if what we are looking for happens to be the first item in the leaf
+the search will dump us out at the previous leaf, and we won't find our item.
+So instead do what we do everywhere else, search for the skinny extent first and
+if we don't find it go back and re-search for the extent item.  This patch fixes
+the panic I was hitting when balancing a large file system with skinny extents.
+Thanks,
+
+Signed-off-by: Josef Bacik <jbacik@fusionio.com>
+
+Upstream-Status: Backport
+Signed-off-by: Florin Sarbu <florin@resin.io>
+---
+ fs/btrfs/relocation.c | 35 +++++++++++++++++++++++++++--------
+ 1 file changed, 27 insertions(+), 8 deletions(-)
+
+diff --git a/fs/btrfs/relocation.c b/fs/btrfs/relocation.c
+index 4a404b4..d91f106 100644
+--- a/fs/btrfs/relocation.c
++++ b/fs/btrfs/relocation.c
+@@ -3309,6 +3309,8 @@ static int __add_tree_block(struct reloc_control *rc,
+ 	struct btrfs_path *path;
+ 	struct btrfs_key key;
+ 	int ret;
++	bool skinny = btrfs_fs_incompat(rc->extent_root->fs_info,
++					SKINNY_METADATA);
+ 
+ 	if (tree_block_processed(bytenr, blocksize, rc))
+ 		return 0;
+@@ -3319,10 +3321,15 @@ static int __add_tree_block(struct reloc_control *rc,
+ 	path = btrfs_alloc_path();
+ 	if (!path)
+ 		return -ENOMEM;
+-
++again:
+ 	key.objectid = bytenr;
+-	key.type = BTRFS_EXTENT_ITEM_KEY;
+-	key.offset = blocksize;
++	if (skinny) {
++		key.type = BTRFS_METADATA_ITEM_KEY;
++		key.offset = (u64)-1;
++	} else {
++		key.type = BTRFS_EXTENT_ITEM_KEY;
++		key.offset = blocksize;
++	}
+ 
+ 	path->search_commit_root = 1;
+ 	path->skip_locking = 1;
+@@ -3330,11 +3337,23 @@ static int __add_tree_block(struct reloc_control *rc,
+ 	if (ret < 0)
+ 		goto out;
+ 
+-	btrfs_item_key_to_cpu(path->nodes[0], &key, path->slots[0]);
+-	if (ret > 0) {
+-		if (key.objectid == bytenr &&
+-		    key.type == BTRFS_METADATA_ITEM_KEY)
+-			ret = 0;
++	if (ret > 0 && skinny) {
++		if (path->slots[0]) {
++			path->slots[0]--;
++			btrfs_item_key_to_cpu(path->nodes[0], &key,
++					      path->slots[0]);
++			if (key.objectid == bytenr &&
++			    (key.type == BTRFS_METADATA_ITEM_KEY ||
++			     (key.type == BTRFS_EXTENT_ITEM_KEY &&
++			      key.offset == blocksize)))
++				ret = 0;
++		}
++
++		if (ret) {
++			skinny = false;
++			btrfs_release_path(path);
++			goto again;
++		}
+ 	}
+ 	BUG_ON(ret);
+ 
+-- 
+2.5.5
+
