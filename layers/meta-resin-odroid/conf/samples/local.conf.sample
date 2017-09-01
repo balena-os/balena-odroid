@@ -57,3 +57,6 @@ BB_DISKMON_DIRS = "\
     ABORT,${SSTATE_DIR},100M,1K"
 
 CONF_VERSION = "1"
+
+# Allow use of host docker from recipes
+HOSTTOOLS += "docker iptables"
