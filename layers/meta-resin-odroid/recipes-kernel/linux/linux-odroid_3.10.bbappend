@@ -13,3 +13,8 @@
 # 'SRCREV'] (possible key names are git://github.com/hardkernel/linux.git;branch=master,
 # or use a ;rev=X URL parameter)
 COMPATIBLE_MACHINE = "odroid-ux3"
+
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+
+SRC_URI += "file://stack_protector.patch"
+
