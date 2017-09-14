@@ -13,3 +13,5 @@ do_deploy_append_odroid-c1 () {
 # variable SRCPV, expression was ${@bb.fetch2.get_srcrev(d)} which triggered exception
 # RuntimeError: maximum recursion depth exceeded in __instancecheck__
 PV = "v2011.03+${SRCREV}"
+
+S = "${WORKDIR}/git"
