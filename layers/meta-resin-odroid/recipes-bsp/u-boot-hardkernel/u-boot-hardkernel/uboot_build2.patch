@@ -1,0 +1,19 @@
+Fix building out of tree
+
+Upstream-Status: Inappropriate
+Signed-off-by: Will Newton <willn@resin.io>
+
+diff --git a/Makefile b/Makefile
+index 2c665b7..8860cd3 100644
+--- a/Makefile
++++ b/Makefile
+@@ -460,7 +460,8 @@ else	 # start aml compress
+ ##################################################
+ $(obj)u-boot-comp.bin:$(obj)u-boot-orig.bin
+ 	$(obj)tools/uclpack $< $@
+-	@cp $@ sd_fuse/u-boot.bin
++	mkdir -p $(obj)sd_fuse
++	@cp $@ $(obj)sd_fuse/u-boot.bin
+ endif   # end CONFIG_UCL
+ 
+ $(obj)u-boot-orig.bin:	$(obj)u-boot
