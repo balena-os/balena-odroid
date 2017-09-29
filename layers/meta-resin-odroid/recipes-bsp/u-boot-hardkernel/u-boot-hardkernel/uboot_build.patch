@@ -1,0 +1,33 @@
+Add some ifdefs to fix a build issue
+
+Upstream-Status: Inappropriate
+Signed-off-by: Will Newton <willn@resin.io>
+
+diff --git a/drivers/video/osd/m8_osd_hw.c b/drivers/video/osd/m8_osd_hw.c
+index 46f6337..e270197 100644
+--- a/drivers/video/osd/m8_osd_hw.c
++++ b/drivers/video/osd/m8_osd_hw.c
+@@ -46,7 +46,9 @@
+ //static DECLARE_WAIT_QUEUE_HEAD(osd_vsync_wq);
+ static bool vsync_hit = false;
+ static bool osd_vf_need_update = false;
++#ifdef CONFIG_AM_VIDEO
+ static struct vframe_provider_s osd_vf_prov;
++#endif
+ static int  g_vf_visual_width;
+ static int  g_vf_width;
+ static int  g_vf_height;
+diff --git a/drivers/video/osd/osd_hw.c b/drivers/video/osd/osd_hw.c
+index d62a47d..feecf40 100644
+--- a/drivers/video/osd/osd_hw.c
++++ b/drivers/video/osd/osd_hw.c
+@@ -73,7 +73,9 @@ static const struct vframe_operations_s osd_vf_provider =
+     .put  = NULL,
+ };
+ 
++#ifdef CONFIG_AM_VIDEO
+ static struct vframe_provider_s osd_vf_prov;
++#endif
+ static unsigned char osd_vf_prov_init = 0;
+ 
+ static inline void  osd_update_3d_mode(int enable_osd1,int enable_osd2)
