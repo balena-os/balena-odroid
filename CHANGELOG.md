@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Update meta-rust to morty [Will]
 * Include meta-rust layer [Will]
 * Add meta-rust layer [Will]
 
