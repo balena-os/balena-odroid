@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Increase initramfs maximum size to 12 MB (12288 KB) [Florin]
 * Update meta-rust to morty [Will]
 * Include meta-rust layer [Will]
 * Add meta-rust layer [Will]
