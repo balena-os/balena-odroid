@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Update the resin-yocto-scripts submodule to 6f7a9ab326bb822196e3e48b08ef1d73d08caec6 (on master branch) [Florin]
 * Increase initramfs maximum size to 12 MB (12288 KB) [Florin]
 * Update meta-rust to morty [Will]
 * Include meta-rust layer [Will]
