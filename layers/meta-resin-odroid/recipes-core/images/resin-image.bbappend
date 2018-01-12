@@ -22,7 +22,7 @@ IMAGE_CMD_resinos-img_append_odroid-xu4 () {
     # odroid-xu4 needs bootloader files written at specific locations
     dd if=${DEPLOY_DIR_IMAGE}/bl1.bin.hardkernel of=${RESIN_RAW_IMG} conv=notrunc seek=${UBOOT_B1_POS}
     dd if=${DEPLOY_DIR_IMAGE}/bl2.bin.hardkernel of=${RESIN_RAW_IMG} conv=notrunc seek=${UBOOT_B2_POS}
-    dd if=${DEPLOY_DIR_IMAGE}/u-boot.${UBOOT_SUFFIX} of=${RESIN_RAW_IMG} conv=notrunc seek=${UBOOT_BIN_POS}
+    dd if=${DEPLOY_DIR_IMAGE}/u-boot-${MACHINE}.${UBOOT_SUFFIX} of=${RESIN_RAW_IMG} conv=notrunc seek=${UBOOT_BIN_POS}
     dd if=${DEPLOY_DIR_IMAGE}/tzsw.bin.hardkernel of=${RESIN_RAW_IMG} conv=notrunc seek=${UBOOT_TZSW_POS}
     dd if=/dev/zero of=${RESIN_RAW_IMG} seek=${UBOOT_ENV_POS} conv=notrunc count=32 bs=512
 }
