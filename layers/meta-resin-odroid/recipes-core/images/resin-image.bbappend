@@ -1,28 +1,28 @@
 #
-# ODROID-UX4 / ODROID-UX3
+# ODROID-XU4
 #
 
-IMAGE_FSTYPES_append_odroid-ux3 = " resinos-img"
+IMAGE_FSTYPES_append_odroid-xu4 = " resinos-img"
 
 # Customize resinos-img
-RESIN_BOOT_PARTITION_FILES_odroid-ux3 = " \
+RESIN_BOOT_PARTITION_FILES_odroid-xu4 = " \
     boot.ini: \
     zImage: \
-    zImage-exynos5422-odroidxu3.dtb:/exynos5422-odroidxu3.dtb \
+    zImage-exynos5422-odroidxu4.dtb:/exynos5422-odroidxu4.dtb \
     "
 
 # BOOT components
-UBOOT_B1_POS_odroid-ux3 ?= "1"
-UBOOT_B2_POS_odroid-ux3 ?= "31"
-UBOOT_BIN_POS_odroid-ux3 ?= "63"
-UBOOT_TZSW_POS_odroid-ux3 ?= "719"
-UBOOT_ENV_POS_odroid-ux3 ?= "1231"
+UBOOT_B1_POS_odroid-xu4 ?= "1"
+UBOOT_B2_POS_odroid-xu4 ?= "31"
+UBOOT_BIN_POS_odroid-xu4 ?= "63"
+UBOOT_TZSW_POS_odroid-xu4 ?= "719"
+UBOOT_ENV_POS_odroid-xu4 ?= "1231"
 
-IMAGE_CMD_resinos-img_append_odroid-ux3 () {
-    # odroid-ux3 needs bootloader files written at specific locations
+IMAGE_CMD_resinos-img_append_odroid-xu4 () {
+    # odroid-xu4 needs bootloader files written at specific locations
     dd if=${DEPLOY_DIR_IMAGE}/bl1.bin.hardkernel of=${RESIN_RAW_IMG} conv=notrunc seek=${UBOOT_B1_POS}
     dd if=${DEPLOY_DIR_IMAGE}/bl2.bin.hardkernel of=${RESIN_RAW_IMG} conv=notrunc seek=${UBOOT_B2_POS}
-    dd if=${DEPLOY_DIR_IMAGE}/u-boot.${UBOOT_SUFFIX} of=${RESIN_RAW_IMG} conv=notrunc seek=${UBOOT_BIN_POS}
+    dd if=${DEPLOY_DIR_IMAGE}/u-boot-${MACHINE}.${UBOOT_SUFFIX} of=${RESIN_RAW_IMG} conv=notrunc seek=${UBOOT_BIN_POS}
     dd if=${DEPLOY_DIR_IMAGE}/tzsw.bin.hardkernel of=${RESIN_RAW_IMG} conv=notrunc seek=${UBOOT_TZSW_POS}
     dd if=/dev/zero of=${RESIN_RAW_IMG} seek=${UBOOT_ENV_POS} conv=notrunc count=32 bs=512
 }

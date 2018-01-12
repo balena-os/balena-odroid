@@ -19,11 +19,11 @@ module.exports =
 	options: [ networkOptions.group ]
 
 	yocto:
-		machine: 'odroid-ux3'
+		machine: 'odroid-xu4'
 		image: 'resin-image'
 		fstype: 'resinos-img'
-		version: 'yocto-jethro'
-		deployArtifact: 'resin-image-odroid-ux3.resinos-img'
+		version: 'yocto-pyro'
+		deployArtifact: 'resin-image-odroid-xu4.resinos-img'
 		compressed: true
 
 	configuration:
