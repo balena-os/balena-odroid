@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Switch Odroid XU4 from aufs to overlayfs for the docker storage driver [Florin]
 * Deploy the bootloader files to the /resin-boot directory for hostapps update [Florin]
 * Update layers to Pyro [Will]
 * Update the resin-yocto-scripts submodule to 6f7a9ab326bb822196e3e48b08ef1d73d08caec6 (on master branch) [Florin]
