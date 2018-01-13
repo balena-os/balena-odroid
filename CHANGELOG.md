@@ -1,6 +1,10 @@
 Change log
 -----------
 
+# v2.9.6+rev1
+## (2018-01-13)
+
+* Update the meta-resin submodule to version v2.9.6 [Florin]
 * Enable driver for the usb eth adapter present on the Odroid XU4 [Florin]
 * Implement resin-u-boot specification for odroid-xu4 [Florin]
 * Switch to u-boot 2017.09 [Florin]
