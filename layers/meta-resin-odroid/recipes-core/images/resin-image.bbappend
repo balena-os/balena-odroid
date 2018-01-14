@@ -6,7 +6,11 @@ IMAGE_FSTYPES_append_odroid-xu4 = " resinos-img"
 
 # Customize resinos-img
 RESIN_BOOT_PARTITION_FILES_odroid-xu4 = " \
+    bl1.bin.hardkernel: \
+    bl2.bin.hardkernel: \
     boot.ini: \
+    u-boot-${MACHINE}.${UBOOT_SUFFIX}: \
+    tzsw.bin.hardkernel: \
     zImage: \
     zImage-exynos5422-odroidxu4.dtb:/exynos5422-odroidxu4.dtb \
     "
