@@ -11,7 +11,7 @@ RESIN_BOOT_PARTITION_FILES_odroid-xu4 = " \
     boot.ini: \
     u-boot-${MACHINE}.${UBOOT_SUFFIX}: \
     tzsw.bin.hardkernel: \
-    zImage: \
+    ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-${MACHINE}.bin:/${KERNEL_IMAGETYPE} \
     zImage-exynos5422-odroidxu4.dtb:/exynos5422-odroidxu4.dtb \
     "
 
