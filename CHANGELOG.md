@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Enable driver for the usb eth adapter present on the Odroid XU4 [Florin]
 * Implement resin-u-boot specification for odroid-xu4 [Florin]
 * Switch to u-boot 2017.09 [Florin]
 * Use the kernel with the bundled resin initramfs [Florin]
