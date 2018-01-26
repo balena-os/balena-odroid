@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Implement resin-u-boot specification for odroid-xu4 [Florin]
 * Switch to u-boot 2017.09 [Florin]
 * Use the kernel with the bundled resin initramfs [Florin]
 * Switch Odroid XU4 from aufs to overlayfs for the docker storage driver [Florin]
