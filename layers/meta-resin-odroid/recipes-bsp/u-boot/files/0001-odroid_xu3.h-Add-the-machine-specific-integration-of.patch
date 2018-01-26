@@ -1,0 +1,37 @@
+From 250576a994cc8d90a0b5fd10a3b4d08a117479ed Mon Sep 17 00:00:00 2001
+From: Florin Sarbu <florin@resin.io>
+Date: Fri, 26 Jan 2018 11:17:21 +0100
+Subject: [PATCH] odroid_xu3.h: Add the machine specific integration of the
+ resin environment configuration
+
+The added env vars have been taken from the BSP layer (pyro branch, revision 1c0210e1b3a6e96b9db17025e5f2ec35622b1755)
+https://github.com/akuster/meta-odroid/blob/pyro/recipes-bsp/u-boot/u-boot-config/autoboot.cmd
+
+Upstream-Status: Inappropriate [configuration]
+Signed-off-by: Florin Sarbu <florin@resin.io>
+---
+ include/configs/odroid_xu3.h | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/include/configs/odroid_xu3.h b/include/configs/odroid_xu3.h
+index 8bc7fbd..61d2967 100644
+--- a/include/configs/odroid_xu3.h
++++ b/include/configs/odroid_xu3.h
+@@ -116,6 +116,13 @@
+ 	"mmcbootpart=1\0" \
+ 	"mmcrootpart=2\0" \
+ 	"dfu_alt_system="CONFIG_DFU_ALT_SYSTEM \
+-	"dfu_alt_info=Autoset by THOR/DFU command run.\0"
++	"dfu_alt_info=Autoset by THOR/DFU command run.\0" \
++	"fdtaddr=40800000\0" \
++	"kerneladdr=0x40007FC0\0" \
++	"kernelname=zImage\0" \
++	"loaddtb=load \"${resin_dev_type}\" \"${resin_dev_index}\":\"${resin_boot_part}\" \"${fdtaddr}\" \"${fdtfile}\"\0" \
++	"loadkernel=load \"${resin_dev_type}\" \"${resin_dev_index}\":\"${resin_boot_part}\" \"${kerneladdr}\" \"${kernelname}\"\0" \
++	"kernel_args=setenv bootargs ${console} ${resin_kernel_root} rootfstype=${rootfstype} rootwait ${opts}\0" \
++	"bootcmd=setenv resin_kernel_load_addr ${kerneladdr}; run resin_set_kernel_root; run loaddtb; run loadkernel; run kernel_args; bootz ${kerneladdr} - ${fdtaddr}"
+ 
+ #endif	/* __CONFIG_H */
+-- 
+2.7.4
+
