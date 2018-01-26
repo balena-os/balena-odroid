@@ -1,0 +1,127 @@
+Fix some paths in the Mali makefiles to allow out of tree builds.
+
+Upstream-Status: Inappropriate
+Signed-off-by: Will Newton <willn@resin.io>
+
+diff --git a/drivers/gpu/arm/mali/Kbuild b/drivers/gpu/arm/mali/Kbuild
+index 96bed4b1..ad36265 100755
+--- a/drivers/gpu/arm/mali/Kbuild
++++ b/drivers/gpu/arm/mali/Kbuild
+@@ -26,7 +26,7 @@ MALI_ENABLE_CPU_CYCLES ?= 0
+ # For customer releases the Linux Device Drivers will be provided as ARM proprietary and GPL releases:
+ # The ARM proprietary product will only include the license/proprietary directory
+ # The GPL product will only include the license/gpl directory
+-ifeq ($(wildcard $(src)/linux/license/gpl/*),)
++ifeq ($(wildcard $(srctree)/$(src)/linux/license/gpl/*),)
+     ccflags-y += -I$(src)/linux/license/proprietary
+     ifeq ($(CONFIG_MALI400_PROFILING),y)
+         $(error Profiling is incompatible with non-GPL license)
+@@ -52,7 +52,7 @@ ifeq ($(MALI_PLATFORM_FILES),)
+ ifeq ($(CONFIG_ARCH_EXYNOS4),y)
+ EXTRA_DEFINES += -DMALI_FAKE_PLATFORM_DEVICE=1
+ export MALI_PLATFORM=exynos4
+-export MALI_PLATFORM_FILES_BUILDIN = $(notdir $(wildcard $(src)/platform/$(MALI_PLATFORM)/*.c))
++export MALI_PLATFORM_FILES_BUILDIN = $(notdir $(wildcard $(srctree)/$(src)/platform/$(MALI_PLATFORM)/*.c))
+ export MALI_PLATFORM_FILES_ADD_PREFIX = $(addprefix platform/$(MALI_PLATFORM)/,$(MALI_PLATFORM_FILES_BUILDIN)) 
+ endif
+ endif
+@@ -145,7 +145,7 @@ mali-y += \
+ 
+ ccflags-$(CONFIG_SYNC) += -Idrivers/staging/android
+ 
+-ifneq ($(wildcard $(src)/linux/mali_slp_global_lock.c),)
++ifneq ($(wildcard $(srctree)/$(src)/linux/mali_slp_global_lock.c),)
+ 	mali-y += linux/mali_slp_global_lock.o
+ endif
+ 
+@@ -203,7 +203,7 @@ ccflags-$(CONFIG_MALI400_DEBUG) += -DDEBUG
+ ccflags-y += -I$(src) -I$(src)/include -I$(src)/common -I$(src)/linux -I$(src)/platform -Wno-date-time
+ 
+ # Get subversion revision number, fall back to only ${MALI_RELEASE_NAME} if no svn info is available
+-MALI_RELEASE_NAME=$(shell cat $(src)/.version 2> /dev/null)
++MALI_RELEASE_NAME=$(shell cat $(srctree)/$(src)/.version 2> /dev/null)
+ 
+ SVN_INFO = (cd $(src); svn info 2>/dev/null)
+ 
+@@ -216,13 +216,13 @@ CHANGED_REVISION := $(shell $(SVN_INFO) | grep '^Last Changed Rev: ' | cut -d: -
+ REPO_URL := $(shell $(SVN_INFO) | grep '^URL: ' | cut -d: -f2- | cut -b2-)
+ 
+ else # SVN
+-GIT_REV := $(shell cd $(src); git describe --always 2>/dev/null)
++GIT_REV := $(shell cd $(srctree)/$(src); git describe --always 2>/dev/null)
+ ifneq ($(GIT_REV),)
+ # Git detected
+ DRIVER_REV := $(MALI_RELEASE_NAME)-$(GIT_REV)
+-CHANGE_DATE := $(shell cd $(src); git log -1 --format="%ci")
++CHANGE_DATE := $(shell cd $(srctree)/$(src); git log -1 --format="%ci")
+ CHANGED_REVISION := $(GIT_REV)
+-REPO_URL := $(shell cd $(src); git describe --all --always 2>/dev/null)
++REPO_URL := $(shell cd $(srctree)/$(src); git describe --all --always 2>/dev/null)
+ 
+ else # Git
+ # No Git or SVN detected
+@@ -235,7 +235,7 @@ endif
+ ccflags-y += -DSVN_REV_STRING=\"$(DRIVER_REV)\"
+ 
+ VERSION_STRINGS :=
+-VERSION_STRINGS += API_VERSION=$(shell cd $(src); grep "\#define _MALI_API_VERSION" $(FILES_PREFIX)include/linux/mali/mali_utgard_uk_types.h | cut -d' ' -f 3 )
++VERSION_STRINGS += API_VERSION=$(shell cd $(srctree)/$(src); grep "\#define _MALI_API_VERSION" $(FILES_PREFIX)include/linux/mali/mali_utgard_uk_types.h | cut -d' ' -f 3 )
+ VERSION_STRINGS += REPO_URL=$(REPO_URL)
+ VERSION_STRINGS += REVISION=$(DRIVER_REV)
+ VERSION_STRINGS += CHANGED_REVISION=$(CHANGED_REVISION)
+diff --git a/drivers/gpu/arm/ump/Kbuild b/drivers/gpu/arm/ump/Kbuild
+index bac9cdc..c90727f 100755
+--- a/drivers/gpu/arm/ump/Kbuild
++++ b/drivers/gpu/arm/ump/Kbuild
+@@ -13,20 +13,20 @@
+ CONFIG ?= default
+ 
+ # Validate selected config
+-ifneq ($(shell [ -d $(src)/arch-$(CONFIG) ] && [ -f  $(src)/arch-$(CONFIG)/config.h ] && echo "OK"), OK)
++ifneq ($(shell [ -d $(srctree)/$(src)/arch-$(CONFIG) ] && [ -f  $(srctree)/$(src)/arch-$(CONFIG)/config.h ] && echo "OK"), OK)
+ $(warning Current directory is $(src))
+ $(error No configuration found for config $(CONFIG). Check that arch-$(CONFIG)/config.h exists)
+ else
+ # Link arch to the selected arch-config directory
+-$(shell [ -L $(src)/arch ] && rm $(src)/arch)
+-$(shell ln -sf arch-$(CONFIG) $(src)/arch)
+-$(shell touch $(src)/arch/config.h)
++$(shell [ -L $(srctree)/$(src)/arch ] && rm $(srctree)/$(src)/arch)
++$(shell ln -sf arch-$(CONFIG) $(srctree)/$(src)/arch)
++$(shell touch $(srctree)/$(src)/arch/config.h)
+ endif
+ 
+ UDD_FILE_PREFIX = ../mali/
+ 
+ # Get subversion revision number, fall back to 0000 if no svn info is available
+-SVN_INFO = (cd $(src); svn info 2>/dev/null)
++SVN_INFO = (cd $(srctree)/$(src); svn info 2>/dev/null)
+ 
+ ifneq ($(shell $(SVN_INFO) 2>/dev/null),)
+ # SVN detected
+@@ -37,13 +37,13 @@ CHANGED_REVISION := $(shell $(SVN_INFO) | grep '^Last Changed Rev: ' | cut -d: -
+ REPO_URL := $(shell $(SVN_INFO) | grep '^URL: ' | cut -d: -f2- | cut -b2-)
+ 
+ else # SVN
+-GIT_REV := $(shell cd $(src); git describe --always 2>/dev/null)
++GIT_REV := $(shell cd $(srctree)/$(src); git describe --always 2>/dev/null)
+ ifneq ($(GIT_REV),)
+ # Git detected
+ DRIVER_REV := $(MALI_RELEASE_NAME)-$(GIT_REV)
+-CHANGE_DATE := $(shell cd $(src); git log -1 --format="%ci")
++CHANGE_DATE := $(shell cd $(srctree)/$(src); git log -1 --format="%ci")
+ CHANGED_REVISION := $(GIT_REV)
+-REPO_URL := $(shell cd $(src); git describe --all --always 2>/dev/null)
++REPO_URL := $(shell cd $(srctree)/$(src); git describe --all --always 2>/dev/null)
+ 
+ else # Git
+ # No Git or SVN detected
+@@ -65,7 +65,7 @@ ccflags-$(CONFIG_UMP_DEBUG) += -DDEBUG
+ # The ARM proprietary product will only include the license/proprietary directory
+ # The GPL product will only include the license/gpl directory
+ 
+-ifeq ($(wildcard $(src)/linux/license/gpl/*),)
++ifeq ($(wildcard $(srctree)/$(src)/linux/license/gpl/*),)
+ ccflags-y += -I$(src)/linux/license/proprietary -I$(src)/../mali/linux/license/proprietary
+ else
+ ccflags-y += -I$(src)/linux/license/gpl -I$(src)/../mali/linux/license/gpl

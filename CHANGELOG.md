@@ -1,6 +1,18 @@
 Change log
 -----------
 
+# v2.9.6+rev1
+## (2018-01-13)
+
+* Update the meta-resin submodule to version v2.9.6 [Florin]
+* Enable driver for the usb eth adapter present on the Odroid XU4 [Florin]
+* Implement resin-u-boot specification for odroid-xu4 [Florin]
+* Switch to u-boot 2017.09 [Florin]
+* Use the kernel with the bundled resin initramfs [Florin]
+* Switch Odroid XU4 from aufs to overlayfs for the docker storage driver [Florin]
+* Deploy the bootloader files to the /resin-boot directory for hostapps update [Florin]
+* Update layers to Pyro [Will]
+* Update the resin-yocto-scripts submodule to 6f7a9ab326bb822196e3e48b08ef1d73d08caec6 (on master branch) [Florin]
 * Increase initramfs maximum size to 12 MB (12288 KB) [Florin]
 * Update meta-rust to morty [Will]
 * Include meta-rust layer [Will]
