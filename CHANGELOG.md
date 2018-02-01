@@ -1,6 +1,8 @@
 Change log
 -----------
 
+* Use the new offsets for u-boot env and Trusted Zone binary blob that our new u-boot (version 2017.09) expects [Florin]
+
 # v2.9.7+rev1
 ## (2018-01-26)
 
