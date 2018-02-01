@@ -19,8 +19,8 @@ RESIN_BOOT_PARTITION_FILES_odroid-xu4 = " \
 UBOOT_B1_POS_odroid-xu4 ?= "1"
 UBOOT_B2_POS_odroid-xu4 ?= "31"
 UBOOT_BIN_POS_odroid-xu4 ?= "63"
-UBOOT_TZSW_POS_odroid-xu4 ?= "719"
-UBOOT_ENV_POS_odroid-xu4 ?= "1231"
+UBOOT_TZSW_POS_odroid-xu4 ?= "1503"
+UBOOT_ENV_POS_odroid-xu4 ?= "2015"
 
 IMAGE_CMD_resinos-img_append_odroid-xu4 () {
     # odroid-xu4 needs bootloader files written at specific locations
