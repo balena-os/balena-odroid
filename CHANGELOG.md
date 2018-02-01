@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Update the resin-yocto-scripts submodule to 6f7a9ab326bb822196e3e48b08ef1d73d08caec6 (on master branch) [Florin]
 * Use the new offsets for u-boot env and Trusted Zone binary blob that our new u-boot (version 2017.09) expects [Florin]
 
 # v2.9.7+rev1
