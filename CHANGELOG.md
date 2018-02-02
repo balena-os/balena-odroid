@@ -1,6 +1,8 @@
 Change log
 -----------
 
+* Update yocto version to correct one for the Odroid C1 [Florin]
+
 # v2.9.7+rev2
 ## (2018-02-01)
 
