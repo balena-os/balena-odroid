@@ -1,6 +1,8 @@
 Change log
 -----------
 
+* Update getting starting links [Zach]
+
 # v2.9.7+rev2
 ## (2018-02-01)
 
