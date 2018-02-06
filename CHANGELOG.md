@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Update bblayers.conf.sample for Yocto Pyro [Florin]
 * Update yocto version to correct one for the Odroid C1 [Florin]
 
 # v2.9.7+rev2
