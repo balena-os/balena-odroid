@@ -2,6 +2,8 @@ Change log
 -----------
 
 * Update getting starting links [Zach]
+* Update bblayers.conf.sample for Yocto Pyro [Florin]
+* Update yocto version to correct one for the Odroid C1 [Florin]
 
 # v2.9.7+rev2
 ## (2018-02-01)
