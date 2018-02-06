@@ -11,9 +11,9 @@ module.exports =
 
 	instructions: commonImg.instructions
 	gettingStartedLink:
-		windows: 'http://docs.resin.io/#/pages/installing/gettingStarted-ODROID-XU4.md#windows'
-		osx: 'http://docs.resin.io/#/pages/installing/gettingStarted-ODROID-XU4.md#on-mac-and-linux'
-		linux: 'http://docs.resin.io/#/pages/installing/gettingStarted-ODROID-XU4.md#on-mac-and-linux'
+		windows: 'https://docs.resin.io/installing/gettingStarted-Odroid-C1/#creating-your-first-application'
+		osx: 'https://docs.resin.io/installing/gettingStarted-Odroid-C1/#creating-your-first-application'
+		linux: 'https://docs.resin.io/installing/gettingStarted-Odroid-C1/#creating-your-first-application'
 	supportsBlink: true
 
 	options: [ networkOptions.group ]
