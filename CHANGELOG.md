@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Fix 99-flash-bootloader bootloader md5sum check from hostapp-update-hooks [Florin]
 * Update bblayers.conf.sample for Yocto Pyro [Florin]
 * Update yocto version to correct one for the Odroid C1 [Florin]
 
