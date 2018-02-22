@@ -40,7 +40,7 @@ for i in $update_files; do
 	let skip_bytes=$block_size*$seek_blocks
 
 	# calculate md5sum of the data already written to $device, using $update_size bytes and skipping $skip_bytes from $device
-	existing_md5sum=$(dd if=$device skip=$skip_bytes bs=1 count=$update_size &>/dev/null | md5sum | awk '{print $1}')
+	existing_md5sum=$(dd if=$device skip=$skip_bytes bs=1 count=$update_size status=none | md5sum | awk '{print $1}')
 
 	if [ ! "$existing_md5sum" = "$update_md5sum" ]; then
 		echo "Flashing $current_update_file to $device"
