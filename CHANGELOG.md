@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Update the resin-yocto-scripts submodule to dc9dfe466e48d934e55fb20a05156886873b1ab1 (on master branch) [Florin]
 * Fix 99-flash-bootloader bootloader md5sum check from hostapp-update-hooks [Florin]
 * Update bblayers.conf.sample for Yocto Pyro [Florin]
 * Update yocto version to correct one for the Odroid C1 [Florin]
