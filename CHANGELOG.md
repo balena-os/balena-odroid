@@ -1,6 +1,10 @@
 Change log
 -----------
 
+# v2.10.1+rev1
+## (2018-03-01)
+
+* Update the meta-resin submodule to version v2.10.1 [Florin]
 * Make sure u-boot does not load the dtb and the kernel with initramfs in overlapping regions [Florin]
 * Use the kernel with the bundled resin initramfs for the Odroid C1+ [Florin]
 * Make only the Odroid XU4 use overlayfs for docker storage driver [Florin]
