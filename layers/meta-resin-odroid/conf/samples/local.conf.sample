@@ -3,7 +3,7 @@
 #MACHINE ?= "odroid-xu4"
 
 # We use the overlayfs docker storage driver on the Odroid XU4
-BALENA_STORAGE = "overlay2"
+BALENA_STORAGE_odroid-xu4 = "overlay2"
 
 # More info meta-resin/README.md
 #RESIN_CONNECTABLE ?= "1"
