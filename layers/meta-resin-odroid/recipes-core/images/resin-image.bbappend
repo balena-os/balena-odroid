@@ -40,7 +40,7 @@ IMAGE_FSTYPES_append_odroid-c1 = " resinos-img"
 # Customize resinos-img
 RESIN_BOOT_PARTITION_FILES_odroid-c1 = " \
     boot.ini: \
-    uImage: \
+    ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-${MACHINE}.bin:/${KERNEL_IMAGETYPE} \
     uImage-meson8b_odroidc.dtb:/meson8b_odroidc.dtb \
     "
 
