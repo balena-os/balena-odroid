@@ -5,6 +5,7 @@ SRC_URI_append_odroid-c1 = " \
     file://0001-include-linux-compiler-gcc6.h-Add-duplicate-of-gcc-5.patch \
     file://uboot_build.patch \
     file://uboot_build2.patch \
+    file://boot_the_bigger_initramfs_kernel.patch;patchdir=${WORKDIR} \
     "
 
 do_deploy_append_odroid-c1 () {

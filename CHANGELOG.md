@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Make sure u-boot does not load the dtb and the kernel with initramfs in overlapping regions [Florin]
 * Use the kernel with the bundled resin initramfs for the Odroid C1+ [Florin]
 * Make only the Odroid XU4 use overlayfs for docker storage driver [Florin]
 * Update the resin-yocto-scripts submodule to dc9dfe466e48d934e55fb20a05156886873b1ab1 (on master branch) [Florin]
