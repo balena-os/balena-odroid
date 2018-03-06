@@ -1,0 +1,25 @@
+We switched to using the kernel with the bundled initramfs which is bigger so we need
+to make sure that the memory addresses where we load the kernel and the dtb do not overlap.
+
+Upstream-Status: Inappropriate [configuration]
+Signed-off-by: Florin Sarbu <florin@resin.io>
+
+Index: v2011.03+f631c80969b33b796d2d4c077428b4765393ed2b-r0/boot.ini
+===================================================================
+--- v2011.03+f631c80969b33b796d2d4c077428b4765393ed2b-r0.orig/boot.ini
++++ v2011.03+f631c80969b33b796d2d4c077428b4765393ed2b-r0/boot.ini
+@@ -64,11 +64,11 @@ if test "${cec}" = "1"; then setenv hdmi
+ 
+ setenv bootargs "console=ttyS0,115200n8 console=tty0 root=/dev/mmcblk0p2 rootwait rw no_console_suspend vdaccfg=0xa000 logo=osd1,loaded,0x7900000,720p,full dmfc=3 cvbsmode=576cvbs hdmimode=${m} m_bpp=${m_bpp} vout=${vout_mode} ${disableuhs} ${hdmi_hpd} ${hdmi_cec}"
+ fatload mmc 0:1 0x21000000 /uImage
+-fatload mmc 0:1 0x21800000 /meson8b_odroidc.dtb
+-fdt addr 21800000
++fatload mmc 0:1 0x22000000 /meson8b_odroidc.dtb
++fdt addr 22000000
+ 
+ if test "${vpu}" = "0"; then fdt rm /mesonstream; fdt rm /vdec; fdt rm /ppmgr; fi
+ 
+ if test "${hdmioutput}" = "0"; then fdt rm /mesonfb; fi
+ 
+-bootm 0x21000000 - 0x21800000
++bootm 0x21000000 - 0x22000000
