@@ -1,0 +1,39 @@
+From ed05f36c452ce6b940090b40ee99cca3ea442fad Mon Sep 17 00:00:00 2001
+From: Florin Sarbu <florin@resin.io>
+Date: Tue, 6 Mar 2018 08:03:49 +0100
+Subject: [PATCH] Rework resin-specific-env-integration-non-kconfig.patch
+
+This patch is a rework of the meta-resin patch with the same function because
+the meta-resin patch fails to apply due to different source context in
+this u-boot version for the Odroid C1+.
+
+Upstream-Status: Inappropriate [configuration]
+Signed-off-by: Florin Sarbu <florin@resin.io>
+---
+ common/env_common.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/common/env_common.c b/common/env_common.c
+index 769d896..36790a0 100644
+--- a/common/env_common.c
++++ b/common/env_common.c
+@@ -37,6 +37,8 @@
+ #include <asm/arch/nand.h>
+ #endif
+ 
++#include <env_resin.h>
++
+ DECLARE_GLOBAL_DATA_PTR;
+ 
+ extern env_t *env_ptr;
+@@ -128,6 +130,7 @@ uchar default_environment[] = {
+ #if defined(CONFIG_PCI_BOOTDELAY) && (CONFIG_PCI_BOOTDELAY > 0)
+ 	"pcidelay="	MK_STR(CONFIG_PCI_BOOTDELAY)	"\0"
+ #endif
++	RESIN_ENV
+ #ifdef  CONFIG_EXTRA_ENV_SETTINGS
+ 	CONFIG_EXTRA_ENV_SETTINGS
+ #endif
+-- 
+2.7.4
+

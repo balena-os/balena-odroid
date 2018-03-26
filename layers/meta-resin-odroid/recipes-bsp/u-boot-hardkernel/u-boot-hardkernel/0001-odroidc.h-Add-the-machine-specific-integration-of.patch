@@ -1,0 +1,61 @@
+From 95122e2ebfef06e83ca5cba443508457d5405613 Mon Sep 17 00:00:00 2001
+From: Florin Sarbu <florin@resin.io>
+Date: Wed, 28 Mar 2018 08:32:39 +0200
+Subject: [PATCH] odroidc.h: Add the machine specific integration of the
+ resin-u-boot environment configuration
+
+Upstream-Status: Inappropriate [configuration]
+Signed-off-by: Florin Sarbu <florin@resin.io>
+---
+ include/configs/hardkernel/odroidc.h | 21 ++++++++++++++++-----
+ 1 file changed, 16 insertions(+), 5 deletions(-)
+
+diff --git a/include/configs/hardkernel/odroidc.h b/include/configs/hardkernel/odroidc.h
+index 2099f3b..05cac09 100644
+--- a/include/configs/hardkernel/odroidc.h
++++ b/include/configs/hardkernel/odroidc.h
+@@ -9,6 +9,9 @@
+ 
+ //#define TEST_UBOOT_BOOT_SPEND_TIME
+ 
++#define CONFIG_PARTITION_UUIDS
++#define CONFIG_CMD_PART
++
+ // cart type of each port
+ #define PORT_A_CARD_TYPE                CARD_TYPE_UNKNOWN
+ #define PORT_B_CARD_TYPE                CARD_TYPE_UNKNOWN
+@@ -122,8 +125,9 @@
+         "bootargs=root=" MK_STR(CONFIG_DEFAULT_ROOT) " rw " \
+                 "console=" CONFIG_CONSOLE_PROTOCOL " no_console_suspend\0" \
+         "bootcmd="\
+-                "cfgload;" \
+-                "setenv bootargs root=" MK_STR(CONFIG_DEFAULT_ROOT) " rw " \
++                "setenv resin_kernel_load_addr ${kerneladdr};" \
++                "run resin_set_kernel_root;" \
++                "setenv bootargs ${resin_kernel_root} rw " \
+                         "console=" CONFIG_CONSOLE_PROTOCOL " no_console_suspend " \
+                         "vdaccfg=${vdac_config} " \
+                         "logo=osd1,loaded,${fb_addr},${outputmode},full " \
+@@ -131,9 +135,16 @@
+                         "cvbsmode=${cvbsmode} " \
+                         "hdmitx=${cecconfig} " \
+                         "androidboot.serialno=${fbt_id#}; " \
+-                "movi read boot 0 0x12000000;" \
+-                "movi read dtb 0 0x12800000;" \
+-                "bootm 0x12000000 - 0x12800000\0" \
++                "run loaddtb;" \
++                "run loadkernel;" \
++                "fdt addr ${fdtaddr};" \
++                "bootm ${kerneladdr} - ${fdtaddr}\0" \
++        "fdtaddr=0x22000000\0" \
++        "kerneladdr=0x21000000\0" \
++        "fdtfile=meson8b_odroidc.dtb\0" \
++        "kernelname=uImage\0" \
++        "loaddtb=fatload \"${resin_dev_type}\" \"${resin_dev_index}\":\"${resin_boot_part}\" \"${fdtaddr}\" \"${fdtfile}\"\0" \
++        "loadkernel=fatload \"${resin_dev_type}\" \"${resin_dev_index}\":\"${resin_boot_part}\" \"${kerneladdr}\" \"${kernelname}\"\0" \
+         "bootm_low=0x00000000\0" \
+         "bootm_size=0x80000000\0" \
+         "bootpath=u-boot.bin\0" \
+-- 
+2.7.4
+
