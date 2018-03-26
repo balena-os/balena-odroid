@@ -23,7 +23,7 @@ tzsw_file="tzsw.bin.hardkernel"
 tzsw_block_size=512
 tzsw_seek_blocks=1503
 
-device="/dev/mmcblk1"
+device="/dev/"$(findmnt --noheadings --canonicalize --output SOURCE /mnt/boot/ | xargs lsblk -no pkname)
 
 update_files="bl1 bl2 uboot tzsw"
 
