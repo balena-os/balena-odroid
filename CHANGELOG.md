@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Add bootloader hostapp hooks for Odroid C1 [Florin]
 * Integrate with resin-u-boot [Florin]
 * Backport u-boot commits needed for resin-u-boot integration [Florin]
 

@@ -47,4 +47,3 @@ for i in $update_files; do
 		dd if=/resin-boot/$current_update_file of=$device conv=fdatasync seek=$seek_blocks bs=$block_size
 	fi
 done
-

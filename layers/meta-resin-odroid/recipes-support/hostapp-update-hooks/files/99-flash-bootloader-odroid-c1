@@ -1,0 +1,63 @@
+#!/bin/sh
+
+#
+# Script used by hostapps updater to flash bootloader onto internal media
+#
+
+set -o errexit
+
+# machine specific data
+bl1_file="bl1.bin.hardkernel"
+bl1_block_size=1
+bl1_count=442
+bl1_seek_blocks=0
+bl1_skip_blocks=0
+
+bl1_bis_file="bl1.bin.hardkernel"
+bl1_bis_block_size=512
+# count here should be bigger than the actual file so count actually won't matter
+bl1_bis_count=100000000
+bl1_bis_seek_blocks=1
+bl1_bis_skip_blocks=1
+
+uboot_file="u-boot-odroid-c1.bin"
+uboot_block_size=512
+# count here should be bigger than the actual file so count actually won't matter
+uboot_count=100000000
+uboot_seek_blocks=64
+uboot_skip_blocks=0
+
+device="/dev/"$(findmnt --noheadings --canonicalize --output SOURCE /mnt/boot/ | xargs lsblk -no pkname)
+
+update_files="bl1 bl1_bis uboot"
+
+for i in $update_files; do
+	current_update_file=$(eval echo \$${i}_file)
+	block_size=$(eval echo \$${i}_block_size)
+	count_blocks=$(eval echo \$${i}_count)
+	seek_blocks=$(eval echo \$${i}_seek_blocks)
+	skip_blocks=$(eval echo \$${i}_skip_blocks)
+
+	# calculate size and md5sum of the binary to update from the update bundle
+	update_size=$(ls -al /resin-boot/$current_update_file | awk '{print $5}')
+	update_md5sum=$(md5sum /resin-boot/$current_update_file | awk '{print $1'})
+
+	# calculate number of bytes to skip when computing the checksum of the data we want to update (i.e. the data already written to $device)
+	# (for some cases, we don't need to skip anything so skip_bytes will be 0; when that happens, "let" will exit with code 1, making the
+	# entire script fail; we workaround this by disabling errexit temporarily)
+	set +o errexit
+	let skip_bytes=$block_size*$seek_blocks
+	set -o errexit
+
+	# calculate md5sum of the data already written to $device, using $update_size bytes and skipping $skip_bytes from $device
+	existing_md5sum=$(dd if=$device skip=$skip_bytes bs=1 count=$update_size status=none | md5sum | awk '{print $1}')
+
+	if [ ! "$existing_md5sum" = "$update_md5sum" ]; then
+		echo "Flashing $current_update_file to $device"
+		dd if=/resin-boot/$current_update_file of=$device conv=fdatasync seek=$seek_blocks skip=$skip_blocks bs=$block_size count=$count_blocks
+		if [ "$i" == "uboot" ];then
+			echo "Zero-ing out the existing bootloader env"
+			dd if=/dev/zero of=$device bs=512 seek=1024 count=54
+		fi
+	fi
+done
