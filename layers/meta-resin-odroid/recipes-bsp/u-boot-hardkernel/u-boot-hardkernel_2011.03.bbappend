@@ -1,3 +1,8 @@
+UBOOT_KCONFIG_SUPPORT = "0"
+inherit resin-u-boot
+
+SRC_URI_remove_odroid-c1 = "file://resin-specific-env-integration-non-kconfig.patch"
+
 FILESEXTRAPATHS_prepend_odroid-c1 := "${THISDIR}/${PN}:"
 
 SRC_URI_append_odroid-c1 = " \
@@ -15,6 +20,8 @@ SRC_URI_append_odroid-c1 = " \
     file://0001-disk-part_efi-parse-and-store-partition-UUID.patch \
     file://0001-disk-part_msdos-parse-and-store-partition-UUID.patch \
     file://0001-Add-cmd_process-to-process-commands-in-one-place.patch \
+    file://resin-specific-env-integration-non-kconfig_REWORKED.patch \
+    file://0001-odroidc.h-Add-the-machine-specific-integration-of.patch \
     "
 
 do_deploy_append_odroid-c1 () {
