@@ -6,6 +6,15 @@ SRC_URI_append_odroid-c1 = " \
     file://uboot_build.patch \
     file://uboot_build2.patch \
     file://boot_the_bigger_initramfs_kernel.patch;patchdir=${WORKDIR} \
+    file://0001-COMMON-Add-__stringify-function.patch \
+    file://0001-cmd_part-add-partition-related-command.patch \
+    file://0001-disk-part-check-bootable-flag-for-DOS-partitions.patch \
+    file://0001-disk-part-introduce-get_device_and_partition.patch \
+    file://0001-disk-introduce-get_device.patch \
+    file://0001-disk-get_device_and_partition-auto-partition-and-cle.patch \
+    file://0001-disk-part_efi-parse-and-store-partition-UUID.patch \
+    file://0001-disk-part_msdos-parse-and-store-partition-UUID.patch \
+    file://0001-Add-cmd_process-to-process-commands-in-one-place.patch \
     "
 
 do_deploy_append_odroid-c1 () {

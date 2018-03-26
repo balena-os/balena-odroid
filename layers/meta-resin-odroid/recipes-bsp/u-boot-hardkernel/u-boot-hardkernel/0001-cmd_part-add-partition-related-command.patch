@@ -1,0 +1,157 @@
+From 5cf41dccff9d1e8c297de6eae8422d3e322eebbc Mon Sep 17 00:00:00 2001
+From: Stephen Warren <swarren@nvidia.com>
+Date: Fri, 21 Sep 2012 09:51:01 +0000
+Subject: [PATCH] cmd_part: add partition-related command
+
+This implements the following:
+
+part uuid mmc 0:1
+  -> print partition UUID
+part uuid mmc 0:1 uuid
+  -> set environment variable to partition UUID
+part list mmc 0
+  -> list the partitions on the specified device
+
+"part uuid" can be useful when writing a bootcmd which searches all
+known devices for something bootable, and then wants the kernel to
+use the same partition as the root device, e.g.:
+
+part uuid ${devtype} ${devnum}:${rootpart} uuid
+setenv bootargs root=PARTUUID=${uuid} ...
+
+Signed-off-by: Stephen Warren <swarren@nvidia.com>
+
+Upstream-Status: Backport
+Signed-off-by: Florin Sarbu <florin@resin.io>
+---
+ common/Makefile   |   1 +
+ common/cmd_part.c | 105 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 106 insertions(+)
+ create mode 100644 common/cmd_part.c
+
+diff --git a/common/Makefile b/common/Makefile
+index 482795e..b56df1d 100644
+--- a/common/Makefile
++++ b/common/Makefile
+@@ -136,6 +136,7 @@ COBJS-$(CONFIG_CMD_NAND) += cmd_nand.o
+ COBJS-$(CONFIG_CMD_NET) += cmd_net.o
+ COBJS-$(CONFIG_CMD_ONENAND) += cmd_onenand.o
+ COBJS-$(CONFIG_CMD_OTP) += cmd_otp.o
++COBJS-$(CONFIG_CMD_PART) += cmd_part.o
+ ifdef CONFIG_PCI
+ COBJS-$(CONFIG_CMD_PCI) += cmd_pci.o
+ endif
+diff --git a/common/cmd_part.c b/common/cmd_part.c
+new file mode 100644
+index 0000000..d997597
+--- /dev/null
++++ b/common/cmd_part.c
+@@ -0,0 +1,105 @@
++/*
++ * Copyright (c) 2012, NVIDIA CORPORATION.  All rights reserved.
++ *
++ * made from cmd_ext2, which was:
++ *
++ * (C) Copyright 2004
++ * esd gmbh <www.esd-electronics.com>
++ * Reinhard Arlt <reinhard.arlt@esd-electronics.com>
++ *
++ * made from cmd_reiserfs by
++ *
++ * (C) Copyright 2003 - 2004
++ * Sysgo Real-Time Solutions, AG <www.elinos.com>
++ * Pavel Bartusek <pba@sysgo.com>
++ *
++ * See file CREDITS for list of people who contributed to this
++ * project.
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License as
++ * published by the Free Software Foundation; either version 2 of
++ * the License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include <common.h>
++#include <config.h>
++#include <command.h>
++#include <part.h>
++//#include <vsprintf.h>
++
++#ifndef CONFIG_PARTITION_UUIDS
++#error CONFIG_PARTITION_UUIDS must be enabled for CONFIG_CMD_PART to be enabled
++#endif
++
++int do_part_uuid(int argc, char * const argv[])
++{
++	int part;
++	block_dev_desc_t *dev_desc;
++	disk_partition_t info;
++
++	if (argc < 2)
++		return CMD_RET_USAGE;
++	if (argc > 3)
++		return CMD_RET_USAGE;
++
++	part = get_device_and_partition(argv[0], argv[1], &dev_desc, &info, 0);
++	if (part < 0)
++		return 1;
++
++	if (argc > 2)
++		setenv(argv[2], info.uuid);
++	else
++		printf("%s\n", info.uuid);
++
++	return 0;
++}
++
++int do_part_list(int argc, char * const argv[])
++{
++	int ret;
++	block_dev_desc_t *desc;
++
++	if (argc != 2)
++		return CMD_RET_USAGE;
++
++	ret = get_device(argv[0], argv[1], &desc);
++	if (ret < 0)
++		return 1;
++
++	print_part(desc);
++
++	return 0;
++}
++
++int do_part(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[])
++{
++	if (argc < 2)
++		return CMD_RET_USAGE;
++
++	if (!strcmp(argv[1], "uuid"))
++		return do_part_uuid(argc - 2, argv + 2);
++	else if (!strcmp(argv[1], "list"))
++		return do_part_list(argc - 2, argv + 2);
++
++	return CMD_RET_USAGE;
++}
++
++U_BOOT_CMD(
++	part,	5,	1,	do_part,
++	"disk partition related commands",
++	"part uuid <interface> <dev>:<part>\n"
++	"    - print partition UUID\n"
++	"part uuid <interface> <dev>:<part> <varname>\n"
++	"    - set environment variable to partition UUID\n"
++	"part list <interface> <dev>\n"
++	"    - print a device's partition table"
++);
+-- 
+2.7.4
+

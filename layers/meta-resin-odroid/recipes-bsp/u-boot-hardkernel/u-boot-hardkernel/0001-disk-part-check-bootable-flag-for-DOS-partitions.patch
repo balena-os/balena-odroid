@@ -1,0 +1,67 @@
+From 40e0e5686accd2f7ae7fd81297620d0e132624d9 Mon Sep 17 00:00:00 2001
+From: Rob Herring <rob.herring@calxeda.com>
+Date: Thu, 23 Aug 2012 11:31:43 +0000
+Subject: [PATCH] disk/part: check bootable flag for DOS partitions
+
+Determine which partitions are bootable/active. In the partition listing,
+print "Boot" for partitions with the bootable/active flag set.
+
+Signed-off-by: Rob Herring <rob.herring@calxeda.com>
+
+Upstream-Status: Backport
+Signed-off-by: Florin Sarbu <florin@resin.io>
+---
+ disk/part_dos.c | 11 +++++++++--
+ include/part.h  |  1 +
+ 2 files changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/disk/part_dos.c b/disk/part_dos.c
+index a43dd9c..24ac00c 100644
+--- a/disk/part_dos.c
++++ b/disk/part_dos.c
+@@ -60,14 +60,20 @@ static inline int is_extended(int part_type)
+ 	    part_type == 0x85);
+ }
+ 
++static inline int is_bootable(dos_partition_t *p)
++{
++	return p->boot_ind == 0x80;
++}
++
+ static void print_one_part (dos_partition_t *p, int ext_part_sector, int part_num)
+ {
+ 	int lba_start = ext_part_sector + le32_to_int (p->start4);
+ 	int lba_size  = le32_to_int (p->size4);
+ 
+-	printf ("%5d\t\t%10d\t%10d\t%2x%s\n",
++	printf("%5d\t\t%10d\t%10d\t%2x%s%s\n",
+ 		part_num, lba_start, lba_size, p->sys_ind,
+-		(is_extended (p->sys_ind) ? " Extd" : ""));
++		(is_extended(p->sys_ind) ? " Extd" : ""),
++		(is_bootable(p) ? " Boot" : ""));
+ }
+ 
+ static int test_block_type(unsigned char *buffer)
+@@ -222,6 +228,7 @@ static int get_partition_info_extended (block_dev_desc_t *dev_desc, int ext_part
+ 			}
+ 			/* sprintf(info->type, "%d, pt->sys_ind); */
+ 			sprintf ((char *)info->type, "U-Boot");
++			info->bootable = is_bootable(pt);
+ 			return 0;
+ 		}
+ 
+diff --git a/include/part.h b/include/part.h
+index e1478f4..447f69d 100644
+--- a/include/part.h
++++ b/include/part.h
+@@ -93,6 +93,7 @@ typedef struct disk_partition {
+ 	ulong	blksz;		/* block size in bytes			*/
+ 	uchar	name[32];	/* partition name			*/
+ 	uchar	type[32];	/* string type description		*/
++	int	bootable;	/* Active/Bootable flag is set		*/
+ } disk_partition_t;
+ 
+ /* Misc _get_dev functions */
+-- 
+2.7.4
+

@@ -1,0 +1,57 @@
+From 9aed5080834a4e848a88b972738f28dce466b420 Mon Sep 17 00:00:00 2001
+From: Marek Vasut <marex@denx.de>
+Date: Thu, 27 Sep 2012 17:08:15 +0200
+Subject: [PATCH] COMMON: Add __stringify() function
+
+Copied from Linux kernel:
+commit 8f7c2c37319a81ef4c2bfdec67b1ccd5744d97e4
+Date:   Wed Apr 8 16:58:57 2009 +0800
+
+Pull in the __stringify() macro from Linux kernel. This macro is usually used to
+convert numbers to strings at preprocessor level, yet it is not limited only to
+that. This is useful as it allows higher usage of puts() in favour of printf().
+
+Signed-off-by: Marek Vasut <marex@denx.de>
+Cc: Wolfgang Denk <wd@denx.de>
+
+Upstream-Status: Backport
+Signed-off-by: Florin Sarbu <florin@resin.io>
+---
+ include/common.h          |  1 +
+ include/linux/stringify.h | 12 ++++++++++++
+ 2 files changed, 13 insertions(+)
+ create mode 100644 include/linux/stringify.h
+
+diff --git a/include/common.h b/include/common.h
+index a7fb05e..7d9ab15 100644
+--- a/include/common.h
++++ b/include/common.h
+@@ -39,6 +39,7 @@ typedef volatile unsigned char	vu_char;
+ #include <linux/bitops.h>
+ #include <linux/types.h>
+ #include <linux/string.h>
++#include <linux/stringify.h>
+ #include <asm/ptrace.h>
+ #include <stdarg.h>
+ #if defined(CONFIG_PCI) && (defined(CONFIG_4xx) && !defined(CONFIG_AP1000))
+diff --git a/include/linux/stringify.h b/include/linux/stringify.h
+new file mode 100644
+index 0000000..841cec8
+--- /dev/null
++++ b/include/linux/stringify.h
+@@ -0,0 +1,12 @@
++#ifndef __LINUX_STRINGIFY_H
++#define __LINUX_STRINGIFY_H
++
++/* Indirect stringification.  Doing two levels allows the parameter to be a
++ * macro itself.  For example, compile with -DFOO=bar, __stringify(FOO)
++ * converts to "bar".
++ */
++
++#define __stringify_1(x...)	#x
++#define __stringify(x...)	__stringify_1(x)
++
++#endif	/* !__LINUX_STRINGIFY_H */
+-- 
+2.7.4
+
