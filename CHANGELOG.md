@@ -1,6 +1,8 @@
 Change log
 -----------
 
+* Backport u-boot commits needed for resin-u-boot integration [Florin]
+
 # v2.12.1+rev1
 ## (2018-03-12)
 

@@ -1,0 +1,53 @@
+From 9d12d5d41d5653ba2f943886f45b8c2eb0f63450 Mon Sep 17 00:00:00 2001
+From: Simon Glass <sjg@chromium.org>
+Date: Tue, 14 Feb 2012 19:59:25 +0000
+Subject: [PATCH] Add cmd_process() to process commands in one place
+
+We currently have the same code in hush.c and main.c. This brings the
+code into one place.
+
+As an added feature, if the command function returns CMD_RET_USAGE then
+cmd_process() will print a usage message for the command before
+returning the standard failure code of 1.
+
+ARM code size increases about 32 bytes with this clean-up.
+
+Signed-off-by: Simon Glass <sjg@chromium.org>
+
+This patch is a backport and rework of the above patch so that it applies
+on the Odroid C1 u-boot source code.
+
+Upstream-Status: Backport
+Signed-off-by: Florin Sarbu <florin@resin.io>
+---
+ include/command.h | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+diff --git a/include/command.h b/include/command.h
+index 8310fe5..e981eff 100644
+--- a/include/command.h
++++ b/include/command.h
+@@ -101,6 +101,20 @@ extern int do_bootd(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[]);
+ extern int do_bootm(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[]);
+ extern int do_reset(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[]);
+ 
++/*
++ * Error codes that commands return to cmd_process(). We use the standard 0
++ * and 1 for success and failure, but add one more case - failure with a
++ * request to call cmd_usage(). But the cmd_process() function handles
++ * CMD_RET_USAGE itself and after calling cmd_usage() it will return 1.
++ * This is just a convenience for commands to avoid them having to call
++ * cmd_usage() all over the place.
++ */
++enum command_ret_t {
++	CMD_RET_SUCCESS,	/* 0 = Success */
++	CMD_RET_FAILURE,	/* 1 = Failure */
++	CMD_RET_USAGE = -1,	/* Failure, please report 'usage' error */
++};
++
+ #endif	/* __ASSEMBLY__ */
+ 
+ /*
+-- 
+2.7.4
+

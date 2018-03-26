@@ -1,0 +1,171 @@
+From 99d2c205d4a151faf5f9a406316b9dd960f43475 Mon Sep 17 00:00:00 2001
+From: Rob Herring <rob.herring@calxeda.com>
+Date: Fri, 21 Sep 2012 04:08:17 +0000
+Subject: [PATCH] disk/part: introduce get_device_and_partition
+
+All block device related commands (scsiboot, fatload, ext2ls, etc.) have
+simliar duplicated device and partition parsing and selection code. This
+adds a common function to replace various implementations.
+
+The new function has an enhancement over current versions. If no device
+or partition is specified on the command line, the bootdevice env variable
+will be used (scsiboot does this).
+
+Signed-off-by: Rob Herring <rob.herring@calxeda.com>
+
+Upstream-Status: Backport
+Signed-off-by: Florin Sarbu <florin@resin.io>
+---
+ disk/part.c    | 69 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++--
+ include/part.h | 13 +++++++++--
+ 2 files changed, 78 insertions(+), 4 deletions(-)
+
+diff --git a/disk/part.c b/disk/part.c
+index b4f6aa2..4a25b80 100644
+--- a/disk/part.c
++++ b/disk/part.c
+@@ -75,7 +75,7 @@ static const struct block_drvr block_drvr[] = {
+ 
+ DECLARE_GLOBAL_DATA_PTR;
+ 
+-block_dev_desc_t *get_dev(char* ifname, int dev)
++block_dev_desc_t *get_dev(const char *ifname, int dev)
+ {
+ 	const struct block_drvr *drvr = block_drvr;
+ 	block_dev_desc_t* (*reloc_get_dev)(int dev);
+@@ -415,7 +415,7 @@ int partition_write_bytes(block_dev_desc_t *dev, disk_partition_t *ptn,
+ 	return _partition_write(dev, ptn, bytecnt, NULL, buffer);
+ }
+ #else
+-block_dev_desc_t *get_dev(char* ifname, int dev)
++block_dev_desc_t *get_dev(const char *ifname, int dev)
+ {
+ 	return NULL;
+ }
+@@ -671,6 +671,7 @@ void init_part (block_dev_desc_t * dev_desc)
+ 	    return;
+ 	}
+ #endif
++	dev_desc->part_type = PART_TYPE_UNKNOWN;
+ }
+ 
+ 
+@@ -729,6 +730,70 @@ int get_partition_info (block_dev_desc_t *dev_desc, int part
+ 	return (-1);
+ }
+ 
++int get_device_and_partition(const char *ifname, const char *dev_str,
++                            block_dev_desc_t **dev_desc,
++                            disk_partition_t *info)
++{
++	int ret;
++	char *ep;
++	int dev;
++	block_dev_desc_t *desc;
++	int part = 0;
++	char *part_str;
++
++	if (dev_str)
++		dev = simple_strtoul(dev_str, &ep, 16);
++
++	if (!dev_str || (dev_str == ep)) {
++		dev_str = getenv("bootdevice");
++		if (dev_str)
++			dev = simple_strtoul(dev_str, &ep, 16);
++		if (!dev_str || (dev_str == ep))
++			goto err;
++	}
++
++	desc = get_dev(ifname, dev);
++	if (!desc || (desc->type == DEV_TYPE_UNKNOWN))
++		goto err;
++
++	if (desc->part_type == PART_TYPE_UNKNOWN) {
++		/* disk doesn't use partition table */
++		if (!desc->lba) {
++			printf("**Bad disk size - %s %d:0 **\n", ifname, dev);
++			return -1;
++		}
++		info->start = 0;
++		info->size = desc->lba;
++		info->blksz = desc->blksz;
++
++		*dev_desc = desc;
++		return 0;
++	}
++
++	part_str = strchr(dev_str, ':');
++	if (part_str)
++		part = (int)simple_strtoul(++part_str, NULL, 16);
++
++	ret = get_partition_info(desc, part, info);
++	if (ret) {
++		printf("** Invalid partition %d, use `dev[:part]' **\n", part);
++		return -1;
++	}
++	if (strncmp((char *)info->type, BOOT_PART_TYPE, sizeof(info->type)) != 0) {
++		printf("** Invalid partition type \"%.32s\""
++			" (expect \"" BOOT_PART_TYPE "\")\n",
++			info->type);
++		return -1;
++	}
++
++	*dev_desc = desc;
++	return part;
++
++err:
++	puts("** Invalid boot device, use `dev[:part]' **\n");
++	return -1;
++}
++
+ static void print_part_header (const char *type, block_dev_desc_t * dev_desc)
+ {
+ 	puts ("\nPartition Map for ");
+diff --git a/include/part.h b/include/part.h
+index 2531421..9c8f6c0 100644
+--- a/include/part.h
++++ b/include/part.h
+@@ -97,7 +97,7 @@ typedef struct disk_partition {
+ 
+ /* Misc _get_dev functions */
+ #ifdef CONFIG_PARTITIONS
+-block_dev_desc_t* get_dev(char* ifname, int dev);
++block_dev_desc_t *get_dev(const char *ifname, int dev);
+ block_dev_desc_t* ide_get_dev(int dev);
+ block_dev_desc_t* sata_get_dev(int dev);
+ block_dev_desc_t* scsi_get_dev(int dev);
+@@ -132,6 +132,9 @@ int get_partition_info (block_dev_desc_t * dev_desc, int part, disk_partition_t
+ void print_part (block_dev_desc_t *dev_desc);
+ void  init_part (block_dev_desc_t *dev_desc);
+ void dev_print(block_dev_desc_t *dev_desc);
++int get_device_and_partition(const char *ifname, const char *dev_str,
++				block_dev_desc_t **dev_desc,
++				disk_partition_t *info);
+ 
+ #ifndef CONFIG_MIN_PARTITION_NUM
+ #define CONFIG_MIN_PARTITION_NUM 0
+@@ -140,7 +143,8 @@ void dev_print(block_dev_desc_t *dev_desc);
+ #define CONFIG_MAX_PARTITION_NUM 10
+ #endif
+ #else
+-static inline block_dev_desc_t* get_dev(char* ifname, int dev) { return NULL; }
++static inline block_dev_desc_t *get_dev(const char *ifname, int dev)
++{ return NULL; }
+ static inline block_dev_desc_t *get_dev_by_name(char* ifname,
+ 				int dev) { return NULL; }
+ static inline block_dev_desc_t* ide_get_dev(int dev) { return NULL; }
+@@ -189,6 +193,11 @@ static inline int get_partition_info (block_dev_desc_t * dev_desc, int part,
+ static inline void print_part (block_dev_desc_t *dev_desc) {}
+ static inline void  init_part (block_dev_desc_t *dev_desc) {}
+ static inline void dev_print(block_dev_desc_t *dev_desc) {}
++static inline int get_device_and_partition(const char *ifname,
++                                          const char *dev_str,
++                                          block_dev_desc_t **dev_desc,
++                                          disk_partition_t *info)
++{ *dev_desc = NULL; return -1; }
+ #ifndef CONFIG_MIN_PARTITION_NUM
+ #define CONFIG_MIN_PARTITION_NUM 0
+ #endif
+-- 
+2.7.4
+

@@ -1,0 +1,99 @@
+From 894bfbbfb772de2f8640f91aee322f3cb2577cb7 Mon Sep 17 00:00:00 2001
+From: Stephen Warren <swarren@nvidia.com>
+Date: Fri, 21 Sep 2012 09:50:59 +0000
+Subject: [PATCH] disk: part_efi: parse and store partition UUID
+
+Each EFI partition table entry contains a UUID. Extend U-Boot's struct
+disk_partition to be able to store this information, and modify
+get_partition_info_efi() to fill it in.
+
+The implementation of uuid_string() was derived from the Linux kernel,
+tag v3.6-rc4 file lib/vsprintf.c function uuid_string().
+
+Signed-off-by: Stephen Warren <swarren@nvidia.com>
+
+Upstream-Status: Backport
+Signed-off-by: Florin Sarbu <florin@resin.io>
+---
+ disk/part.c     |  6 ++++++
+ disk/part_efi.c | 25 +++++++++++++++++++++++++
+ include/part.h  |  3 +++
+ 3 files changed, 34 insertions(+)
+
+diff --git a/disk/part.c b/disk/part.c
+index b4f6aa2..2c254f7 100644
+--- a/disk/part.c
++++ b/disk/part.c
+@@ -677,6 +677,12 @@ void init_part (block_dev_desc_t * dev_desc)
+ int get_partition_info (block_dev_desc_t *dev_desc, int part
+ 					, disk_partition_t *info)
+ {
++
++#ifdef CONFIG_PARTITION_UUIDS
++       /* The common case is no UUID support */
++       info->uuid[0] = 0;
++#endif
++
+ 	switch (dev_desc->part_type) {
+ #ifdef CONFIG_MAC_PARTITION
+ 	case PART_TYPE_MAC:
+diff --git a/disk/part_efi.c b/disk/part_efi.c
+index 084c7c3..fbee59f 100644
+--- a/disk/part_efi.c
++++ b/disk/part_efi.c
+@@ -160,6 +160,28 @@ void print_part_efi(block_dev_desc_t * dev_desc)
+ 	return;
+ }
+ 
++#ifdef CONFIG_PARTITION_UUIDS
++static void uuid_string(unsigned char *uuid, char *str)
++{
++       static const u8 le[16] = {3, 2, 1, 0, 5, 4, 7, 6, 8, 9, 10, 11,
++                                 12, 13, 14, 15};
++       int i;
++
++       for (i = 0; i < 16; i++) {
++               sprintf(str, "%02x", uuid[le[i]]);
++               str += 2;
++               switch (i) {
++               case 3:
++               case 5:
++               case 7:
++               case 9:
++                       *str++ = '-';
++                       break;
++               }
++       }
++}
++#endif
++
+ int get_partition_info_efi(block_dev_desc_t * dev_desc, int part,
+ 				disk_partition_t * info)
+ {
+@@ -196,6 +218,9 @@ int get_partition_info_efi(block_dev_desc_t * dev_desc, int part,
+ 		&pgpt_pte[part - 1].partition_type_guid, sizeof(efi_guid_t));
+ 	memcpy(info->type + sizeof(efi_guid_t),
+ 		&pgpt_pte[part - 1].unique_partition_guid, sizeof(efi_guid_t));
++#ifdef CONFIG_PARTITION_UUIDS
++	uuid_string(gpt_pte[part - 1].unique_partition_guid.b, info->uuid);
++#endif
+ 
+ 	debug("%s: start 0x%lX, size 0x%lX, name %s", __FUNCTION__,
+ 		info->start, info->size, info->name);
+diff --git a/include/part.h b/include/part.h
+index 2802476..236413d 100644
+--- a/include/part.h
++++ b/include/part.h
+@@ -94,6 +94,9 @@ typedef struct disk_partition {
+ 	uchar	name[32];	/* partition name			*/
+ 	uchar	type[32];	/* string type description		*/
+ 	int	bootable;	/* Active/Bootable flag is set		*/
++#ifdef CONFIG_PARTITION_UUIDS
++        char    uuid[37];       /* filesystem UUID as string, if exists */
++#endif
+ } disk_partition_t;
+ 
+ /* Misc _get_dev functions */
+-- 
+2.7.4
+

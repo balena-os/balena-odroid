@@ -1,0 +1,91 @@
+From d27b5f9398aba377ff2185fb4b8170eeca7c3b65 Mon Sep 17 00:00:00 2001
+From: Stephen Warren <swarren@nvidia.com>
+Date: Fri, 21 Sep 2012 09:51:00 +0000
+Subject: [PATCH] disk: part_msdos: parse and store partition UUID
+
+The MSDOS/MBR partition table includes a 32-bit unique ID, often referred
+to as the NT disk signature. When combined with a partition number within
+the table, this can form a unique ID similar in concept to EFI/GPT's
+partition UUID.
+
+This patch generates UUIDs in the format 0002dd75-01, which matches the
+format expected by the Linux kernel.
+
+Signed-off-by: Stephen Warren <swarren@nvidia.com>
+
+Upstream-Status: Backport
+Signed-off-by: Florin Sarbu <florin@resin.io>
+---
+ disk/part_dos.c | 15 ++++++++++++---
+ disk/part_dos.h |  1 +
+ 2 files changed, 13 insertions(+), 3 deletions(-)
+
+diff --git a/disk/part_dos.c b/disk/part_dos.c
+index 489769a..4f082e5 100644
+--- a/disk/part_dos.c
++++ b/disk/part_dos.c
+@@ -170,7 +170,8 @@ static void print_partition_extended (block_dev_desc_t *dev_desc, int ext_part_s
+  */
+ static int get_partition_info_extended (block_dev_desc_t *dev_desc, int ext_part_sector,
+ 				 int relative, int part_num,
+-				 int which_part, disk_partition_t *info)
++				 int which_part, disk_partition_t *info,
++				 unsigned int disksig)
+ {
+ 	unsigned char buffer[DEFAULT_SECTOR_SIZE];
+ 	dos_partition_t *pt;
+@@ -189,6 +190,11 @@ static int get_partition_info_extended (block_dev_desc_t *dev_desc, int ext_part
+ 		return -1;
+ 	}
+ 
++#ifdef CONFIG_PARTITION_UUIDS
++	if (!ext_part_sector)
++		disksig = le32_to_int(&buffer[DOS_PART_DISKSIG_OFFSET]);
++#endif
++
+ 	/* Print all primary/logical partitions */
+ 	pt = (dos_partition_t *) (buffer + DOS_PART_TBL_OFFSET);
+ 	for (i = 0; i < 4; i++, pt++) {
+@@ -230,6 +236,9 @@ static int get_partition_info_extended (block_dev_desc_t *dev_desc, int ext_part
+ 			/* sprintf(info->type, "%d, pt->sys_ind); */
+ 			sprintf ((char *)info->type, "U-Boot");
+ 			info->bootable = is_bootable(pt);
++#ifdef CONFIG_PARTITION_UUIDS
++			sprintf(info->uuid, "%08x-%02x", disksig, part_num);
++#endif
+ 			return 0;
+ 		}
+ 
+@@ -248,7 +257,7 @@ static int get_partition_info_extended (block_dev_desc_t *dev_desc, int ext_part
+ 
+ 			return get_partition_info_extended (dev_desc, lba_start,
+ 				 ext_part_sector == 0 ? lba_start : relative,
+-				 part_num, which_part, info);
++				 part_num, which_part, info, disksig);
+ 		}
+ 	}
+ 	return -1;
+@@ -262,7 +271,7 @@ void print_part_dos (block_dev_desc_t *dev_desc)
+ 
+ int get_partition_info_dos (block_dev_desc_t *dev_desc, int part, disk_partition_t * info)
+ {
+-	return get_partition_info_extended (dev_desc, 0, 0, 1, part, info);
++	return get_partition_info_extended(dev_desc, 0, 0, 1, part, info, 0);
+ }
+ 
+ 
+diff --git a/disk/part_dos.h b/disk/part_dos.h
+index 195a32c..8a14b97 100644
+--- a/disk/part_dos.h
++++ b/disk/part_dos.h
+@@ -32,6 +32,7 @@
+ #else
+ #define DEFAULT_SECTOR_SIZE	512
+ #endif
++#define DOS_PART_DISKSIG_OFFSET	0x1b8
+ #define DOS_PART_TBL_OFFSET	0x1be
+ #define DOS_PART_MAGIC_OFFSET	0x1fe
+ #define DOS_PBR_FSTYPE_OFFSET	0x36
+-- 
+2.7.4
+

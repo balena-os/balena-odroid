@@ -1,0 +1,78 @@
+From 2023e60861283ee808950a558e14b45be8776bf4 Mon Sep 17 00:00:00 2001
+From: Stephen Warren <swarren@nvidia.com>
+Date: Fri, 21 Sep 2012 09:50:56 +0000
+Subject: [PATCH] disk: introduce get_device()
+
+This patch introduces function get_device(). This looks up a
+block_dev_desc_t from an interface name (e.g. mmc) and device number
+(e.g. 0). This function is essentially the non-partition-specific
+prefix of get_device_and_partition().
+
+Signed-off-by: Stephen Warren <swarren@nvidia.com>
+
+Upstream-Status: Backport
+Signed-off-by: Florin Sarbu <florin@resin.io>
+---
+ disk/part.c    | 22 ++++++++++++++++++++++
+ include/part.h |  5 +++++
+ 2 files changed, 27 insertions(+)
+
+diff --git a/disk/part.c b/disk/part.c
+index f0afd89..ed6bbe2 100644
+--- a/disk/part.c
++++ b/disk/part.c
+@@ -443,6 +443,28 @@ int get_partition_info(block_dev_desc_t *dev_desc, int part
+ 	return -1;
+ }
+ 
++int get_device(const char *ifname, const char *dev_str,
++	       block_dev_desc_t **dev_desc)
++{
++	char *ep;
++	int dev;
++
++	dev = simple_strtoul(dev_str, &ep, 16);
++	if (*ep) {
++		printf("** Bad device specification %s %s **\n",
++		       ifname, dev_str);
++		return -1;
++	}
++
++	*dev_desc = get_dev(ifname, dev);
++	if (!(*dev_desc) || ((*dev_desc)->type == DEV_TYPE_UNKNOWN)) {
++		printf("** Bad device %s %s **\n", ifname, dev_str);
++		return -1;
++	}
++
++	return dev;
++}
++
+ int get_device_and_partition(const char *ifname, const char *dev_str,
+ 			     block_dev_desc_t **dev_desc,
+ 			     disk_partition_t *info)
+diff --git a/include/part.h b/include/part.h
+index a6d06f3..144df4e 100644
+--- a/include/part.h
++++ b/include/part.h
+@@ -112,6 +112,8 @@ int get_partition_info (block_dev_desc_t * dev_desc, int part, disk_partition_t
+ void print_part (block_dev_desc_t *dev_desc);
+ void  init_part (block_dev_desc_t *dev_desc);
+ void dev_print(block_dev_desc_t *dev_desc);
++int get_device(const char *ifname, const char *dev_str,
++	       block_dev_desc_t **dev_desc);
+ int get_device_and_partition(const char *ifname, const char *dev_str,
+ 			     block_dev_desc_t **dev_desc,
+ 			     disk_partition_t *info);
+@@ -131,6 +133,9 @@ static inline int get_partition_info (block_dev_desc_t * dev_desc, int part,
+ static inline void print_part (block_dev_desc_t *dev_desc) {}
+ static inline void  init_part (block_dev_desc_t *dev_desc) {}
+ static inline void dev_print(block_dev_desc_t *dev_desc) {}
++static inline int get_device(const char *ifname, const char *dev_str,
++	       block_dev_desc_t **dev_desc)
++{ return -1; }
+ static inline int get_device_and_partition(const char *ifname,
+ 					   const char *dev_str,
+ 					   block_dev_desc_t **dev_desc,
+-- 
+2.7.4
+
