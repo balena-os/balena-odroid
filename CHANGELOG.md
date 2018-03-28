@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Update the resin-yocto-scripts submodule to 9cecb1ca4d9d4713dd337148b7d04a17afdba772 (on master branch) [Florin]
 * Add bootloader hostapp hooks for Odroid C1 [Florin]
 * Integrate with resin-u-boot [Florin]
 * Backport u-boot commits needed for resin-u-boot integration [Florin]
