@@ -1,6 +1,8 @@
 Change log
 -----------
 
+* Backport kernel 3.19 VFS patches in order to fix container update filesystem errors [Florin]
+
 # v2.12.5+rev1
 ## (2018-03-28)
 

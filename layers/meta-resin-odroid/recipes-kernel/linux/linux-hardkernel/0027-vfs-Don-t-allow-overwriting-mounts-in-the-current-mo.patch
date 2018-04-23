@@ -1,0 +1,142 @@
+From 7af1364ffa64db61e386628594836e13d2ef04b5 Mon Sep 17 00:00:00 2001
+From: "Eric W. Biederman" <ebiederm@xmission.com>
+Date: Fri, 4 Oct 2013 19:15:13 -0700
+Subject: [PATCH] vfs: Don't allow overwriting mounts in the current mount
+ namespace
+
+In preparation for allowing mountpoints to be renamed and unlinked
+in remote filesystems and in other mount namespaces test if on a dentry
+there is a mount in the local mount namespace before allowing it to
+be renamed or unlinked.
+
+The primary motivation here are old versions of fusermount unmount
+which is not safe if the a path can be renamed or unlinked while it is
+verifying the mount is safe to unmount.  More recent versions are simpler
+and safer by simply using UMOUNT_NOFOLLOW when unmounting a mount
+in a directory owned by an arbitrary user.
+
+Miklos Szeredi <miklos@szeredi.hu> reports this is approach is good
+enough to remove concerns about new kernels mixed with old versions
+of fusermount.
+
+A secondary motivation for restrictions here is that it removing empty
+directories that have non-empty mount points on them appears to
+violate the rule that rmdir can not remove empty directories.  As
+Linus Torvalds pointed out this is useful for programs (like git) that
+test if a directory is empty with rmdir.
+
+Therefore this patch arranges to enforce the existing mount point
+semantics for local mount namespace.
+
+v2: Rewrote the test to be a drop in replacement for d_mountpoint
+v3: Use bool instead of int as the return type of is_local_mountpoint
+
+Reviewed-by: Miklos Szeredi <miklos@szeredi.hu>
+Signed-off-by: "Eric W. Biederman" <ebiederm@xmission.com>
+Signed-off-by: Al Viro <viro@zeniv.linux.org.uk>
+
+Upstream-Status: Backport
+Signed-off-by: Florin Sarbu <florin@resin.io>
+---
+ fs/mount.h     |  9 +++++++++
+ fs/namei.c     |  6 +++++-
+ fs/namespace.c | 35 +++++++++++++++++++++++++++++++++++
+ 3 files changed, 49 insertions(+), 1 deletion(-)
+
+diff --git a/fs/mount.h b/fs/mount.h
+index 8f2a14a..8c6a2a6 100644
+--- a/fs/mount.h
++++ b/fs/mount.h
+@@ -115,3 +115,12 @@ struct proc_mounts {
+ #define proc_mounts(p) (container_of((p), struct proc_mounts, m))
+ 
+ extern const struct seq_operations mounts_op;
++
++extern bool __is_local_mountpoint(struct dentry *dentry);
++static inline bool is_local_mountpoint(struct dentry *dentry)
++{
++	if (!d_mountpoint(dentry))
++		return false;
++
++	return __is_local_mountpoint(dentry);
++}
+diff --git a/fs/namei.c b/fs/namei.c
+index a7b05bf..a3a14b0 100644
+--- a/fs/namei.c
++++ b/fs/namei.c
+@@ -3565,6 +3565,8 @@ int vfs_rmdir(struct inode *dir, struct dentry *dentry)
+ 	mutex_lock(&dentry->d_inode->i_mutex);
+ 
+ 	error = -EBUSY;
++	if (is_local_mountpoint(dentry))
++		goto out;
+ 	if (d_mountpoint(dentry))
+ 		goto out;
+ 
+@@ -3681,7 +3683,7 @@ int vfs_unlink(struct inode *dir, struct dentry *dentry, struct inode **delegate
+ 		return -EPERM;
+ 
+ 	mutex_lock(&target->i_mutex);
+-	if (d_mountpoint(dentry))
++	if (is_local_mountpoint(dentry) || d_mountpoint(dentry))
+ 		error = -EBUSY;
+ 	else {
+ 		error = security_inode_unlink(dir, dentry);
+@@ -4126,6 +4128,8 @@ int vfs_rename(struct inode *old_dir, struct dentry *old_dentry,
+ 		mutex_lock(&target->i_mutex);
+ 
+ 	error = -EBUSY;
++	if (is_local_mountpoint(old_dentry) || is_local_mountpoint(new_dentry))
++		goto out;
+ 	if (d_mountpoint(old_dentry) || d_mountpoint(new_dentry))
+ 		goto out;
+ 
+diff --git a/fs/namespace.c b/fs/namespace.c
+index 0441343..77ffdb8 100644
+--- a/fs/namespace.c
++++ b/fs/namespace.c
+@@ -667,6 +667,41 @@ struct vfsmount *lookup_mnt(struct path *path)
+ 	return m;
+ }
+ 
++/*
++ * __is_local_mountpoint - Test to see if dentry is a mountpoint in the
++ *                         current mount namespace.
++ *
++ * The common case is dentries are not mountpoints at all and that
++ * test is handled inline.  For the slow case when we are actually
++ * dealing with a mountpoint of some kind, walk through all of the
++ * mounts in the current mount namespace and test to see if the dentry
++ * is a mountpoint.
++ *
++ * The mount_hashtable is not usable in the context because we
++ * need to identify all mounts that may be in the current mount
++ * namespace not just a mount that happens to have some specified
++ * parent mount.
++ */
++bool __is_local_mountpoint(struct dentry *dentry)
++{
++	struct mnt_namespace *ns = current->nsproxy->mnt_ns;
++	struct mount *mnt;
++	bool is_covered = false;
++
++	if (!d_mountpoint(dentry))
++		goto out;
++
++	down_read(&namespace_sem);
++	list_for_each_entry(mnt, &ns->list, mnt_list) {
++		is_covered = (mnt->mnt_mountpoint == dentry);
++		if (is_covered)
++			break;
++	}
++	up_read(&namespace_sem);
++out:
++	return is_covered;
++}
++
+ static struct mountpoint *new_mountpoint(struct dentry *dentry)
+ {
+ 	struct hlist_head *chain = mp_hash(dentry);
+-- 
+2.7.4
+

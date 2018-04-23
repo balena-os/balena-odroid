@@ -1,0 +1,219 @@
+From 84d08fa888e7c2d53b5bbc764db2ef02968b499c Mon Sep 17 00:00:00 2001
+From: Al Viro <viro@zeniv.linux.org.uk>
+Date: Fri, 5 Jul 2013 18:59:33 +0400
+Subject: [PATCH] helper for reading ->d_count
+
+Signed-off-by: Al Viro <viro@zeniv.linux.org.uk>
+
+Upstream-Status: Backport
+Signed-off-by: Florin Sarbu <florin@resin.io>
+---
+ fs/autofs4/expire.c                                               | 8 ++++----
+ fs/autofs4/root.c                                                 | 2 +-
+ fs/ceph/inode.c                                                   | 4 ++--
+ fs/ceph/mds_client.c                                              | 2 +-
+ fs/coda/dir.c                                                     | 2 +-
+ fs/ecryptfs/inode.c                                               | 2 +-
+ fs/locks.c                                                        | 2 +-
+ fs/nfs/dir.c                                                      | 6 +++---
+ fs/nfs/unlink.c                                                   | 2 +-
+ fs/nilfs2/super.c                                                 | 2 +-
+ include/linux/dcache.h                                            | 5 +++++
+ 12 files changed, 22 insertions(+), 17 deletions(-)
+
+diff --git a/fs/autofs4/expire.c b/fs/autofs4/expire.c
+index 13ddec9..3d9d3f5 100644
+--- a/fs/autofs4/expire.c
++++ b/fs/autofs4/expire.c
+@@ -109,7 +109,7 @@ static struct dentry *get_next_positive_subdir(struct dentry *prev,
+ 
+ 	spin_lock_nested(&q->d_lock, DENTRY_D_LOCK_NESTED);
+ 	/* Already gone or negative dentry (under construction) - try next */
+-	if (q->d_count == 0 || !simple_positive(q)) {
++	if (!d_count(q) || !simple_positive(q)) {
+ 		spin_unlock(&q->d_lock);
+ 		next = q->d_u.d_child.next;
+ 		goto cont;
+@@ -267,7 +267,7 @@ static int autofs4_tree_busy(struct vfsmount *mnt,
+ 			else
+ 				ino_count++;
+ 
+-			if (p->d_count > ino_count) {
++			if (d_count(p) > ino_count) {
+ 				top_ino->last_used = jiffies;
+ 				dput(p);
+ 				return 1;
+@@ -409,7 +409,7 @@ struct dentry *autofs4_expire_indirect(struct super_block *sb,
+ 		if (!exp_leaves) {
+ 			/* Path walk currently on this dentry? */
+ 			ino_count = atomic_read(&ino->count) + 1;
+-			if (dentry->d_count > ino_count)
++			if (d_count(dentry) > ino_count)
+ 				goto next;
+ 
+ 			if (!autofs4_tree_busy(mnt, dentry, timeout, do_now)) {
+@@ -423,7 +423,7 @@ struct dentry *autofs4_expire_indirect(struct super_block *sb,
+ 		} else {
+ 			/* Path walk currently on this dentry? */
+ 			ino_count = atomic_read(&ino->count) + 1;
+-			if (dentry->d_count > ino_count)
++			if (d_count(dentry) > ino_count)
+ 				goto next;
+ 
+ 			expired = autofs4_check_leaves(mnt, dentry, timeout, do_now);
+diff --git a/fs/autofs4/root.c b/fs/autofs4/root.c
+index ca8e555..92ef341 100644
+--- a/fs/autofs4/root.c
++++ b/fs/autofs4/root.c
+@@ -179,7 +179,7 @@ static struct dentry *autofs4_lookup_active(struct dentry *dentry)
+ 		spin_lock(&active->d_lock);
+ 
+ 		/* Already gone? */
+-		if (active->d_count == 0)
++		if (!d_count(active))
+ 			goto next;
+ 
+ 		qstr = &active->d_name;
+diff --git a/fs/ceph/inode.c b/fs/ceph/inode.c
+index be0f7e2..bd2289a 100644
+--- a/fs/ceph/inode.c
++++ b/fs/ceph/inode.c
+@@ -903,8 +903,8 @@ static struct dentry *splice_dentry(struct dentry *dn, struct inode *in,
+ 	} else if (realdn) {
+ 		dout("dn %p (%d) spliced with %p (%d) "
+ 		     "inode %p ino %llx.%llx\n",
+-		     dn, dn->d_count,
+-		     realdn, realdn->d_count,
++		     dn, d_count(dn),
++		     realdn, d_count(realdn),
+ 		     realdn->d_inode, ceph_vinop(realdn->d_inode));
+ 		dput(dn);
+ 		dn = realdn;
+diff --git a/fs/ceph/mds_client.c b/fs/ceph/mds_client.c
+index 74fd289..99890b0 100644
+--- a/fs/ceph/mds_client.c
++++ b/fs/ceph/mds_client.c
+@@ -1553,7 +1553,7 @@ char *ceph_mdsc_build_path(struct dentry *dentry, int *plen, u64 *base,
+ 	*base = ceph_ino(temp->d_inode);
+ 	*plen = len;
+ 	dout("build_path on %p %d built %llx '%.*s'\n",
+-	     dentry, dentry->d_count, *base, len, path);
++	     dentry, d_count(dentry), *base, len, path);
+ 	return path;
+ }
+ 
+diff --git a/fs/coda/dir.c b/fs/coda/dir.c
+index 14a1480..190effc 100644
+--- a/fs/coda/dir.c
++++ b/fs/coda/dir.c
+@@ -526,7 +526,7 @@ static int coda_dentry_revalidate(struct dentry *de, unsigned int flags)
+ 	if (cii->c_flags & C_FLUSH) 
+ 		coda_flag_inode_children(inode, C_FLUSH);
+ 
+-	if (de->d_count > 1)
++	if (d_count(de) > 1)
+ 		/* pretend it's valid, but don't change the flags */
+ 		goto out;
+ 
+diff --git a/fs/ecryptfs/inode.c b/fs/ecryptfs/inode.c
+index a2f2bb2..67e9b63 100644
+--- a/fs/ecryptfs/inode.c
++++ b/fs/ecryptfs/inode.c
+@@ -358,7 +358,7 @@ static int ecryptfs_lookup_interpose(struct dentry *dentry,
+ 
+ 	lower_mnt = mntget(ecryptfs_dentry_to_lower_mnt(dentry->d_parent));
+ 	fsstack_copy_attr_atime(dir_inode, lower_dentry->d_parent->d_inode);
+-	BUG_ON(!lower_dentry->d_count);
++	BUG_ON(!d_count(lower_dentry));
+ 
+ 	ecryptfs_set_dentry_private(dentry, dentry_info);
+ 	ecryptfs_set_dentry_lower(dentry, lower_dentry);
+diff --git a/fs/locks.c b/fs/locks.c
+index 04e2c1f..c98e1a1 100644
+--- a/fs/locks.c
++++ b/fs/locks.c
+@@ -1454,7 +1454,7 @@ static int generic_add_lease(struct file *filp, long arg, struct file_lock **flp
+ 	if ((arg == F_RDLCK) && (atomic_read(&inode->i_writecount) > 0))
+ 		goto out;
+ 	if ((arg == F_WRLCK)
+-	    && ((dentry->d_count > 1)
++	    && ((d_count(dentry) > 1)
+ 		|| (atomic_read(&inode->i_count) > 1)))
+ 		goto out;
+ 
+diff --git a/fs/nfs/dir.c b/fs/nfs/dir.c
+index d7ed697..c933bdf 100644
+--- a/fs/nfs/dir.c
++++ b/fs/nfs/dir.c
+@@ -1721,7 +1721,7 @@ int nfs_unlink(struct inode *dir, struct dentry *dentry)
+ 		dir->i_ino, dentry->d_name.name);
+ 
+ 	spin_lock(&dentry->d_lock);
+-	if (dentry->d_count > 1) {
++	if (d_count(dentry) > 1) {
+ 		spin_unlock(&dentry->d_lock);
+ 		/* Start asynchronous writeout of the inode */
+ 		write_inode_now(dentry->d_inode, 0);
+@@ -1866,7 +1866,7 @@ int nfs_rename(struct inode *old_dir, struct dentry *old_dentry,
+ 	dfprintk(VFS, "NFS: rename(%s/%s -> %s/%s, ct=%d)\n",
+ 		 old_dentry->d_parent->d_name.name, old_dentry->d_name.name,
+ 		 new_dentry->d_parent->d_name.name, new_dentry->d_name.name,
+-		 new_dentry->d_count);
++		 d_count(new_dentry));
+ 
+ 	/*
+ 	 * For non-directories, check whether the target is busy and if so,
+@@ -1884,7 +1884,7 @@ int nfs_rename(struct inode *old_dir, struct dentry *old_dentry,
+ 			rehash = new_dentry;
+ 		}
+ 
+-		if (new_dentry->d_count > 2) {
++		if (d_count(new_dentry) > 2) {
+ 			int err;
+ 
+ 			/* copy the target dentry's name */
+diff --git a/fs/nfs/unlink.c b/fs/nfs/unlink.c
+index 1f1f38f..60395ad 100644
+--- a/fs/nfs/unlink.c
++++ b/fs/nfs/unlink.c
+@@ -479,7 +479,7 @@ nfs_sillyrename(struct inode *dir, struct dentry *dentry)
+ 
+ 	dfprintk(VFS, "NFS: silly-rename(%s/%s, ct=%d)\n",
+ 		dentry->d_parent->d_name.name, dentry->d_name.name,
+-		dentry->d_count);
++		d_count(dentry));
+ 	nfs_inc_stats(dir, NFSIOS_SILLYRENAME);
+ 
+ 	/*
+diff --git a/fs/nilfs2/super.c b/fs/nilfs2/super.c
+index 1427de5..af3ba04 100644
+--- a/fs/nilfs2/super.c
++++ b/fs/nilfs2/super.c
+@@ -996,7 +996,7 @@ static int nilfs_attach_snapshot(struct super_block *s, __u64 cno,
+ 
+ static int nilfs_tree_was_touched(struct dentry *root_dentry)
+ {
+-	return root_dentry->d_count > 1;
++	return d_count(root_dentry) > 1;
+ }
+ 
+ /**
+diff --git a/include/linux/dcache.h b/include/linux/dcache.h
+index f42dbe1..3092df36 100644
+--- a/include/linux/dcache.h
++++ b/include/linux/dcache.h
+@@ -324,6 +324,11 @@ static inline int __d_rcu_to_refcount(struct dentry *dentry, unsigned seq)
+ 	return ret;
+ }
+ 
++static inline unsigned d_count(struct dentry *dentry)
++{
++	return dentry->d_count;
++}
++
+ /* validate "insecure" dentry pointer */
+ extern int d_validate(struct dentry *, struct dentry *);
+ 
+-- 
+2.7.4
+

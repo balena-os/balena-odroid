@@ -1,0 +1,181 @@
+From 61be787cb3fbec82cd035f20a3fb7fa9757cdb30 Mon Sep 17 00:00:00 2001
+From: Florin Sarbu <florin@resin.io>
+Date: Fri, 20 Apr 2018 08:20:31 +0200
+Subject: [PATCH] Backport "vfs: Lazily remove mounts on unlinked files and directories."
+
+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/commit/?h=linux-3.19.y&id=8ed936b5671bfb33d89bc60bdcc7cf0470ba52fe
+
+Upstream-Status: Backport
+Signed-off-by: Florin Sarbu <florin@resin.io>
+---
+ fs/dcache.c | 60 +++++++++++++++++++++++++++++++++---------------------------
+ fs/namei.c  | 12 ++++++------
+ 2 files changed, 39 insertions(+), 33 deletions(-)
+
+diff --git a/fs/dcache.c b/fs/dcache.c
+index 1589b4a..d8729de 100644
+--- a/fs/dcache.c
++++ b/fs/dcache.c
+@@ -1238,36 +1238,39 @@ void shrink_dcache_parent(struct dentry *parent)
+ }
+ EXPORT_SYMBOL(shrink_dcache_parent);
+ 
+-static enum d_walk_ret check_and_collect(void *_data, struct dentry *dentry)
++struct detach_data {
++	struct select_data select;
++	struct dentry *mountpoint;
++};
++static enum d_walk_ret detach_and_collect(void *_data, struct dentry *dentry)
+ {
+-	struct select_data *data = _data;
++	struct detach_data *data = _data;
+ 
+ 	if (d_mountpoint(dentry)) {
+-		data->found = -EBUSY;
++		__dget_dlock(dentry);
++		data->mountpoint = dentry;
+ 		return D_WALK_QUIT;
+ 	}
+ 
+-	return select_collect(_data, dentry);
++	return select_collect(&data->select, dentry);
+ }
+ 
+ static void check_and_drop(void *_data)
+ {
+-	struct select_data *data = _data;
++	struct detach_data *data = _data;
+ 
+-	if (d_mountpoint(data->start))
+-		data->found = -EBUSY;
+-	if (!data->found)
+-		__d_drop(data->start);
++	if (!data->mountpoint && !data->select.found)
++		__d_drop(data->select.start);
+ }
+ 
+ /**
+- * check_submounts_and_drop - prune dcache, check for submounts and drop
++ * check_submounts_and_drop - detach submounts, prune dcache, and drop
+  *
+- * All done as a single atomic operation relative to has_unlinked_ancestor().
+- * Returns 0 if successfully unhashed @parent.  If there were submounts then
+- * return -EBUSY.
++ * The final d_drop is done as an atomic operation relative to
++ * rename_lock ensuring there are no races with d_set_mounted.  This
++ * ensures there are no unhashed dentries on the path to a mountpoint.
+  *
+- * @dentry: dentry to prune and drop
++ * @dentry: dentry to detach, prune and drop
+  */
+ int check_submounts_and_drop(struct dentry *dentry)
+ {
+@@ -1280,19 +1283,24 @@ int check_submounts_and_drop(struct dentry *dentry)
+ 	}
+ 
+ 	for (;;) {
+-		struct select_data data;
++		struct detach_data data;
+ 
+-		INIT_LIST_HEAD(&data.dispose);
+-		data.start = dentry;
+-		data.found = 0;
++		data.mountpoint = NULL;
++		INIT_LIST_HEAD(&data.select.dispose);
++		data.select.start = dentry;
++		data.select.found = 0;
++
++		d_walk(dentry, &data, detach_and_collect, check_and_drop);
+ 
+-		d_walk(dentry, &data, check_and_collect, check_and_drop);
+-		ret = data.found;
++		if (data.select.found)
++			shrink_dentry_list(&data.select.dispose);
+ 
+-		if (!list_empty(&data.dispose))
+-			shrink_dentry_list(&data.dispose);
++		if (data.mountpoint) {
++			detach_mounts(data.mountpoint);
++			dput(data.mountpoint);
++		}
+ 
+-		if (ret <= 0)
++		if (!data.mountpoint && !data.select.found)
+ 			break;
+ 
+ 		cond_resched();
+@@ -2441,10 +2449,8 @@ static struct dentry *__d_unalias(struct inode *inode,
+ 		goto out_err;
+ 	m2 = &alias->d_parent->d_inode->i_mutex;
+ out_unalias:
+-	if (likely(!d_mountpoint(alias))) {
+-		__d_move(alias, dentry);
+-		ret = alias;
+-	}
++	__d_move(alias, dentry, false);
++	ret = alias;
+ out_err:
+ 	spin_unlock(&inode->i_lock);
+ 	if (m2)
+diff --git a/fs/namei.c b/fs/namei.c
+index dc3f7ff..7ca5433 100644
+--- a/fs/namei.c
++++ b/fs/namei.c
+@@ -3338,8 +3338,6 @@ int vfs_rmdir(struct inode *dir, struct dentry *dentry)
+ 	error = -EBUSY;
+ 	if (is_local_mountpoint(dentry))
+ 		goto out;
+-	if (d_mountpoint(dentry))
+-		goto out;
+ 
+ 	error = security_inode_rmdir(dir, dentry);
+ 	if (error)
+@@ -3352,6 +3350,7 @@ int vfs_rmdir(struct inode *dir, struct dentry *dentry)
+ 
+ 	dentry->d_inode->i_flags |= S_DEAD;
+ 	dont_mount(dentry);
++	detach_mounts(dentry);
+ 
+ out:
+ 	mutex_unlock(&dentry->d_inode->i_mutex);
+@@ -3453,7 +3452,7 @@ int vfs_unlink(struct inode *dir, struct dentry *dentry, struct inode **delegate
+ 		return -EPERM;
+ 
+ 	mutex_lock(&target->i_mutex);
+-	if (is_local_mountpoint(dentry) || d_mountpoint(dentry))
++	if (is_local_mountpoint(dentry))
+ 		error = -EBUSY;
+ 	else {
+ 		error = security_inode_unlink(dir, dentry);
+@@ -3462,8 +3461,10 @@ int vfs_unlink(struct inode *dir, struct dentry *dentry, struct inode **delegate
+ 			if (error)
+ 				goto out;
+ 			error = dir->i_op->unlink(dir, dentry);
+-			if (!error)
++			if (!error) {
+ 				dont_mount(dentry);
++				detach_mounts(dentry);
++			}
+ 		}
+ 	}
+ out:
+@@ -3837,8 +3838,6 @@ int vfs_rename(struct inode *old_dir, struct dentry *old_dentry,
+ 	error = -EBUSY;
+ 	if (is_local_mountpoint(old_dentry) || is_local_mountpoint(new_dentry))
+ 		goto out;
+-	if (d_mountpoint(old_dentry) || d_mountpoint(new_dentry))
+-		goto out;
+ 
+ 	if (is_dir) {
+ 		unsigned max_links = new_dir->i_sb->s_max_links;
+@@ -3868,6 +3867,7 @@ int vfs_rename(struct inode *old_dir, struct dentry *old_dentry,
+ 		if (is_dir)
+ 			target->i_flags |= S_DEAD;
+ 		dont_mount(new_dentry);
++		detach_mounts(new_dentry);
+ 	}
+ 	if (!(old_dir->i_sb->s_type->fs_flags & FS_RENAME_DOES_D_MOVE))
+ 		d_move(old_dentry, new_dentry);
+-- 
+2.7.4
+

@@ -1,0 +1,158 @@
+From b747ccb09ce5ff533c634b1ec4378a29b82bd0ae Mon Sep 17 00:00:00 2001
+From: Florin Sarbu <florin@resin.io>
+Date: Wed, 18 Apr 2018 06:01:36 +0200
+Subject: [PATCH] aufs backports needed because of the following backported commit:
+
+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/commit/?h=linux-3.19.y&id=98474236f72e5a8b89c14cd7c74f0bb77a4b1a99
+
+Upstream-Status: Backport
+Signed-off-by: Florin Sarbu <florin@resin.io>
+---
+ fs/aufs/branch.c  |  2 +-
+ fs/aufs/dcsub.c   | 10 +++++-----
+ fs/aufs/debug.c   |  2 +-
+ fs/aufs/dinfo.c   |  2 +-
+ fs/aufs/hnotify.c |  2 +-
+ fs/aufs/mvdown.c  |  4 ++--
+ fs/aufs/vfsub.c   |  2 +-
+ 7 files changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/fs/aufs/branch.c b/fs/aufs/branch.c
+index 28b6e9e..128fdf3 100644
+--- a/fs/aufs/branch.c
++++ b/fs/aufs/branch.c
+@@ -655,7 +655,7 @@ static int test_dentry_busy(struct dentry *root, aufs_bindex_t bindex,
+ 		ndentry = dpage->ndentry;
+ 		for (j = 0; !err && j < ndentry; j++) {
+ 			d = dpage->dentries[j];
+-			AuDebugOn(!d->d_count);
++			AuDebugOn(!d_count(d));
+ 			if (!au_digen_test(d, sigen)) {
+ 				di_read_lock_child(d, AuLock_IR);
+ 				if (unlikely(au_dbrange_test(d))) {
+diff --git a/fs/aufs/dcsub.c b/fs/aufs/dcsub.c
+index 4d7547e..32cca85 100644
+--- a/fs/aufs/dcsub.c
++++ b/fs/aufs/dcsub.c
+@@ -84,7 +84,7 @@ static int au_dpages_append(struct au_dcsub_pages *dpages,
+ 		dpages->ndpage++;
+ 	}
+ 
+-	AuDebugOn(!dentry->d_count);
++	AuDebugOn(!d_count(dentry));
+ 	dpage->dentries[dpage->ndentry++] = dget_dlock(dentry);
+ 	return 0; /* success */
+ 
+@@ -110,7 +110,7 @@ resume:
+ 	if (this_parent->d_sb == sb
+ 	    && !IS_ROOT(this_parent)
+ 	    && au_di(this_parent)
+-	    && this_parent->d_count
++	    && d_count(this_parent)
+ 	    && (!test || test(this_parent, arg))) {
+ 		err = au_dpages_append(dpages, this_parent, GFP_ATOMIC);
+ 		if (unlikely(err))
+@@ -124,7 +124,7 @@ resume:
+ 
+ 		next = tmp->next;
+ 		spin_lock_nested(&dentry->d_lock, DENTRY_D_LOCK_NESTED);
+-		if (dentry->d_count) {
++		if (d_count(dentry)) {
+ 			if (!list_empty(&dentry->d_subdirs)) {
+ 				spin_unlock(&this_parent->d_lock);
+ 				spin_release(&dentry->d_lock.dep_map, 1,
+@@ -175,7 +175,7 @@ int au_dcsub_pages_rev(struct au_dcsub_pages *dpages, struct dentry *dentry,
+ 	write_seqlock(&rename_lock);
+ 	spin_lock(&dentry->d_lock);
+ 	if (do_include
+-	    && dentry->d_count
++	    && d_count(dentry)
+ 	    && (!test || test(dentry, arg)))
+ 		err = au_dpages_append(dpages, dentry, GFP_ATOMIC);
+ 	spin_unlock(&dentry->d_lock);
+@@ -189,7 +189,7 @@ int au_dcsub_pages_rev(struct au_dcsub_pages *dpages, struct dentry *dentry,
+ 	while (!IS_ROOT(dentry)) {
+ 		dentry = dentry->d_parent; /* rename_lock is locked */
+ 		spin_lock(&dentry->d_lock);
+-		if (dentry->d_count
++		if (d_count(dentry)
+ 		    && (!test || test(dentry, arg)))
+ 			err = au_dpages_append(dpages, dentry, GFP_ATOMIC);
+ 		spin_unlock(&dentry->d_lock);
+diff --git a/fs/aufs/debug.c b/fs/aufs/debug.c
+index 7cedc88..77bcfbf 100644
+--- a/fs/aufs/debug.c
++++ b/fs/aufs/debug.c
+@@ -177,7 +177,7 @@ static int do_pri_dentry(aufs_bindex_t bindex, struct dentry *dentry)
+ 	     bindex, dentry,
+ 	     AuDLNPair(dentry->d_parent), AuDLNPair(dentry),
+ 	     dentry->d_sb ? au_sbtype(dentry->d_sb) : "??",
+-	     dentry->d_count, dentry->d_flags,
++	     d_count(dentry), dentry->d_flags,
+ 	     d_unhashed(dentry) ? "un" : "");
+ 	hn = -1;
+ 	if (bindex >= 0 && dentry->d_inode && au_test_aufs(dentry->d_sb)) {
+diff --git a/fs/aufs/dinfo.c b/fs/aufs/dinfo.c
+index f4c799e..1cdede3 100644
+--- a/fs/aufs/dinfo.c
++++ b/fs/aufs/dinfo.c
+@@ -304,7 +304,7 @@ struct dentry *au_h_dptr(struct dentry *dentry, aufs_bindex_t bindex)
+ 		return NULL;
+ 	AuDebugOn(bindex < 0);
+ 	d = au_di(dentry)->di_hdentry[0 + bindex].hd_dentry;
+-	AuDebugOn(d && d->d_count <= 0);
++	AuDebugOn(d && d_count(d) <= 0);
+ 	return d;
+ }
+ 
+diff --git a/fs/aufs/hnotify.c b/fs/aufs/hnotify.c
+index 927beb6..f8b6fa9 100644
+--- a/fs/aufs/hnotify.c
++++ b/fs/aufs/hnotify.c
+@@ -375,7 +375,7 @@ static struct dentry *lookup_wlock_by_name(char *name, unsigned int nlen,
+ 			au_digen_dec(d);
+ 		else
+ 			goto cont_unlock;
+-		if (d->d_count) {
++		if (d_count(d)) {
+ 			dentry = dget_dlock(d);
+ 			spin_unlock(&d->d_lock);
+ 			break;
+diff --git a/fs/aufs/mvdown.c b/fs/aufs/mvdown.c
+index 455f0f3..2e485d9 100644
+--- a/fs/aufs/mvdown.c
++++ b/fs/aufs/mvdown.c
+@@ -362,7 +362,7 @@ static int au_mvd_args_busy(const unsigned char dmsg, struct au_mvd_args *a)
+ 	err = 0;
+ 	plinked = !!au_opt_test(au_mntflags(a->sb), PLINK);
+ 	if (au_dbstart(a->dentry) == a->mvd_bsrc
+-	    && a->dentry->d_count == 1
++	    && d_count(a->dentry) == 1
+ 	    && atomic_read(&a->inode->i_count) == 1
+ 	    /* && a->mvd_h_src_inode->i_nlink == 1 */
+ 	    && (!plinked || !au_plink_test(a->inode))
+@@ -372,7 +372,7 @@ static int au_mvd_args_busy(const unsigned char dmsg, struct au_mvd_args *a)
+ 	err = -EBUSY;
+ 	AU_MVD_PR(dmsg,
+ 		  "b%d, d{b%d, c%u?}, i{c%d?, l%u}, hi{l%u}, p{%d, %d}\n",
+-		  a->mvd_bsrc, au_dbstart(a->dentry), a->dentry->d_count,
++		  a->mvd_bsrc, au_dbstart(a->dentry), d_count(a->dentry),
+ 		  atomic_read(&a->inode->i_count), a->inode->i_nlink,
+ 		  a->mvd_h_src_inode->i_nlink,
+ 		  plinked, plinked ? au_plink_test(a->inode) : 0);
+diff --git a/fs/aufs/vfsub.c b/fs/aufs/vfsub.c
+index 94e6c00..168a70d 100644
+--- a/fs/aufs/vfsub.c
++++ b/fs/aufs/vfsub.c
+@@ -707,7 +707,7 @@ static void call_unlink(void *args)
+ 	struct dentry *d = a->path->dentry;
+ 	struct inode *h_inode;
+ 	const int stop_sillyrename = (au_test_nfs(d->d_sb)
+-				      && d->d_count == 1);
++				      && d_count(d) == 1);
+ 
+ 	IMustLock(a->dir);
+ 
+-- 
+2.7.4
+
