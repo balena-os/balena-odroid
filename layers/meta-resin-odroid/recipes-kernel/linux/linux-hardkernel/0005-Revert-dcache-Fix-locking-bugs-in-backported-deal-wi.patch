@@ -1,0 +1,43 @@
+From 3c8bc85bade96b6e994a13f08a03cc5d8b8e1f59 Mon Sep 17 00:00:00 2001
+From: Florin Sarbu <florin@resin.io>
+Date: Tue, 17 Apr 2018 17:36:29 +0200
+Subject: [PATCH 4/5] Revert "dcache: Fix locking bugs in backported "deal with
+ deadlock in d_walk()""
+
+This reverts commit c190d250d8db5620218d5d56999580ed8488ec24.
+---
+ fs/dcache.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/fs/dcache.c b/fs/dcache.c
+index d892d45..ad09633 100644
+--- a/fs/dcache.c
++++ b/fs/dcache.c
+@@ -1075,7 +1075,7 @@ ascend:
+ 	return 0; /* No mount points found in tree */
+ positive:
+ 	if (!locked && read_seqretry(&rename_lock, seq))
+-		goto rename_retry_unlocked;
++		goto rename_retry;
+ 	if (locked)
+ 		write_sequnlock(&rename_lock);
+ 	return 1;
+@@ -1085,7 +1085,6 @@ rename_retry:
+ 	rcu_read_unlock();
+ 	if (locked)
+ 		goto again;
+-rename_retry_unlocked:
+ 	locked = 1;
+ 	write_seqlock(&rename_lock);
+ 	goto again;
+@@ -1150,7 +1149,6 @@ resume:
+ 		 */
+ 		if (found && need_resched()) {
+ 			spin_unlock(&dentry->d_lock);
+-			rcu_read_lock();
+ 			goto out;
+ 		}
+ 
+-- 
+2.7.4
+

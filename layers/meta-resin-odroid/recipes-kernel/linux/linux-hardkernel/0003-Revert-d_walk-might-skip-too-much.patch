@@ -1,0 +1,53 @@
+From 4152f5eaf6b87737acc653574917b976c948ed8e Mon Sep 17 00:00:00 2001
+From: Florin Sarbu <florin@resin.io>
+Date: Tue, 17 Apr 2018 17:35:39 +0200
+Subject: [PATCH 2/5] Revert "d_walk() might skip too much"
+
+This reverts commit b93e0acc5001b80153cb0c7efcdcc53cc56aac4a.
+---
+ fs/dcache.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/fs/dcache.c b/fs/dcache.c
+index 5c6e418..7754bd8 100644
+--- a/fs/dcache.c
++++ b/fs/dcache.c
+@@ -1056,13 +1056,13 @@ ascend:
+ 		/* might go back up the wrong parent if we have had a rename. */
+ 		if (!locked && read_seqretry(&rename_lock, seq))
+ 			goto rename_retry;
+-		/* go into the first sibling still alive */
+-		do {
+-			next = child->d_child.next;
++		next = child->d_child.next;
++		while (unlikely(child->d_flags & DCACHE_DENTRY_KILLED)) {
+ 			if (next == &this_parent->d_subdirs)
+ 				goto ascend;
+ 			child = list_entry(next, struct dentry, d_child);
+-		} while (unlikely(child->d_flags & DCACHE_DENTRY_KILLED));
++			next = next->next;
++		}
+ 		rcu_read_unlock();
+ 		goto resume;
+ 	}
+@@ -2986,13 +2986,13 @@ ascend:
+ 		/* might go back up the wrong parent if we have had a rename. */
+ 		if (!locked && read_seqretry(&rename_lock, seq))
+ 			goto rename_retry;
+-		/* go into the first sibling still alive */
+-		do {
+-			next = child->d_child.next;
++		next = child->d_child.next;
++		while (unlikely(child->d_flags & DCACHE_DENTRY_KILLED)) {
+ 			if (next == &this_parent->d_subdirs)
+ 				goto ascend;
+ 			child = list_entry(next, struct dentry, d_child);
+-		} while (unlikely(child->d_flags & DCACHE_DENTRY_KILLED));
++			next = next->next;
++		}
+ 		rcu_read_unlock();
+ 		goto resume;
+ 	}
+-- 
+2.7.4
+

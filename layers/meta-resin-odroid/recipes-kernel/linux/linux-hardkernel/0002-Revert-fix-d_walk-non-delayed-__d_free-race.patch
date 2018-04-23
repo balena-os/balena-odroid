@@ -1,0 +1,50 @@
+From 5dd01056ff7dbc5d4f5bbfe3fb20850a0b7ca657 Mon Sep 17 00:00:00 2001
+From: Florin Sarbu <florin@resin.io>
+Date: Tue, 17 Apr 2018 17:34:58 +0200
+Subject: [PATCH 1/5] Revert "fix d_walk()/non-delayed __d_free() race"
+
+This reverts commit 742d555a529c3dbbf7d326620082f7cbb510ac7e.
+---
+ fs/dcache.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/fs/dcache.c b/fs/dcache.c
+index 4682ea7..5c6e418 100644
+--- a/fs/dcache.c
++++ b/fs/dcache.c
+@@ -1311,7 +1311,7 @@ struct dentry *d_alloc(struct dentry * parent, const struct qstr *name)
+ 	struct dentry *dentry = __d_alloc(parent->d_sb, name);
+ 	if (!dentry)
+ 		return NULL;
+-	dentry->d_flags |= DCACHE_RCUACCESS;
++
+ 	spin_lock(&parent->d_lock);
+ 	/*
+ 	 * don't need child lock because it is not subject
+@@ -2101,6 +2101,7 @@ static void __d_rehash(struct dentry * entry, struct hlist_bl_head *b)
+ {
+ 	BUG_ON(!d_unhashed(entry));
+ 	hlist_bl_lock(b);
++	entry->d_flags |= DCACHE_RCUACCESS;
+ 	hlist_bl_add_head_rcu(&entry->d_hash, b);
+ 	hlist_bl_unlock(b);
+ }
+@@ -2284,7 +2285,6 @@ static void __d_move(struct dentry * dentry, struct dentry * target)
+ 
+ 	/* ... and switch the parents */
+ 	if (IS_ROOT(dentry)) {
+-		dentry->d_flags |= DCACHE_RCUACCESS;
+ 		dentry->d_parent = target->d_parent;
+ 		target->d_parent = target;
+ 		INIT_LIST_HEAD(&target->d_child);
+@@ -2401,7 +2401,6 @@ static void __d_materialise_dentry(struct dentry *dentry, struct dentry *anon)
+ 	switch_names(dentry, anon);
+ 	swap(dentry->d_name.hash, anon->d_name.hash);
+ 
+-	dentry->d_flags |= DCACHE_RCUACCESS;
+ 	dentry->d_parent = dentry;
+ 	list_del_init(&dentry->d_child);
+ 	anon->d_parent = dparent;
+-- 
+2.7.4
+
