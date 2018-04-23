@@ -1,0 +1,55 @@
+From 9accbb977ab78234b8f298df5f306ed08d06bedb Mon Sep 17 00:00:00 2001
+From: "J. Bruce Fields" <bfields@redhat.com>
+Date: Tue, 28 Aug 2012 07:03:24 -0400
+Subject: [PATCH] namei: minor vfs_unlink cleanup
+
+We'll be using dentry->d_inode in one more place.
+
+Acked-by: Jeff Layton <jlayton@redhat.com>
+Signed-off-by: J. Bruce Fields <bfields@redhat.com>
+Signed-off-by: Al Viro <viro@zeniv.linux.org.uk>
+
+Upstream-Status: Backport
+Signed-off-by: Florin Sarbu <florin@resin.io>
+---
+ fs/namei.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/fs/namei.c b/fs/namei.c
+index 88cec03..e633a58 100644
+--- a/fs/namei.c
++++ b/fs/namei.c
+@@ -3617,6 +3617,7 @@ SYSCALL_DEFINE1(rmdir, const char __user *, pathname)
+ 
+ int vfs_unlink(struct inode *dir, struct dentry *dentry)
+ {
++	struct inode *target = dentry->d_inode;
+ 	int error = may_delete(dir, dentry, 0);
+ 
+ 	if (error)
+@@ -3625,7 +3626,7 @@ int vfs_unlink(struct inode *dir, struct dentry *dentry)
+ 	if (!dir->i_op->unlink)
+ 		return -EPERM;
+ 
+-	mutex_lock(&dentry->d_inode->i_mutex);
++	mutex_lock(&target->i_mutex);
+ 	if (d_mountpoint(dentry))
+ 		error = -EBUSY;
+ 	else {
+@@ -3636,11 +3637,11 @@ int vfs_unlink(struct inode *dir, struct dentry *dentry)
+ 				dont_mount(dentry);
+ 		}
+ 	}
+-	mutex_unlock(&dentry->d_inode->i_mutex);
++	mutex_unlock(&target->i_mutex);
+ 
+ 	/* We don't d_delete() NFS sillyrenamed files--they still exist. */
+ 	if (!error && !(dentry->d_flags & DCACHE_NFSFS_RENAMED)) {
+-		fsnotify_link_count(dentry->d_inode);
++		fsnotify_link_count(target);
+ 		d_delete(dentry);
+ 	}
+ 
+-- 
+2.7.4
+

@@ -1,0 +1,189 @@
+From 3a7b06197dbc1ea4940d39d1df6ec8c38650f6d8 Mon Sep 17 00:00:00 2001
+From: "J. R. Okajima" <hooanon05@yahoo.co.jp>
+Date: Fri, 13 Dec 2013 15:02:49 +0900
+Subject: [PATCH] aufs: for linux-3.13, support for NFSv4 delegation 4/4,
+ vfs_rename()
+
+By this commit, a new parameter added to vfs_rename()
+8e6d782 2013-11-09 locks: break delegations on rename
+
+To support it, aufs takes this approach.
+- for a directory, delegation is unnecessary.
+- for a newly and internally created non-dir, delegation is unnecessary
+  too.
+- for i_op->rename(), try breaking delegation. if it fails, return an
+  error without retrying. in aufs, re-lookup is unacceptable.
+
+Signed-off-by: J. R. Okajima <hooanon05@yahoo.co.jp>
+
+Upstream-Status: Backport
+Signed-off-by: Florin Sarbu <florin@resin.io>
+---
+ fs/aufs/cpup.c     |  3 ++-
+ fs/aufs/i_op_ren.c | 28 +++++++++++++++++++++++++---
+ fs/aufs/vfsub.c    |  6 ++++--
+ fs/aufs/vfsub.h    |  3 ++-
+ fs/aufs/whout.c    | 10 ++++++++--
+ 5 files changed, 41 insertions(+), 9 deletions(-)
+
+diff --git a/fs/aufs/cpup.c b/fs/aufs/cpup.c
+index d24ce0c..1661852 100644
+--- a/fs/aufs/cpup.c
++++ b/fs/aufs/cpup.c
+@@ -613,7 +613,8 @@ static int au_do_ren_after_cpup(struct au_cp_generic *cpg, struct path *h_path)
+ 	h_dir = h_parent->d_inode;
+ 	IMustLock(h_dir);
+ 	AuDbg("%.*s %.*s\n", AuDLNPair(h_dentry), AuDLNPair(h_path->dentry));
+-	err = vfsub_rename(h_dir, h_dentry, h_dir, h_path);
++	/* no delegation since it is just created */
++	err = vfsub_rename(h_dir, h_dentry, h_dir, h_path, /*delegated*/NULL);
+ 	dput(h_path->dentry);
+ 
+ out:
+diff --git a/fs/aufs/i_op_ren.c b/fs/aufs/i_op_ren.c
+index 5d92e8c..3718e72 100644
+--- a/fs/aufs/i_op_ren.c
++++ b/fs/aufs/i_op_ren.c
+@@ -118,6 +118,7 @@ static void au_ren_rev_diropq(int err, struct au_ren_args *a)
+ static void au_ren_rev_rename(int err, struct au_ren_args *a)
+ {
+ 	int rerr;
++	struct inode *delegated;
+ 
+ 	a->h_path.dentry = vfsub_lkup_one(&a->src_dentry->d_name,
+ 					  a->src_h_parent);
+@@ -127,9 +128,15 @@ static void au_ren_rev_rename(int err, struct au_ren_args *a)
+ 		return;
+ 	}
+ 
++	delegated = NULL;
+ 	rerr = vfsub_rename(a->dst_h_dir,
+ 			    au_h_dptr(a->src_dentry, a->btgt),
+-			    a->src_h_dir, &a->h_path);
++			    a->src_h_dir, &a->h_path, &delegated);
++	if (unlikely(rerr == -EWOULDBLOCK)) {
++		pr_warn("cannot retry for NFSv4 delegation"
++			" for an internal rename\n");
++		iput(delegated);
++	}
+ 	d_drop(a->h_path.dentry);
+ 	dput(a->h_path.dentry);
+ 	/* au_set_h_dptr(a->src_dentry, a->btgt, NULL); */
+@@ -154,6 +161,7 @@ static void au_ren_rev_cpup(int err, struct au_ren_args *a)
+ static void au_ren_rev_whtmp(int err, struct au_ren_args *a)
+ {
+ 	int rerr;
++	struct inode *delegated;
+ 
+ 	a->h_path.dentry = vfsub_lkup_one(&a->dst_dentry->d_name,
+ 					  a->dst_h_parent);
+@@ -168,7 +176,14 @@ static void au_ren_rev_whtmp(int err, struct au_ren_args *a)
+ 		return;
+ 	}
+ 
+-	rerr = vfsub_rename(a->dst_h_dir, a->h_dst, a->dst_h_dir, &a->h_path);
++	delegated = NULL;
++	rerr = vfsub_rename(a->dst_h_dir, a->h_dst, a->dst_h_dir, &a->h_path,
++			    &delegated);
++	if (unlikely(rerr == -EWOULDBLOCK)) {
++		pr_warn("cannot retry for NFSv4 delegation"
++			" for an internal rename\n");
++		iput(delegated);
++	}
+ 	d_drop(a->h_path.dentry);
+ 	dput(a->h_path.dentry);
+ 	if (!rerr)
+@@ -200,6 +215,7 @@ static int au_ren_or_cpup(struct au_ren_args *a)
+ {
+ 	int err;
+ 	struct dentry *d;
++	struct inode *delegated;
+ 
+ 	d = a->src_dentry;
+ 	if (au_dbstart(d) == a->btgt) {
+@@ -208,8 +224,14 @@ static int au_ren_or_cpup(struct au_ren_args *a)
+ 		    && au_dbdiropq(d) == a->btgt)
+ 			au_fclr_ren(a->flags, DIROPQ);
+ 		AuDebugOn(au_dbstart(d) != a->btgt);
++		delegated = NULL;
+ 		err = vfsub_rename(a->src_h_dir, au_h_dptr(d, a->btgt),
+-				   a->dst_h_dir, &a->h_path);
++				   a->dst_h_dir, &a->h_path, &delegated);
++		if (unlikely(err == -EWOULDBLOCK)) {
++			pr_warn("cannot retry for NFSv4 delegation"
++				" for an internal rename\n");
++			iput(delegated);
++		}
+ 	} else
+ 		BUG();
+ 
+diff --git a/fs/aufs/vfsub.c b/fs/aufs/vfsub.c
+index 43193fc..d6bd03a 100644
+--- a/fs/aufs/vfsub.c
++++ b/fs/aufs/vfsub.c
+@@ -291,7 +291,8 @@ out:
+ }
+ 
+ int vfsub_rename(struct inode *src_dir, struct dentry *src_dentry,
+-		 struct inode *dir, struct path *path)
++		 struct inode *dir, struct path *path,
++		 struct inode **delegated_inode)
+ {
+ 	int err;
+ 	struct path tmp = {
+@@ -311,7 +312,8 @@ int vfsub_rename(struct inode *src_dir, struct dentry *src_dentry,
+ 		goto out;
+ 
+ 	lockdep_off();
+-	err = vfs_rename(src_dir, src_dentry, dir, path->dentry);
++	err = vfs_rename(src_dir, src_dentry, dir, path->dentry,
++			 delegated_inode);
+ 	lockdep_on();
+ 	if (!err) {
+ 		int did;
+diff --git a/fs/aufs/vfsub.h b/fs/aufs/vfsub.h
+index c9734e3..08fb582 100644
+--- a/fs/aufs/vfsub.h
++++ b/fs/aufs/vfsub.h
+@@ -175,7 +175,8 @@ int vfsub_mknod(struct inode *dir, struct path *path, int mode, dev_t dev);
+ int vfsub_link(struct dentry *src_dentry, struct inode *dir,
+ 	       struct path *path, struct inode **delegated_inode);
+ int vfsub_rename(struct inode *src_hdir, struct dentry *src_dentry,
+-		 struct inode *hdir, struct path *path);
++		 struct inode *hdir, struct path *path,
++		 struct inode **delegated_inode);
+ int vfsub_mkdir(struct inode *dir, struct path *path, int mode);
+ int vfsub_rmdir(struct inode *dir, struct path *path);
+ 
+diff --git a/fs/aufs/whout.c b/fs/aufs/whout.c
+index 01c1a65..b13fd0b 100644
+--- a/fs/aufs/whout.c
++++ b/fs/aufs/whout.c
+@@ -176,7 +176,7 @@ int au_whtmp_ren(struct dentry *h_dentry, struct au_branch *br)
+ 	struct path h_path = {
+ 		.mnt = au_br_mnt(br)
+ 	};
+-	struct inode *h_dir;
++	struct inode *h_dir, *delegated;
+ 	struct dentry *h_parent;
+ 
+ 	h_parent = h_dentry->d_parent; /* dir inode is locked */
+@@ -189,8 +189,14 @@ int au_whtmp_ren(struct dentry *h_dentry, struct au_branch *br)
+ 		goto out;
+ 
+ 	/* under the same dir, no need to lock_rename() */
+-	err = vfsub_rename(h_dir, h_dentry, h_dir, &h_path);
++	delegated = NULL;
++	err = vfsub_rename(h_dir, h_dentry, h_dir, &h_path, &delegated);
+ 	AuTraceErr(err);
++	if (unlikely(err == -EWOULDBLOCK)) {
++		pr_warn("cannot retry for NFSv4 delegation"
++			" for an internal rename\n");
++		iput(delegated);
++	}
+ 	dput(h_path.dentry);
+ 
+ out:
+-- 
+2.7.4
+
