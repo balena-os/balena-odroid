@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Update the resin-yocto-scripts submodule to f7718efbbf53369aaacb7eb54e707ee8a5d4fc4b (on master branch) [Florin]
 * Backport kernel 3.19 VFS patches in order to fix container update filesystem errors [Florin]
 
 # v2.12.5+rev1
