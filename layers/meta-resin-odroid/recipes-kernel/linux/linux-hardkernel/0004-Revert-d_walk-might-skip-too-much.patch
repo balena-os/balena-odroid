@@ -1,0 +1,35 @@
+From 5c3565237e48a84da3ad19b38695d6681e60b007 Mon Sep 17 00:00:00 2001
+From: Florin Sarbu <florin@resin.io>
+Date: Tue, 17 Apr 2018 17:35:58 +0200
+Subject: [PATCH 3/5] Revert "d_walk() might skip too much"
+
+This reverts commit bf6aa269ed400ba7f159341a926e77b7464f1b64.
+---
+ fs/dcache.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/fs/dcache.c b/fs/dcache.c
+index 7754bd8..d892d45 100644
+--- a/fs/dcache.c
++++ b/fs/dcache.c
+@@ -1182,13 +1182,13 @@ ascend:
+ 		/* might go back up the wrong parent if we have had a rename. */
+ 		if (!locked && read_seqretry(&rename_lock, seq))
+ 			goto rename_retry;
+-		/* go into the first sibling still alive */
+-		do {
+-			next = child->d_child.next;
++		next = child->d_child.next;
++		while (unlikely(child->d_flags & DCACHE_DENTRY_KILLED)) {
+ 			if (next == &this_parent->d_subdirs)
+ 				goto ascend;
+ 			child = list_entry(next, struct dentry, d_child);
+-		} while (unlikely(child->d_flags & DCACHE_DENTRY_KILLED));
++			next = next->next;
++		}
+ 		rcu_read_unlock();
+ 		goto resume;
+ 	}
+-- 
+2.7.4
+
