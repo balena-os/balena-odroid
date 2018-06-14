@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* resin-image: Use the correct offset for writing TrustZone binary in image [Sebastian]
 * resin-image-initramfs: don't build wic images as asked by BSP [Sebastian]
 * linux-stable: Don't build X.509 certificate parser functionality in kernel [Sebastian]
 * u-boot: updated resin intergration patch to avoid kernel overwriting of DTB in memory [Sebastian]
