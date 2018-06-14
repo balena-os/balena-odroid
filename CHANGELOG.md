@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* odroid-xu4.coffee: Set the version of the odroid-xu4 to Sumo [Sebastian]
 * bblayers.conf.sample: Build using Sumo from meta-resin [Sebastian]
 * resin-image: Use the correct offset for writing TrustZone binary in image [Sebastian]
 * resin-image-initramfs: don't build wic images as asked by BSP [Sebastian]
