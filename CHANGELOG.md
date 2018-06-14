@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* linux-stable: Don't build X.509 certificate parser functionality in kernel [Sebastian]
 * u-boot: updated resin intergration patch to avoid kernel overwriting of DTB in memory [Sebastian]
 * u-boot: remove deprecated recipes and patches [Sebastian]
 * Update poky, meta-openembedded, meta-rust to Sumo branch [Sebastian]
