@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Update poky, meta-openembedded, meta-rust to Sumo branch [Sebastian]
 * Update BSP to Sumo branch [Sebastian]
 
 # v2.12.7+rev1
