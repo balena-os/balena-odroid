@@ -8,7 +8,6 @@ IMAGE_FSTYPES_append_odroid-xu4 = " resinos-img"
 RESIN_BOOT_PARTITION_FILES_odroid-xu4 = " \
     bl1.bin.hardkernel: \
     bl2.bin.hardkernel: \
-    boot.ini: \
     u-boot-${MACHINE}.${UBOOT_SUFFIX}: \
     tzsw.bin.hardkernel: \
     ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-${MACHINE}.bin:/${KERNEL_IMAGETYPE} \
@@ -16,10 +15,11 @@ RESIN_BOOT_PARTITION_FILES_odroid-xu4 = " \
     "
 
 # BOOT components
+UBOOT_SUFFIX ?= "bin"
 UBOOT_B1_POS_odroid-xu4 ?= "1"
 UBOOT_B2_POS_odroid-xu4 ?= "31"
 UBOOT_BIN_POS_odroid-xu4 ?= "63"
-UBOOT_TZSW_POS_odroid-xu4 ?= "1503"
+UBOOT_TZSW_POS_odroid-xu4 ?= "2111"
 UBOOT_ENV_POS_odroid-xu4 ?= "2015"
 
 IMAGE_CMD_resinos-img_append_odroid-xu4 () {
@@ -27,7 +27,7 @@ IMAGE_CMD_resinos-img_append_odroid-xu4 () {
     dd if=${DEPLOY_DIR_IMAGE}/bl1.bin.hardkernel of=${RESIN_RAW_IMG} conv=notrunc seek=${UBOOT_B1_POS}
     dd if=${DEPLOY_DIR_IMAGE}/bl2.bin.hardkernel of=${RESIN_RAW_IMG} conv=notrunc seek=${UBOOT_B2_POS}
     dd if=${DEPLOY_DIR_IMAGE}/u-boot-${MACHINE}.${UBOOT_SUFFIX} of=${RESIN_RAW_IMG} conv=notrunc seek=${UBOOT_BIN_POS}
-    dd if=${DEPLOY_DIR_IMAGE}/tzsw.bin.hardkernel of=${RESIN_RAW_IMG} conv=notrunc seek=${UBOOT_TZSW_POS}
+    dd if=${DEPLOY_DIR_IMAGE}/tzsw.bin.hardkernel of=${RESIN_RAW_IMG} conv=notrunc seek=${UBOOT_TZSW_POS} bs=512
     dd if=/dev/zero of=${RESIN_RAW_IMG} seek=${UBOOT_ENV_POS} conv=notrunc count=32 bs=512
 }
 
@@ -40,7 +40,6 @@ IMAGE_FSTYPES_append_odroid-c1 = " resinos-img"
 # Customize resinos-img
 RESIN_BOOT_PARTITION_FILES_odroid-c1 = " \
     bl1.bin.hardkernel: \
-    boot.ini: \
     ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-${MACHINE}.bin:/${KERNEL_IMAGETYPE} \
     u-boot-${MACHINE}.${UBOOT_SUFFIX}: \
     uImage-meson8b_odroidc.dtb:/meson8b_odroidc.dtb \
