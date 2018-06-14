@@ -7,8 +7,11 @@ Subject: [PATCH] odroid_xu3.h: Add the machine specific integration of the
 The added env vars have been taken from the BSP layer (pyro branch, revision 1c0210e1b3a6e96b9db17025e5f2ec35622b1755)
 https://github.com/akuster/meta-odroid/blob/pyro/recipes-bsp/u-boot/u-boot-config/autoboot.cmd
 
+Modified kernel load address to avoid overwriting dtb in memory [Sebastian]
+
 Upstream-Status: Inappropriate [configuration]
 Signed-off-by: Florin Sarbu <florin@resin.io>
+Signed-off-by: Sebastian Panceac <sebastian@resin.io>
 ---
  include/configs/odroid_xu3.h | 9 ++++++++-
  1 file changed, 8 insertions(+), 1 deletion(-)
@@ -24,7 +27,7 @@ index 8bc7fbd..61d2967 100644
 -	"dfu_alt_info=Autoset by THOR/DFU command run.\0"
 +	"dfu_alt_info=Autoset by THOR/DFU command run.\0" \
 +	"fdtaddr=40800000\0" \
-+	"kerneladdr=0x40007FC0\0" \
++	"kerneladdr=40900000\0" \
 +	"kernelname=zImage\0" \
 +	"loaddtb=load \"${resin_dev_type}\" \"${resin_dev_index}\":\"${resin_boot_part}\" \"${fdtaddr}\" \"${fdtfile}\"\0" \
 +	"loadkernel=load \"${resin_dev_type}\" \"${resin_dev_index}\":\"${resin_boot_part}\" \"${kerneladdr}\" \"${kernelname}\"\0" \

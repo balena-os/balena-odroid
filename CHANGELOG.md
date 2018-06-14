@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* u-boot: updated resin intergration patch to avoid kernel overwriting of DTB in memory [Sebastian]
 * u-boot: remove deprecated recipes and patches [Sebastian]
 * Update poky, meta-openembedded, meta-rust to Sumo branch [Sebastian]
 * Update BSP to Sumo branch [Sebastian]
