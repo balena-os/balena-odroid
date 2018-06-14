@@ -1,6 +1,8 @@
 Change log
 -----------
 
+* Update BSP to Sumo branch [Sebastian]
+
 # v2.12.7+rev1
 ## (2018-05-08)
 
