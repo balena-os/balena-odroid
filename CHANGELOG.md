@@ -1,6 +1,10 @@
 Change log
 -----------
 
+# v2.13.1+rev1
+## (2018-06-15)
+
+* Update the meta-resin submodule to version v2.13.1 [Sebastian]
 * Update resin-yocto-scripts layer to 6eddcc9a637e00dbca94815f9af0f2b7bf61eb88 [Sebastian]
 * odroid-xu4.coffee: Set the version of the odroid-xu4 to Sumo [Sebastian]
 * bblayers.conf.sample: Build using Sumo from meta-resin [Sebastian]
