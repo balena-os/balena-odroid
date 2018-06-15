@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Update resin-yocto-scripts layer to 6eddcc9a637e00dbca94815f9af0f2b7bf61eb88 [Sebastian]
 * odroid-xu4.coffee: Set the version of the odroid-xu4 to Sumo [Sebastian]
 * bblayers.conf.sample: Build using Sumo from meta-resin [Sebastian]
 * resin-image: Use the correct offset for writing TrustZone binary in image [Sebastian]
