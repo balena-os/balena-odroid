@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* resin-image-initramfs: For Odroid-C1 don't build wic images as asked by BSP [Sebastian]
 * resin-image: For Odroid-C1 use the new dtb name and remove unwanted image types [Sebastian]
 
 # v2.13.1+rev1
