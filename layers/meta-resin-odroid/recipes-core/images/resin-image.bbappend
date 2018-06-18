@@ -36,13 +36,14 @@ IMAGE_CMD_resinos-img_append_odroid-xu4 () {
 #
 
 IMAGE_FSTYPES_append_odroid-c1 = " resinos-img"
+IMAGE_FSTYPES_remove_odroid-c1 = " wic wic.xz"
 
 # Customize resinos-img
 RESIN_BOOT_PARTITION_FILES_odroid-c1 = " \
     bl1.bin.hardkernel: \
     ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-${MACHINE}.bin:/${KERNEL_IMAGETYPE} \
     u-boot-${MACHINE}.${UBOOT_SUFFIX}: \
-    uImage-meson8b_odroidc.dtb:/meson8b_odroidc.dtb \
+    uImage-meson8b-odroidc1.dtb:/meson8b_odroidc.dtb \
     "
 
 IMAGE_CMD_resinos-img_append_odroid-c1 () {
