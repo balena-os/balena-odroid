@@ -3,14 +3,11 @@ inherit resin-u-boot
 
 SRC_URI_remove_odroid-c1 = "file://resin-specific-env-integration-non-kconfig.patch"
 
+SRCREV = "f631c80969b33b796d2d4c077428b4765393ed2b"
+
 FILESEXTRAPATHS_prepend_odroid-c1 := "${THISDIR}/${PN}:"
 
 SRC_URI_append_odroid-c1 = " \
-    file://boot-from-part1.patch;patchdir=${WORKDIR} \
-    file://0001-include-linux-compiler-gcc6.h-Add-duplicate-of-gcc-5.patch \
-    file://uboot_build.patch \
-    file://uboot_build2.patch \
-    file://boot_the_bigger_initramfs_kernel.patch;patchdir=${WORKDIR} \
     file://0001-COMMON-Add-__stringify-function.patch \
     file://0001-cmd_part-add-partition-related-command.patch \
     file://0001-disk-part-check-bootable-flag-for-DOS-partitions.patch \
