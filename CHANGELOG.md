@@ -1,6 +1,8 @@
 Change log
 -----------
 
+* resin-image: For Odroid-C1 use the new dtb name and remove unwanted image types [Sebastian]
+
 # v2.13.1+rev1
 ## (2018-06-15)
 
