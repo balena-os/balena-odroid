@@ -16,3 +16,14 @@ RESIN_CONFIGS[x509_disable] = " \
 
 SRC_URI += "file://don-t-default-activate-regdb.patch \
 "
+
+# add support for video input devices, such as webcams (adds uvcvideo.ko kernel module)
+RESIN_CONFIGS_append = " uvcvideo"
+RESIN_CONFIGS_DEPS[uvcvideo] = " \
+    CONFIG_MEDIA_SUPPORT=m \
+    CONFIG_MEDIA_USB_SUPPORT=y \
+    CONFIG_MEDIA_CAMERA_SUPPORT=y \
+"
+RESIN_CONFIGS[uvcvideo] = " \
+    CONFIG_USB_VIDEO_CLASS=m \
+"
