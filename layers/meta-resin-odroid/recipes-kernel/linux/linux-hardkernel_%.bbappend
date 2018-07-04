@@ -47,3 +47,5 @@ KV_odroid-c1 = "3.10.107"
 RESIN_CONFIGS_remove = "rtl8192cu"
 RESIN_CONFIGS_remove = "ralink"
 RESIN_CONFIGS_remove = "brcmfmac"
+
+KERNEL_DEVICETREE_odroid-c1 = "meson8b_odroidc.dtb"
