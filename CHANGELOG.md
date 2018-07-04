@@ -1,6 +1,9 @@
 Change log
 -----------
 
+# v2.13.2+rev1
+## (2018-07-04)
+
 * meta-resin-odroid: Set LAYERSERIES_COMPAT variable in layer's local.conf [Sebastian]
 * linux-hardkernel: compile kernel modules with -fno-pic flag [Sebastian]
 * linux-hardkernel: activate CONFIG_NLS_CODEPAGE_437 as built-in [Sebastian]
