@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* odroid-c1.coffe: Switch to Sumo [Sebastian]
 * linux-hardkernel: Build linux-hardkernel for Odrdoid C1 board [Sebastian]
 * Add uvcvideo.ko to Odroid XU4 image [Florin]
 * u-boot-hardkernel: Remove obsolete patches and use the same git revision as in previous version [Sebastian]
