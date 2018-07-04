@@ -3,8 +3,6 @@ inherit resin-u-boot
 
 SRC_URI_remove_odroid-c1 = "file://resin-specific-env-integration-non-kconfig.patch"
 
-SRCREV = "f631c80969b33b796d2d4c077428b4765393ed2b"
-
 FILESEXTRAPATHS_prepend_odroid-c1 := "${THISDIR}/${PN}:"
 
 SRC_URI_append_odroid-c1 = " \

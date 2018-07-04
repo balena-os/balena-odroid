@@ -24,7 +24,7 @@ index 2099f3b..05cac09 100644
  // cart type of each port
  #define PORT_A_CARD_TYPE                CARD_TYPE_UNKNOWN
  #define PORT_B_CARD_TYPE                CARD_TYPE_UNKNOWN
-@@ -122,8 +125,9 @@
+@@ -173,8 +173,9 @@
          "bootargs=root=" MK_STR(CONFIG_DEFAULT_ROOT) " rw " \
                  "console=" CONFIG_CONSOLE_PROTOCOL " no_console_suspend\0" \
          "bootcmd="\
@@ -36,7 +36,7 @@ index 2099f3b..05cac09 100644
                          "console=" CONFIG_CONSOLE_PROTOCOL " no_console_suspend " \
                          "vdaccfg=${vdac_config} " \
                          "logo=osd1,loaded,${fb_addr},${outputmode},full " \
-@@ -131,9 +135,16 @@
+@@ -182,9 +183,16 @@
                          "cvbsmode=${cvbsmode} " \
                          "hdmitx=${cecconfig} " \
                          "androidboot.serialno=${fbt_id#}; " \
