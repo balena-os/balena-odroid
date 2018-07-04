@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Update the meta-resin submodule to version v2.13.2 [Sebastian]
 * odroid-c1.coffe: Switch to Sumo [Sebastian]
 * linux-hardkernel: Build linux-hardkernel for Odrdoid C1 board [Sebastian]
 * Add uvcvideo.ko to Odroid XU4 image [Florin]
