@@ -2,6 +2,8 @@ inherit kernel-resin
 
 FILESEXTRAPATHS_append := ":${THISDIR}/${PN}"
 
+EXTRA_OEMAKE = " 'CFLAGS_MODULE=-fno-pic'"
+
 SRC_URI += " \
     file://0001-include-linux-compiler-gcc6.h-Add-duplicate-of-gcc-5.patch \
     file://mali_build.patch \
@@ -47,3 +49,5 @@ KV_odroid-c1 = "3.10.107"
 RESIN_CONFIGS_remove = "rtl8192cu"
 RESIN_CONFIGS_remove = "ralink"
 RESIN_CONFIGS_remove = "brcmfmac"
+
+KERNEL_DEVICETREE_odroid-c1 = "meson8b_odroidc.dtb"

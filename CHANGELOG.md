@@ -1,6 +1,16 @@
 Change log
 -----------
 
+# v2.13.2+rev1
+## (2018-07-04)
+
+* meta-resin-odroid: Set LAYERSERIES_COMPAT variable in layer's local.conf [Sebastian]
+* linux-hardkernel: compile kernel modules with -fno-pic flag [Sebastian]
+* linux-hardkernel: activate CONFIG_NLS_CODEPAGE_437 as built-in [Sebastian]
+* u-boot-hardkernel: Use revision from BSP [Sebastian]
+* Update the meta-resin submodule to version v2.13.2 [Sebastian]
+* odroid-c1.coffe: Switch to Sumo [Sebastian]
+* linux-hardkernel: Build linux-hardkernel for Odrdoid C1 board [Sebastian]
 * Add uvcvideo.ko to Odroid XU4 image [Florin]
 * u-boot-hardkernel: Remove obsolete patches and use the same git revision as in previous version [Sebastian]
 * resin-image-initramfs: For Odroid-C1 don't build wic images as asked by BSP [Sebastian]

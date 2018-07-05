@@ -63,3 +63,5 @@ CONF_VERSION = "1"
 
 # Allow use of host docker from recipes
 HOSTTOOLS += "docker iptables"
+
+PREFERRED_PROVIDER_virtual/kernel_odroid-c1 = "linux-hardkernel"
