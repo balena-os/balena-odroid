@@ -2,6 +2,8 @@ inherit kernel-resin
 
 FILESEXTRAPATHS_append := ":${THISDIR}/${PN}"
 
+EXTRA_OEMAKE = " 'CFLAGS_MODULE=-fno-pic'"
+
 SRC_URI += " \
     file://0001-include-linux-compiler-gcc6.h-Add-duplicate-of-gcc-5.patch \
     file://mali_build.patch \

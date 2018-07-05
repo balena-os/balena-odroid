@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* linux-hardkernel: compile kernel modules with -fno-pic flag [Sebastian]
 * linux-hardkernel: activate CONFIG_NLS_CODEPAGE_437 as built-in [Sebastian]
 * u-boot-hardkernel: Use revision from BSP [Sebastian]
 * Update the meta-resin submodule to version v2.13.2 [Sebastian]
