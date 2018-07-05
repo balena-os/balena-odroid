@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* meta-resin-odroid: Set LAYERSERIES_COMPAT variable in layer's local.conf [Sebastian]
 * linux-hardkernel: compile kernel modules with -fno-pic flag [Sebastian]
 * linux-hardkernel: activate CONFIG_NLS_CODEPAGE_437 as built-in [Sebastian]
 * u-boot-hardkernel: Use revision from BSP [Sebastian]
