@@ -5,6 +5,8 @@
 # We use the overlayfs docker storage driver on the Odroid XU4
 BALENA_STORAGE_odroid-xu4 = "overlay2"
 
+SERIAL_CONSOLE_odroid-c1 = "115200 ttyS0"
+
 # More info meta-resin/README.md
 #TARGET_REPOSITORY ?= ""
 #TARGET_TAG ?= ""

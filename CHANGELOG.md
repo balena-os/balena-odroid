@@ -1,6 +1,8 @@
 Change log
 -----------
 
+* Fix serial console for Odroid C1 [Florin]
+
 # v2.14.0+rev1
 ## (2018-07-18)
 
