@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Update the resin-yocto-scripts submodule to 8312741e13604a9d166370349061876afb22c0fa [Florin]
 * Enable I2C-1 bus for Odroid XU4 [Florin]
 * Fix serial console for Odroid C1 [Florin]
 
