@@ -14,7 +14,9 @@ RESIN_CONFIGS[x509_disable] = " \
     CONFIG_SYSTEM_TRUSTED_KEYRING=n \
 "
 
-SRC_URI += "file://don-t-default-activate-regdb.patch \
+SRC_URI += " \
+    file://don-t-default-activate-regdb.patch \
+    file://0001-odroid-xu4-Enable-I2C-1.patch \
 "
 
 # add support for video input devices, such as webcams (adds uvcvideo.ko kernel module)

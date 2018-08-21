@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Enable I2C-1 bus for Odroid XU4 [Florin]
 * Fix serial console for Odroid C1 [Florin]
 
 # v2.14.0+rev1

@@ -1,0 +1,26 @@
+From df1b567a5457dfbe070211ee013276ea1808b9df Mon Sep 17 00:00:00 2001
+From: Florin Sarbu <florin@resin.io>
+Date: Tue, 21 Aug 2018 16:32:06 +0200
+Subject: [PATCH] odroid-xu4: Enable I2C-1
+
+Upstream-Status: Inappropriate [configuration]
+Signed-off-by: Florin Sarbu <florin@resin.io>
+---
+ arch/arm/boot/dts/exynos54xx.dtsi | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/arch/arm/boot/dts/exynos54xx.dtsi b/arch/arm/boot/dts/exynos54xx.dtsi
+index de26e5e..059a24e 100644
+--- a/arch/arm/boot/dts/exynos54xx.dtsi
++++ b/arch/arm/boot/dts/exynos54xx.dtsi
+@@ -209,3 +209,7 @@
+ 		};
+ 	};
+ };
++
++&i2c_1 {
++	status = "okay";
++};
+-- 
+2.7.4
+
