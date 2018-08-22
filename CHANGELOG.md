@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.14.3+rev1
+## (2018-08-21)
+
+* Update the meta-resin submodule to version v2.14.3 [Florin]
+* Update the resin-yocto-scripts submodule to 8312741e13604a9d166370349061876afb22c0fa [Florin]
+* Enable I2C-1 bus for Odroid XU4 [Florin]
 * Fix serial console for Odroid C1 [Florin]
 
 # v2.14.0+rev1
