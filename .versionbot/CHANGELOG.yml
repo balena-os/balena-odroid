@@ -1,0 +1,334 @@
+- version: v2.15.1+rev1
+  date: 2018-08-30T22:00:00.000Z
+  commits:
+    - subject: 'Update the meta-resin submodule to version v2.15.1 [Florin Sarbu]'
+- version: v2.14.3+rev2
+  date: 2018-08-26T22:00:00.000Z
+  commits:
+    - subject: 'Add versionist support [Giovanni Garufi]'
+- version: v2.14.3+rev1
+  date: 2018-08-20T22:00:00.000Z
+  commits:
+    - subject: 'Update the meta-resin submodule to version v2.14.3 [Florin]'
+    - subject: >-
+        Update the resin-yocto-scripts submodule to
+        8312741e13604a9d166370349061876afb22c0fa [Florin]
+    - subject: 'Enable I2C-1 bus for Odroid XU4 [Florin]'
+    - subject: 'Fix serial console for Odroid C1 [Florin]'
+- version: v2.14.0+rev1
+  date: 2018-07-17T22:00:00.000Z
+  commits:
+    - subject: 'Update the meta-resin submodule to version v2.14.0 [Florin]'
+- version: v2.13.6+rev1
+  date: 2018-07-12T22:00:00.000Z
+  commits:
+    - subject: 'Update the meta-resin submodule to version v2.13.6 [Florin]'
+- version: v2.13.5+rev1
+  date: 2018-07-08T22:00:00.000Z
+  commits:
+    - subject: 'Update the meta-resin submodule to version v2.13.5 [Sebastian]'
+    - subject: >-
+        Update the resin-yocto-scripts submodule to
+        59ccd8558435ff6424827fb36ccb43b14650f4d4 [Sebastian]
+- version: v2.13.3+rev1
+  date: 2018-07-04T22:00:00.000Z
+  commits:
+    - subject: 'Update the meta-resin submodule to version v2.13.3 [Florin]'
+- version: v2.13.2+rev1
+  date: 2018-07-03T22:00:00.000Z
+  commits:
+    - subject: >-
+        meta-resin-odroid: Set LAYERSERIES_COMPAT variable in layer's local.conf
+        [Sebastian]
+    - subject: 'linux-hardkernel: compile kernel modules with -fno-pic flag [Sebastian]'
+    - subject: >-
+        linux-hardkernel: activate CONFIG_NLS_CODEPAGE_437 as built-in
+        [Sebastian]
+    - subject: 'u-boot-hardkernel: Use revision from BSP [Sebastian]'
+    - subject: 'Update the meta-resin submodule to version v2.13.2 [Sebastian]'
+    - subject: 'odroid-c1.coffe: Switch to Sumo [Sebastian]'
+    - subject: >-
+        linux-hardkernel: Build linux-hardkernel for Odrdoid C1 board
+        [Sebastian]
+    - subject: 'Add uvcvideo.ko to Odroid XU4 image [Florin]'
+    - subject: >-
+        u-boot-hardkernel: Remove obsolete patches and use the same git revision
+        as in previous version [Sebastian]
+    - subject: >-
+        resin-image-initramfs: For Odroid-C1 don't build wic images as asked by
+        BSP [Sebastian]
+    - subject: >-
+        resin-image: For Odroid-C1 use the new dtb name and remove unwanted
+        image types [Sebastian]
+- version: v2.13.1+rev1
+  date: 2018-06-14T22:00:00.000Z
+  commits:
+    - subject: 'Update the meta-resin submodule to version v2.13.1 [Sebastian]'
+    - subject: >-
+        Update resin-yocto-scripts layer to
+        6eddcc9a637e00dbca94815f9af0f2b7bf61eb88 [Sebastian]
+    - subject: 'odroid-xu4.coffee: Set the version of the odroid-xu4 to Sumo [Sebastian]'
+    - subject: 'bblayers.conf.sample: Build using Sumo from meta-resin [Sebastian]'
+    - subject: >-
+        resin-image: Use the correct offset for writing TrustZone binary in
+        image [Sebastian]
+    - subject: >-
+        resin-image-initramfs: don't build wic images as asked by BSP
+        [Sebastian]
+    - subject: >-
+        linux-stable: Don't build X.509 certificate parser functionality in
+        kernel [Sebastian]
+    - subject: >-
+        u-boot: updated resin intergration patch to avoid kernel overwriting of
+        DTB in memory [Sebastian]
+    - subject: 'u-boot: remove deprecated recipes and patches [Sebastian]'
+    - subject: 'Update poky, meta-openembedded, meta-rust to Sumo branch [Sebastian]'
+    - subject: 'Update BSP to Sumo branch [Sebastian]'
+- version: v2.12.7+rev1
+  date: 2018-05-07T22:00:00.000Z
+  commits:
+    - subject: 'Update the meta-resin submodule to version v2.12.7 [Florin]'
+- version: v2.12.5+rev2
+  date: 2018-04-22T22:00:00.000Z
+  commits:
+    - subject: >-
+        Update the resin-yocto-scripts submodule to
+        f7718efbbf53369aaacb7eb54e707ee8a5d4fc4b (on master branch) [Florin]
+    - subject: >-
+        Backport kernel 3.19 VFS patches in order to fix container update
+        filesystem errors [Florin]
+- version: v2.12.5+rev1
+  date: 2018-03-27T22:00:00.000Z
+  commits:
+    - subject: 'Update the meta-resin submodule to version v2.12.5 [Florin]'
+    - subject: >-
+        Update the resin-yocto-scripts submodule to
+        9cecb1ca4d9d4713dd337148b7d04a17afdba772 (on master branch) [Florin]
+    - subject: 'Add bootloader hostapp hooks for Odroid C1 [Florin]'
+    - subject: 'Integrate with resin-u-boot [Florin]'
+    - subject: 'Backport u-boot commits needed for resin-u-boot integration [Florin]'
+- version: v2.12.1+rev1
+  date: 2018-03-11T23:00:00.000Z
+  commits:
+    - subject: 'Update the meta-resin submodule to version v2.12.1 [Andrei]'
+- version: v2.10.1+rev1
+  date: 2018-02-28T23:00:00.000Z
+  commits:
+    - subject: 'Update the meta-resin submodule to version v2.10.1 [Florin]'
+    - subject: >-
+        Make sure u-boot does not load the dtb and the kernel with initramfs in
+        overlapping regions [Florin]
+    - subject: >-
+        Use the kernel with the bundled resin initramfs for the Odroid C1+
+        [Florin]
+    - subject: >-
+        Make only the Odroid XU4 use overlayfs for docker storage driver
+        [Florin]
+    - subject: >-
+        Update the resin-yocto-scripts submodule to
+        dc9dfe466e48d934e55fb20a05156886873b1ab1 (on master branch) [Florin]
+    - subject: >-
+        Fix 99-flash-bootloader bootloader md5sum check from
+        hostapp-update-hooks [Florin]
+    - subject: 'Update bblayers.conf.sample for Yocto Pyro [Florin]'
+    - subject: 'Update yocto version to correct one for the Odroid C1 [Florin]'
+- version: v2.9.7+rev2
+  date: 2018-01-31T23:00:00.000Z
+  commits:
+    - subject: >-
+        Update the resin-yocto-scripts submodule to
+        6f7a9ab326bb822196e3e48b08ef1d73d08caec6 (on master branch) [Florin]
+    - subject: >-
+        Use the new offsets for u-boot env and Trusted Zone binary blob that our
+        new u-boot (version 2017.09) expects [Florin]
+- version: v2.9.7+rev1
+  date: 2018-01-25T23:00:00.000Z
+  commits:
+    - subject: 'Update the meta-resin submodule to version v2.9.7 [Florin]'
+    - subject: 'Enable driver for the usb eth adapter present on the Odroid XU4 [Florin]'
+    - subject: 'Implement resin-u-boot specification for odroid-xu4 [Florin]'
+    - subject: 'Switch to u-boot 2017.09 [Florin]'
+    - subject: 'Use the kernel with the bundled resin initramfs [Florin]'
+    - subject: >-
+        Switch Odroid XU4 from aufs to overlayfs for the docker storage driver
+        [Florin]
+    - subject: >-
+        Deploy the bootloader files to the /resin-boot directory for hostapps
+        update [Florin]
+    - subject: 'Update layers to Pyro [Will]'
+    - subject: >-
+        Update the resin-yocto-scripts submodule to
+        6f7a9ab326bb822196e3e48b08ef1d73d08caec6 (on master branch) [Florin]
+    - subject: 'Increase initramfs maximum size to 12 MB (12288 KB) [Florin]'
+    - subject: 'Update meta-rust to morty [Will]'
+    - subject: 'Include meta-rust layer [Will]'
+    - subject: 'Add meta-rust layer [Will]'
+- version: v2.3.0+rev1
+  date: 2017-08-16T22:00:00.000Z
+  commits:
+    - subject: 'Update the meta-resin submodule to version v2.3.0 [Florin]'
+    - subject: 'Update the resin-yocto-scripts submodule to HEAD of master [Florin]'
+    - subject: 'Update the resin-yocto-scripts submodule [Florin]'
+    - subject: 'Update resin-yocto-scripts to allow external meta-resin builds [Will]'
+    - subject: 'Update resin-yocto-scripts [Will]'
+- version: v2.0.0-beta12.rev1
+  date: 2017-02-26T23:00:00.000Z
+  commits:
+    - subject: 'Bump resin-yocto-scripts to current HEAD [Andrei]'
+    - subject: 'meta-resin: Bump to 2.0.0-beta12 [Andrei]'
+- version: v2.0.0-beta11.rev1
+  date: 2017-02-14T23:00:00.000Z
+  commits:
+    - subject: 'Update meta-resin to v2.0.0-beta.11 [Andrei]'
+- version: v2.0.0-beta10.rev1
+  date: 2017-02-13T23:00:00.000Z
+  commits:
+    - subject: 'Update meta-resin to v2.0.0-beta.10 [Andrei]'
+- version: v2.0.0-beta.9
+  date: 2017-02-07T23:00:00.000Z
+  commits:
+    - subject: 'Update meta-resin to v2.0-beta.9 [Andrei]'
+- version: v2.0.0-beta.8
+  date: 2017-01-26T23:00:00.000Z
+  commits:
+    - subject: 'Update meta-resin to v2.0-beta.8 [Andrei]'
+    - subject: 'Update resin-yocto-scripts to HEAD of the master branch [Florin]'
+- version: v2.0.0-beta.7
+  date: 2016-12-04T23:00:00.000Z
+  commits:
+    - subject: 'Update meta-resin to v2.0-beta.7 [Florin]'
+- version: v2.0.0-beta.6
+  date: 2016-12-04T23:00:00.000Z
+  commits:
+    - subject: 'Update meta-resin to v2.0-beta.6 [Andrei]'
+- version: v2.0.0-beta.5
+  date: 2016-11-30T00:00:00.000Z
+  commits:
+    - subject: 'Update meta-resin to v2.0-beta.5 [Andrei]'
+- version: v2.0.0-beta.3
+  date: 2016-11-06T23:00:00.000Z
+  commits:
+    - subject: 'Update meta-resin to v2.0-beta.3 [Andrei]'
+    - subject: 'Cleanup docker-resin-supervisor-disk of unneeded variables [Andrei]'
+    - subject: Update resin-yocto-scripts to fix logging in container builds
+- version: v2.0.0-beta.1
+  date: 2016-10-11T00:00:00.000Z
+  commits:
+    - subject: 'Update meta-resin to v2.0-beta.1 [Andrei]'
+    - subject: 'Add meta-filesystem as we need aufs-utils [Andrei]'
+    - subject: 'Add build support for resinos [Andrei]'
+    - subject: >-
+        Update resin-yocto-script to include changes in our image types
+        [Theodor]
+    - subject: 'Replace the concept of a debug image with a development image [Theodor]'
+    - subject: 'Update meta-resin to include avahi [Florin]'
+    - subject: >-
+        Update resin-yocto-scripts to include kernel headers handling as gzip
+        [Florin]
+- version: v1.16.0
+  date: 2016-09-26T22:00:00.000Z
+  commits:
+    - subject: 'Update meta-resin to v1.16 [Florin]'
+- version: v1.15.0
+  date: 2016-09-23T22:00:00.000Z
+  commits:
+    - subject: 'Update meta-resin to v1.15 [Florin]'
+- version: v1.14.0
+  date: 2016-09-22T22:00:00.000Z
+  commits:
+    - subject: 'Update meta-resin to v1.14 [Florin]'
+- version: v1.13.0
+  date: 2016-09-22T22:00:00.000Z
+  commits:
+    - subject: 'Update meta-resin to v1.13 [Florin]'
+- version: v1.12.0
+  date: 2016-09-20T22:00:00.000Z
+  commits:
+    - subject: 'Update meta-resin to v1.12 [Florin]'
+    - subject: >-
+        Update resin-yocto-scripts to include resinhup upload to dockerhub
+        [Florin]
+    - subject: 'Update meta-resin [Florin]'
+    - subject: >-
+        Change .coffee to announce partition 1 now holds config.json and also
+        introduce versioning (v1) [Florin]
+- version: v1.11.0
+  date: 2016-08-30T22:00:00.000Z
+  commits:
+    - subject: 'Update meta-resin to v1.11 [Florin]'
+- version: v1.10.0
+  date: 2016-08-23T22:00:00.000Z
+  commits:
+    - subject: 'Update meta-resin to v1.10 [Florin]'
+- version: v1.9.0
+  date: 2016-08-23T22:00:00.000Z
+  commits:
+    - subject: 'Update meta-resin to v1.9 [Florin]'
+    - subject: >-
+        Update resin-yocto-scripts for including kernel modules headers deploy
+        [Florin]
+    - subject: >-
+        Update yocto-resin-scripts for host nodejs detection improvements
+        [Florin]
+- version: v1.8.0
+  date: 2016-08-01T22:00:00.000Z
+  commits:
+    - subject: 'Bump meta-resin to v1.8 [Andrei]'
+    - subject: 'Bump resin-device-types to include partial manifest support [Andrei]'
+    - subject: No more debug images in staging
+- version: v1.7.0
+  date: 2016-07-13T22:00:00.000Z
+  commits:
+    - subject: Update meta-resin to v1.7
+- version: v1.6.0
+  date: 2016-07-05T22:00:00.000Z
+  commits:
+    - subject: 'Update meta-resin to v1.6 [Florin]'
+- version: v1.5.0
+  date: 2016-07-03T22:00:00.000Z
+  commits:
+    - subject: 'Update meta-resin to v1.5 [Florin]'
+- version: v1.5.0rc4
+  date: 2016-06-28T22:00:00.000Z
+  commits:
+    - subject: 'Update meta-resin to include supervisor update to v1.11.6 [Florin]'
+- version: v1.5.0rc3
+  date: 2016-06-28T22:00:00.000Z
+  commits:
+    - subject: 'Update meta-resin to include openvpn-resin.service refactoring [Florin]'
+- version: v1.5.0rc2
+  date: 2016-06-27T22:00:00.000Z
+  commits:
+    - subject: 'Update meta-resin to include docker key.json fix [Florin]'
+    - subject: 'Update meta-resin to include flasher fixes [Florin]'
+- version: v1.4.0
+  date: 2016-06-26T22:00:00.000Z
+  commits:
+    - subject: 'Update meta-resin to v1.4 [Florin]'
+    - subject: 'Update meta-resin to allow let error out [Florin]'
+    - subject: 'Update meta-resin to allow patching of kernel-modules-headers [Florin]'
+    - subject: 'Bump meta-resin to fix various issues [Andrei]'
+    - subject: 'Fix a small syntax error in meta-resin [Andrei]'
+    - subject: 'Fix automation fix for debug image [Andrei]'
+    - subject: 'Replace RESIN_STAGING_BUILD by DEBUG_IMAGE [Andrei]'
+- version: v1.3.0
+  date: 2016-06-23T22:00:00.000Z
+  commits:
+    - subject: 'Update meta-resin to v1.3 [Florin]'
+    - subject: 'Update meta-resin to include kernel modules compress support [Andrei]'
+    - subject: 'Replace SUPERVISOR_TAG by TARGET_TAG [Andrei]'
+    - subject: 'Custom docker images in connectable builds [Andrei]'
+    - subject: 'Bump meta-resin to include connectable builds [Andrei]'
+    - subject: 'Add support for optional supervisor image [Andrei]'
+    - subject: 'Update meta-resin to v1.2 [Andrei]'
+    - subject: 'Bump meta-resin to HEAD [Andrei]'
+    - subject: >-
+        Bump yocto-resin-scripts to bring in improvements for in-docker builds
+        [Andrei]
+    - subject: 'Configure builds with RM_OLD_IMAGE [Theodor]'
+    - subject: 'Bump meta-resin to include switch from rce to docker [Andrei]'
+- version: v1.1.1
+  date: 2016-03-15T23:00:00.000Z
+  commits:
+    - subject: 'Promote odroid-c1.coffee and odroid-ux3.coffee to released [Florin]'
+    - subject: 'Transition from fido -> jethro [Theodor]'
