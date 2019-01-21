@@ -1,6 +1,13 @@
 Change log
 -----------
 
+# v2.29.2+rev1
+## (2019-01-21)
+
+* Update the meta-resin submodule from v2.29.0 to v2.29.2 [Florin Sarbu]
+* Update the balena-yocto-scripts submodule to v1.0.2 [Florin Sarbu]
+* Backport aufs patches to fix unstoppable zombies on Odroid C1 [Florin Sarbu]
+
 # v2.29.0+rev1
 ## (2018-12-20)
 

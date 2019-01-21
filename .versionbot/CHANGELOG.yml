@@ -1,4 +1,38 @@
 - commits:
+    - subject: Update the meta-resin submodule from v2.29.0 to v2.29.2
+      hash: a6240095222a7955ca90d454f3d73d40dbca1ea4
+      body: |
+        Update meta-resin from 2.29.0 to 2.29.2
+      footer:
+        Changelog-entry: Update the meta-resin submodule from v2.29.0 to v2.29.2
+        changelog-entry: Update the meta-resin submodule from v2.29.0 to v2.29.2
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+    - subject: Update the balena-yocto-scripts submodule to v1.0.2
+      hash: d3e1fd1964832f0200f1879703f33381dd0f9fd4
+      body: ''
+      footer:
+        Changelog-entry: Update the balena-yocto-scripts submodule to v1.0.2
+        changelog-entry: Update the balena-yocto-scripts submodule to v1.0.2
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+    - subject: Backport aufs patches to fix unstoppable zombies on Odroid C1
+      hash: ba1b627866145dee440a0a6b3691a48eaab7e364
+      body: |
+        We backport patches to fix aufs unstoppable zombies.
+        See https://github.com/balena-os/balena-odroid/issues/101
+      footer:
+        Changelog-entry: Backport aufs patches to fix unstoppable zombies on Odroid C1
+        changelog-entry: Backport aufs patches to fix unstoppable zombies on Odroid C1
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.29.2+rev1
+  date: 2019-01-21T11:44:55.207Z
+- commits:
     - subject: Update meta-resin from v2.26.0 to v2.29.0
       hash: 7001d89facfcfb842921d73d4e9ec247e095badf
       body: |
