@@ -39,6 +39,8 @@ SRC_URI += " \
     file://0031-BACKPORT-vfs-factor-out-lookup_mountpoint-from-new_mountpoint.patch \
     file://0032-BACKPORT-vfs-Add-a-function-to-lazily-unmount-all-mounts-from.patch \
     file://0033-BACKPORT-vfs-add-cross-rename.patch \
+    file://0034-aufs-tiny-extract-a-new-func-xino_fwrite_wkq.patch \
+    file://0035-aufs-for-4.3-XINO-handles-EINTR-from-the-dying-proce.patch \
 "
 
 # Update to a more recent version to fix aufs build
