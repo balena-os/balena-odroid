@@ -17,6 +17,7 @@ SRC_URI_append_odroid-c1 = " \
     file://0001-Add-cmd_process-to-process-commands-in-one-place.patch \
     file://resin-specific-env-integration-non-kconfig_REWORKED.patch \
     file://0001-odroidc.h-Add-the-machine-specific-integration-of.patch \
+    file://0001-odroid-c1-Enable-CONFIG_CMD_SETEXPR.patch \
     "
 
 do_deploy_append_odroid-c1 () {
