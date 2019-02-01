@@ -8,7 +8,7 @@
 	path = layers/meta-odroid
 	url = https://github.com/akuster/meta-odroid.git
 [submodule "layers/meta-resin"]
-	path = layers/meta-resin
+	path = layers/meta-balena
 	url = https://github.com/resin-os/meta-resin.git
 [submodule "balena-yocto-scripts"]
 	path = balena-yocto-scripts
