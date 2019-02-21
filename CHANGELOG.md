@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.29.2+rev2
+## (2019-01-29)
+
+* Enable CONFIG_CMD_SETEXPR for odroid-xu4 u-boot [Alexandru Costache]
+* Enable CONFIG_CMD_SETEXPR for odroid-c1 u-boot [Alexandru Costache]
+
 # v2.29.2+rev1
 ## (2019-01-21)
 

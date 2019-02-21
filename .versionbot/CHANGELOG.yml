@@ -1,4 +1,25 @@
 - commits:
+    - subject: Enable CONFIG_CMD_SETEXPR for odroid-xu4 u-boot
+      hash: dfcf50e475d81df6bcb5bed6af33040ac26ec932
+      body: ''
+      footer:
+        Changelog-entry: Enable CONFIG_CMD_SETEXPR for odroid-xu4 u-boot
+        changelog-entry: Enable CONFIG_CMD_SETEXPR for odroid-xu4 u-boot
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+    - subject: Enable CONFIG_CMD_SETEXPR for odroid-c1 u-boot
+      hash: 33bae50cabb43edc81a85b49ce36eb8a57b3e4f5
+      body: ''
+      footer:
+        Changelog-entry: Enable CONFIG_CMD_SETEXPR for odroid-c1 u-boot
+        changelog-entry: Enable CONFIG_CMD_SETEXPR for odroid-c1 u-boot
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+  version: 2.29.2+rev2
+  date: 2019-01-29T13:52:20.186Z
+- commits:
     - subject: Update the meta-resin submodule from v2.29.0 to v2.29.2
       hash: a6240095222a7955ca90d454f3d73d40dbca1ea4
       body: |
