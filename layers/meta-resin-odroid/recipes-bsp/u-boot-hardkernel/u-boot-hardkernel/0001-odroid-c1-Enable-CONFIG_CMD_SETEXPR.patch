@@ -1,0 +1,29 @@
+From a0a8937a37e126eb9d73a9ecf89b12b7736d30bf Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Tue, 29 Jan 2019 13:55:11 +0100
+Subject: [PATCH] odroid-c1: Enable CONFIG_CMD_SETEXPR
+
+This is necessary for integration with the
+BalenaOS v2.30 release
+
+Upstream-Status: Inappropriate [configuration]
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ include/configs/hardkernel/odroidc.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/include/configs/hardkernel/odroidc.h b/include/configs/hardkernel/odroidc.h
+index cff9383..4e2d255 100644
+--- a/include/configs/hardkernel/odroidc.h
++++ b/include/configs/hardkernel/odroidc.h
+@@ -11,6 +11,7 @@
+ 
+ #define CONFIG_PARTITION_UUIDS
+ #define CONFIG_CMD_PART
++#define CONFIG_CMD_SETEXPR
+ 
+ // cart type of each port
+ #define PORT_A_CARD_TYPE                CARD_TYPE_UNKNOWN
+-- 
+2.7.4
+
