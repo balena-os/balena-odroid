@@ -42,3 +42,9 @@ RESIN_CONFIGS_append = " spidev"
 RESIN_CONFIGS[spidev] = " \
     CONFIG_SPI_SPIDEV=m \
 "
+
+# requested by customer
+RESIN_CONFIGS_append = " snd_aloop"
+RESIN_CONFIGS[snd_aloop] = " \
+    CONFIG_SND_ALOOP=m \
+"
