@@ -29,3 +29,16 @@ RESIN_CONFIGS_DEPS[uvcvideo] = " \
 RESIN_CONFIGS[uvcvideo] = " \
     CONFIG_USB_VIDEO_CLASS=m \
 "
+
+# requested by user for XU4 Cloudshell 2.2" TFT LCD support
+RESIN_CONFIGS_append = " fbtft"
+RESIN_CONFIGS[fbtft] = " \
+    CONFIG_FB_TFT=m \
+    CONFIG_FB_TFT_FBTFT_DEVICE=m \
+"
+
+# required for the above TFT LCD
+RESIN_CONFIGS_append = " spidev"
+RESIN_CONFIGS[spidev] = " \
+    CONFIG_SPI_SPIDEV=m \
+"
