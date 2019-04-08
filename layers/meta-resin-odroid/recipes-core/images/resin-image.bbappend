@@ -51,3 +51,6 @@ IMAGE_CMD_resinos-img_append_odroid-c1 () {
     dd if=${DEPLOY_DIR_IMAGE}/bl1.bin.hardkernel of=${RESIN_RAW_IMG} bs=512 skip=1 seek=1 conv=notrunc
     dd if=${DEPLOY_DIR_IMAGE}/u-boot.bin of=${RESIN_RAW_IMG} bs=512 seek=64 conv=notrunc
 }
+
+# we already add the kernel through the kernel-image-initramfs package
+IMAGE_INSTALL_remove = "kernel-image"
