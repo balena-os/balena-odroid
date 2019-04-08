@@ -45,6 +45,11 @@ RESIN_CONFIGS[spidev] = " \
 
 # requested by customer
 RESIN_CONFIGS_append = " snd_aloop"
+RESIN_CONFIGS_DEPS[snd_aloop] = " \
+    CONFIG_SOUND=y \
+    CONFIG_SND=y \
+    CONFIG_SND_DRIVERS=y \
+"
 RESIN_CONFIGS[snd_aloop] = " \
     CONFIG_SND_ALOOP=m \
 "
