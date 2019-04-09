@@ -1,4 +1,82 @@
 - commits:
+    - subject: Update repo.yml to be able to trigger VersionBot with `meta-balena`
+      hash: e691ee1db14bbcc48db154914140e2779322d690
+      body: ''
+      footer:
+        Changelog-entry: Update repo.yml to be able to trigger VersionBot with `meta-balena`
+        changelog-entry: Update repo.yml to be able to trigger VersionBot with `meta-balena`
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+    - subject: Fix rootfs clash between kernel packages
+      hash: b664fe6e90fd79a0b6551c8d6525c5edbd8d64c7
+      body: |
+        The BSP now implicitly adds the kernel-image package to the
+        rootfs. But we already add kernel-image-initramfs to the rootfs
+        and having both will clash and make bitbake error out.
+      footer:
+        Changelog-entry: Fix rootfs clash between kernel packages
+        changelog-entry: Fix rootfs clash between kernel packages
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+    - subject: Rename meta-resin to meta-balena in repository
+      hash: 31e9b2fe8b57e3937c1fb82a30af33e29c11d810
+      body: ''
+      footer:
+        Changelog-entry: Rename meta-resin to meta-balena in repository
+        changelog-entry: Rename meta-resin to meta-balena in repository
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+    - subject: Specify deps for kernel's 4.19.1 config tasks
+      hash: cf11bd9b59e4bd349cd6486b2fbee576e9d7e403
+      body: |
+        We switched the BSP to thud branch and this uses kernel
+        4.19.1. For newer kernels (4.17+), we need to specify
+        additional dependencies for the configme task.
+
+        This change can be removed when we update poky to a newer version
+        that includes 81e8a52e8e40e47c34f900db5d73e69ffc25f5d0.
+
+        This change fixes the error we get on 4.19.1 kernel when our do
+        kernel_resin_reconfigure task will recreate the .config with the
+        kernel config options from the development machine's kernel config.
+      footer:
+        Changelog-entry: Specify deps for kernel's 4.19.1 config tasks
+        changelog-entry: Specify deps for kernel's 4.19.1 config tasks
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+    - subject: Change the poky submodule to our github mirror
+      hash: 4a521f90f37c825547c0fddd5eb5846139e611c8
+      body: |
+        We do this change because we noticed frequent timeouts
+        in different parts of our build infrastructure when pulling
+        the poky repository from https://git.yoctoproject.org/git/poky
+      footer:
+        Changelog-entry: Change the poky submodule to our github mirror
+        changelog-entry: Change the poky submodule to our github mirror
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+    - subject: Update the bsp layer to thud branch
+      hash: abc3e78ef1514de8aaea314c8a7431656e6c6e19
+      body: |
+        We need to switch to yocto thud so we take advantage of
+        bsp updates. However, meta-balena does not yet support
+        thud but luckily the bsp thud branch is compatible with
+        yocto sumo so we can only update the bsp to thud and
+        leave all the other layers at sumo.
+      footer:
+        Changelog-entry: Update the bsp layer to thud branch
+        changelog-entry: Update the bsp layer to thud branch
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.31.5+rev2
+  date: 2019-04-09T06:45:49.494Z
+- commits:
     - subject: Update the meta-resin submodule from v2.29.2 to v2.31.5
       hash: f5bcf34b41c6023b0a99f4e1956272ea595a53b3
       body: |

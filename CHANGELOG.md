@@ -1,6 +1,16 @@
 Change log
 -----------
 
+# v2.31.5+rev2
+## (2019-04-09)
+
+* Update repo.yml to be able to trigger VersionBot with `meta-balena` [Florin Sarbu]
+* Fix rootfs clash between kernel packages [Florin Sarbu]
+* Rename meta-resin to meta-balena in repository [Florin Sarbu]
+* Specify deps for kernel's 4.19.1 config tasks [Florin Sarbu]
+* Change the poky submodule to our github mirror [Florin Sarbu]
+* Update the bsp layer to thud branch [Florin Sarbu]
+
 # v2.31.5+rev1
 ## (2019-03-25)
 
