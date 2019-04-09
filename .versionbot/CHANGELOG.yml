@@ -1,4 +1,25 @@
 - commits:
+    - subject: Update the balena-yocto-scripts submodule to v1.0.5
+      hash: 7c4ab86fc6dabed8d7c618a1f953b28c8e16018f
+      body: ''
+      footer:
+        Changelog-entry: Update the balena-yocto-scripts submodule to v1.0.5
+        changelog-entry: Update the balena-yocto-scripts submodule to v1.0.5
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+    - subject: Renamed meta-resin-odroid to meta-balena-odroid
+      hash: 4e53e501896a63327468d87be82a2cb5c5f24ac8
+      body: ''
+      footer:
+        Changelog-entry: Renamed meta-resin-odroid to meta-balena-odroid
+        changelog-entry: Renamed meta-resin-odroid to meta-balena-odroid
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.31.5+rev3
+  date: 2019-04-09T16:05:45.545Z
+- commits:
     - subject: Update repo.yml to be able to trigger VersionBot with `meta-balena`
       hash: e691ee1db14bbcc48db154914140e2779322d690
       body: ''

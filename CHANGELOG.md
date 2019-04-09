@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.31.5+rev3
+## (2019-04-09)
+
+* Update the balena-yocto-scripts submodule to v1.0.5 [Florin Sarbu]
+* Renamed meta-resin-odroid to meta-balena-odroid [Florin Sarbu]
+
 # v2.31.5+rev2
 ## (2019-04-09)
 
