@@ -15,6 +15,6 @@ BBLAYERS ?= " \
     ${TOPDIR}/../layers/meta-odroid \
     ${TOPDIR}/../layers/meta-balena/meta-resin-common \
     ${TOPDIR}/../layers/meta-balena/meta-resin-sumo \
-    ${TOPDIR}/../layers/meta-resin-odroid \
+    ${TOPDIR}/../layers/meta-balena-odroid \
     ${TOPDIR}/../layers/meta-rust \
     "
