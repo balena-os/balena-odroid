@@ -27,6 +27,16 @@ device="/dev/"$(findmnt --noheadings --canonicalize --output SOURCE /mnt/boot/ |
 
 update_files="bl1 bl2 uboot tzsw"
 
+if [ $device = "/dev/mmcblk0" ]; then
+	# using eMMC
+	bl1_seek_blocks=0
+	bl2_seek_blocks=30
+	uboot_seek_blocks=62
+	tzsw_seek_blocks=1502
+	device="/dev/mmcblk0boot0"
+	echo 0 > /sys/block/mmcblk0boot0/force_ro
+fi
+
 for i in $update_files; do
 	current_update_file=$(eval echo \$${i}_file)
 	block_size=$(eval echo \$${i}_block_size)
@@ -37,7 +47,9 @@ for i in $update_files; do
 	update_md5sum=$(md5sum /resin-boot/$current_update_file | awk '{print $1'})
 
 	# calculate number of bytes to skip when computing the checksum of the data we want to update (i.e. the data already written to $device)
+	set +o errexit # let multiply with zero returns 1 so we unset error exit for this operation
 	let skip_bytes=$block_size*$seek_blocks
+	set -o errexit
 
 	# calculate md5sum of the data already written to $device, using $update_size bytes and skipping $skip_bytes from $device
 	existing_md5sum=$(dd if=$device skip=$skip_bytes bs=1 count=$update_size status=none | md5sum | awk '{print $1}')
@@ -47,3 +59,7 @@ for i in $update_files; do
 		dd if=/resin-boot/$current_update_file of=$device conv=fdatasync seek=$seek_blocks bs=$block_size
 	fi
 done
+
+if [ $device = "/dev/mmcblk0boot0" ]; then
+	echo 1 > /sys/block/mmcblk0boot0/force_ro
+fi
