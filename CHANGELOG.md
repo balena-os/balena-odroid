@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.38.3+rev2
+## (2019-08-06)
+
+* hostapp-update-hooks: Add logic for eMMC HUP [Sebastian Panceac]
+
 # v2.38.3+rev1
 ## (2019-07-16)
 
