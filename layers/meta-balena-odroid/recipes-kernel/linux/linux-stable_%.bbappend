@@ -54,7 +54,7 @@ RESIN_CONFIGS_DEPS[snd_aloop] = " \
 # Add support for bluetooth devices include usb adapters
 RESIN_CONFIGS_append = " blueadd"
 RESIN_CONFIGS[blueadd] = " \
-    CONFIG_BT=m \
+	CONFIG_BT=m \
 	CONFIG_BT_BREDR=y \
 	CONFIG_BT_HS=y \
 	CONFIG_BT_LE=y \
