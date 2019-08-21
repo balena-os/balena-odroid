@@ -1,4 +1,18 @@
 - commits:
+    - subject: Adds support for Bluetooth on Odroid Boards
+      hash: b404025ad6b45cfe547a59c8e6d31f4c2a58a6e1
+      body: >
+        Modifies Kernel Configuration options to include certain modules
+        required for Bluetooth.
+      footer:
+        Changelog-entry: Adds support for Bluetooth on Odroid Boards
+        changelog-entry: Adds support for Bluetooth on Odroid Boards
+        Signed-off-by: Thomas Cahill thomas.cahill@digitalmortar.com
+        signed-off-by: Thomas Cahill thomas.cahill@digitalmortar.com
+      author: Thomas Cahill
+  version: 2.38.3+rev3
+  date: 2019-08-21T05:57:03.265Z
+- commits:
     - subject: 'hostapp-update-hooks: Add logic for eMMC HUP'
       hash: 3f2ee8eda5ecdd65c3da174addc098ae9bd91271
       body: |
