@@ -50,6 +50,22 @@ RESIN_CONFIGS_DEPS[snd_aloop] = " \
     CONFIG_SND=y \
     CONFIG_SND_DRIVERS=y \
 "
+
+# Add support for bluetooth devices include usb adapters
+RESIN_CONFIGS_append = " blueadd"
+RESIN_CONFIGS[blueadd] = " \
+	CONFIG_BT=m \
+	CONFIG_BT_BREDR=y \
+	CONFIG_BT_HS=y \
+	CONFIG_BT_LE=y \
+	CONFIG_BT_DEBUGFS=y \
+	CONFIG_BT_BCM=y \
+	CONFIG_BT_HCIBTUSB=m \
+	CONFIG_BT_HCIBTUSB_BCM=y \
+	CONFIG_BT_HCIBCM203X=m \
+	CONFIG_BT_HCIVHCI=y \
+"
+
 RESIN_CONFIGS[snd_aloop] = " \
     CONFIG_SND_ALOOP=m \
 "
