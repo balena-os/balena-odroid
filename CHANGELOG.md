@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.38.3+rev3
+## (2019-08-27)
+
+* Adds kernel support for Bluetooth on Odroid Boards [Thomas Cahill]
+
 # v2.38.3+rev2
 ## (2019-08-06)
 
