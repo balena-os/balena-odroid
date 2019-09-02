@@ -22,7 +22,7 @@ module.exports =
 		machine: 'odroid-c1'
 		image: 'resin-image'
 		fstype: 'resinos-img'
-		version: 'yocto-sumo'
+		version: 'yocto-warrior'
 		deployArtifact: 'resin-image-odroid-c1.resinos-img'
 		compressed: true
 
