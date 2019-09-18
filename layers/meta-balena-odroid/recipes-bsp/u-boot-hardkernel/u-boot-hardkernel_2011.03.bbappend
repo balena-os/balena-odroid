@@ -31,3 +31,12 @@ do_deploy_append_odroid-c1 () {
 PV = "v2011.03+${SRCREV}"
 
 S = "${WORKDIR}/git"
+
+# This is a workaround to fix build failing
+# due to a couple undefined functions for this
+# architecture.
+# TODO: Implement these functions if still
+# necessary after switching to Warrior
+UBOOT_VARS_remove_odroid-c1 = " CONFIG_RESET_TO_RETRY \
+                                CONFIG_BOOT_RETRY_TIME \
+"
