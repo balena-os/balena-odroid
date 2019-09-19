@@ -1,4 +1,744 @@
 - commits:
+    - subject: Update the meta-balena submodule from v2.38.3 to v2.43.0
+      hash: a892a7f454b6f23605b08ca87ce92b02f08b5904
+      body: |
+        Update meta-balena from 2.38.3 to 2.43.0
+      footer:
+        Changelog-entry: Update the meta-balena submodule from v2.38.3 to v2.43.0
+        changelog-entry: Update the meta-balena submodule from v2.38.3 to v2.43.0
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested:
+        - commits:
+            - subject: Update NetworkManager to 1.20.2
+              hash: bcb6d85cc3b75d2f41a64fc9a6e0e15b428040f1
+              body: |
+                Fixes #1660
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: Update NetworkManager to 1.20.2
+                changelog-entry: Update NetworkManager to 1.20.2
+                Signed-off-by: Andrei Gherzan <andrei@balena.io>
+                signed-off-by: Andrei Gherzan <andrei@balena.io>
+              author: Andrei Gherzan
+            - subject: Update ModemManager to 1.10.6
+              hash: f6c82203c1a8f0613a900ce9d8ce749087fab99d
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Update ModemManager to 1.10.6
+                changelog-entry: Update ModemManager to 1.10.6
+                Signed-off-by: Andrei Gherzan <andrei@balena.io>
+                signed-off-by: Andrei Gherzan <andrei@balena.io>
+              author: Andrei Gherzan
+          version: meta-balena-2.43.0
+          date: 2019-09-13T15:33:28.973Z
+        - commits:
+            - subject: >-
+                A small fix in initramfs when /dev/console is invalid due to
+                whatever reason
+              hash: b5574aeb86ea6b6763f1c25c4b53a45d3e207eb5
+              body: >
+                We would just check for the existence of console=null in kernel
+                cmdline
+
+
+                A better way would be to check the presence of a valid symlink
+                for fd0,
+
+                fd1 and fd2. And assign them to /dev/null if unavailable.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: >-
+                  A small fix in initramfs when /dev/console is invalid due to
+                  whatever reason
+                changelog-entry: >-
+                  A small fix in initramfs when /dev/console is invalid due to
+                  whatever reason
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+            - subject: Add automated testing for external kernel module header tarballs
+              hash: aef272d20b471308790bfa63426f73a3ce334884
+              body: >
+                We'd like to run a simple hello-world external module build test
+                using
+
+                the headers we have generated. This recipe does that in a docker
+
+                container
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: >-
+                  Add automated testing for external kernel module header
+                  tarballs
+                changelog-entry: >-
+                  Add automated testing for external kernel module header
+                  tarballs
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+            - subject: Make sure correct utsrelease.h is packaged
+              hash: 5f9717081524d475009f5bf9277b30bf29c1c371
+              body: >
+                It was observed that on some machines (Variscite mx8m) the
+
+                utsrelease.h header is regenerated with incomplete content when
+
+                running "make prepare0" (utsrelease.h will not contain the short
+
+                git revision although the kernel's abiversion includes it and
+
+                as such the external modules built using this utsrelease.h
+                header
+
+                will fail to load because of this mismatch).
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Make sure correct utsrelease.h is packaged
+                changelog-entry: Make sure correct utsrelease.h is packaged
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Zubair Lutfullah Kakakhel
+            - subject: >-
+                Fix a bug where application containers with new systemd versions
+                were failing to start in cases. Switch to systemd cgroup driver
+                in balenaEngine
+              hash: a79f18a3e094721d1fc134afbae7a4773b697414
+              body: >
+                The default driver is cgroupfs. We switch to systemd so that
+                there is
+
+                one cgroup manager in our OS.
+
+
+                Otherwise, systemd will have its own cgroup manager and cgroupfs
+                will
+
+                be another cgroup manager via balenaEngine daemon.
+
+
+                Fixes #1645 which contains more information
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: >-
+                  Fix a bug where application containers with new systemd
+                  versions were failing to start in cases. Switch to systemd
+                  cgroup driver in balenaEngine
+                changelog-entry: >-
+                  Fix a bug where application containers with new systemd
+                  versions were failing to start in cases. Switch to systemd
+                  cgroup driver in balenaEngine
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+          version: meta-balena-2.42.0
+          date: 2019-09-13T08:06:05.129Z
+        - commits:
+            - subject: Update ModemManager to version 1.10.4
+              hash: 6f300a3fc01521ceadd3f8a50c9157d070525dde
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Update ModemManager to version 1.10.4
+                changelog-entry: Update ModemManager to version 1.10.4
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+            - subject: >-
+                Fix for some innocous systemd tmpfile warnings /var/run -> /run
+                ones
+              hash: 25bb6364dfff2a65d7f53f71a35ef74f24f7d7a9
+              body: >
+                Otherwise systemd complains:
+
+                localhost systemd-tmpfiles[525]:
+                [/etc/tmpfiles.d/balena-tmpfiles.conf:1] Line references path
+                below legacy directory /var/run/, updating /var/run/docker.pid →
+                /run/docker.pid; please update the tmpfiles.d/ drop-in file
+                accordingly.
+
+                localhost systemd-tmpfiles[525]:
+                [/etc/tmpfiles.d/balena-tmpfiles.conf:2] Line references path
+                below legacy directory /var/run/, updating /var/run/balena.pid →
+                /run/balena.pid; please update the tmpfiles.d/ drop-in file
+                accordingly.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: >-
+                  Fix for some innocous systemd tmpfile warnings /var/run ->
+                  /run ones
+                changelog-entry: >-
+                  Fix for some innocous systemd tmpfile warnings /var/run ->
+                  /run ones
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+            - subject: >-
+                Fix for rollbacks where the inactive partition mount was
+                unavailable when altboot triggered
+              hash: 856a3d1ad8dbf3b7a87689bbedac23c9148b3d79
+              body: >
+                PR #1441 changed mnt-sysroot-inactive to an automount. But there
+                is no
+
+                way to easily add a udev dependency to the automount. As a
+                result,
+
+                when rollbacks tries to access the inactive partition, it fails.
+
+                Let's add systemd-udev-settle.service to the rollback services.
+
+
+                This will only delay the first boot after a HUP which is
+                reasonable.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: >-
+                  Fix for rollbacks where the inactive partition mount was
+                  unavailable when altboot triggered
+                changelog-entry: >-
+                  Fix for rollbacks where the inactive partition mount was
+                  unavailable when altboot triggered
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+            - subject: 'kernel-resin: Enable FTDI USB-serial convertors driver'
+              hash: 40616a274cd7f055397b5acda0fdd6540e797410
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+                signed-off-by: Sebastian Panceac <sebastian@balena.io>
+              author: Sebastian Panceac
+          version: meta-balena-2.41.1
+          date: 2019-09-03T13:27:47.892Z
+        - commits:
+            - subject: Fix a hang in initramfs for warrior production images
+              hash: 4c44265a7dd13760a89c235068500bf6f315f651
+              body: >
+                When `console=null` is passed in the kernel cmdline for
+                production
+
+                images, the system doesn't boot. Traced to initramfs not
+                starting any
+
+                process such as udev with the right file descripters for 0,1,2
+
+
+                Add workaround for that issue. This got exposed with a systemd
+                bump.
+
+                More details here
+                https://github.com/systemd/systemd/issues/13332
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Fix a hang in initramfs for warrior production images
+                changelog-entry: Fix a hang in initramfs for warrior production images
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+            - subject: Update balena-engine to 18.09.8
+              hash: 9bcd0ffcc7d6efde45f2bc1eaeaafe1092374c40
+              body: |
+                Includes improvements and fixes to the journald logdriver
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: Update balena-engine to 18.09.8
+                changelog-entry: Update balena-engine to 18.09.8
+                Signed-off-by: Robert Günzler <robertg@balena.io>
+                signed-off-by: Robert Günzler <robertg@balena.io>
+              author: Robert Günzler
+            - subject: Avoid overlayfs mounts in poky's volatile-binds
+              hash: b7b6163d955a3bf76a1759b60ed82ccc5fcce6d0
+              body: >
+                Our root filesystem is overlayfs or aufs. When latter, the
+                system
+
+                crashes when reading a lower directory file. We avoid this by
+                always
+
+                falling back to copy and mount (as if overlayfs is not
+                available).
+
+
+                Fixes #1618
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Avoid overlayfs mounts in poky's volatile-binds
+                changelog-entry: Avoid overlayfs mounts in poky's volatile-binds
+                Signed-off-by: Andrei Gherzan <andrei@balena.io>
+                signed-off-by: Andrei Gherzan <andrei@balena.io>
+              author: Andrei Gherzan
+          version: meta-balena-2.41.0
+          date: 2019-08-22T14:25:04.139Z
+        - commits:
+            - subject: Update balena-supervisor to v10.2.2
+              hash: 3afbe138f115fa15611cb823caa6664dbb093a8b
+              body: ''
+              footer:
+                Changelog-entry: Update balena-supervisor to v10.2.2
+                changelog-entry: Update balena-supervisor to v10.2.2
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Cameron Diver <cameron@balena.io>
+                signed-off-by: Cameron Diver <cameron@balena.io>
+              author: Cameron Diver
+            - subject: >-
+                Workaround for a cornercase bug in PersistentLogging where
+                journalctl filled the state partition. Vacuum the journal on
+                boot.
+              hash: 8284da08f245ed6da8308d558bb8dfcc66de9691
+              body: >
+                We have found a rare corner case bug where the journal bloats
+                beyond
+
+                its limit and fills the state partition. Triggering a vacuum on
+                reboot
+
+                helps a bit in case the device is restarted to recover its
+                function.
+
+
+                Fixes #1423
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: >-
+                  Workaround for a cornercase bug in PersistentLogging where
+                  journalctl filled the state partition. Vacuum the journal on
+                  boot.
+                changelog-entry: >-
+                  Workaround for a cornercase bug in PersistentLogging where
+                  journalctl filled the state partition. Vacuum the journal on
+                  boot.
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+          version: meta-balena-2.40.0
+          date: 2019-08-14T09:40:49.562Z
+        - commits:
+            - subject: 'usb-modeswitch-data: Switch Huawei E3372 12d1:1f01 to mbim mode'
+              hash: bb672725f4460402af64ecb7d74d33526f5ed7c1
+              body: |
+                Customer reported Huawei E3372 not working
+                anymore starting with balenaOS v2.32.
+                The fix for this appears to be switching the modem with
+                vid and pid 12d1:1f01 from the cdc_ether legacy mode to
+                the faster mbim mode and setting mtu=1460 in the modem
+                connection file.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+            - subject: >-
+                Fix rollback altboots to prevent good reboots by supervisor
+                triggering rollback.
+              hash: 7e5843d6542d13d278d2a42da2f787ada8bfa229
+              body: >
+                After a HUP, until rollbacks clears its state, the supervisor(or
+                user)
+
+                can trigger good reboots. These reboots might be seen by the
+                bootloader
+
+                as bad reboots.
+
+
+                To prevent this from happening, add a service that clears the
+                bootcount
+
+                upon good reboots. This only runs if the rollback services have
+                not
+
+                cleared their flag files in the state partition.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: >-
+                  Fix rollback altboots to prevent good reboots by supervisor
+                  triggering rollback.
+                changelog-entry: >-
+                  Fix rollback altboots to prevent good reboots by supervisor
+                  triggering rollback.
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+            - subject: >-
+                Devices using u-boot. Remove any BOOTDELAY for production
+                images. Add a 2 seconds delay for development images
+              hash: f50952f6e91541f4c07ef14612a71174b9417124
+              body: >
+                We'd like to split dev and prod uboot config fragments. Dev
+                images can
+
+                have a 2 second u-boot delay to facilitate debugging. While prod
+                images
+
+                shouldn't really pause at this stage of the boot.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: >-
+                  Devices using u-boot. Remove any BOOTDELAY for production
+                  images. Add a 2 seconds delay for development images
+                changelog-entry: >-
+                  Devices using u-boot. Remove any BOOTDELAY for production
+                  images. Add a 2 seconds delay for development images
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+            - subject: >-
+                Devices using u-boot. Enable CONFIG_CMD_SETEXPR for all devices.
+                Required for rollbacks to work
+              hash: 7051a1bda83d53e08148eea953ee2653fd915743
+              body: >
+                We'd like to enable some config options for all devices via
+                meta-balena
+
+
+                The support is mainline since warrior. Lets copy it in
+                meta-balena
+
+                to get it in the previous layers as well.
+
+
+                We need CMD_SETEXPR to be enabled for rollbacks to work. So
+                enable it
+
+                via the config fragment
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: >-
+                  Devices using u-boot. Enable CONFIG_CMD_SETEXPR for all
+                  devices. Required for rollbacks to work
+                changelog-entry: >-
+                  Devices using u-boot. Enable CONFIG_CMD_SETEXPR for all
+                  devices. Required for rollbacks to work
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+            - subject: >-
+                Devices using u-boot. Enable rollback-altboot by handling
+                bootcount via meta-balena.
+              hash: aa0a389ea92a71123813f291833fea61f4965164
+              body: >
+                U-boot has its own bootcount framework. However, that will
+                require
+
+                handling in each device type. We will use u-boot shell commands
+
+                env import -t, env export -t, fatload, fatwrite
+
+                to read/write/increment bootcount in env_resin.h.
+
+
+                This will allow us to scale to lots of devices.
+
+
+                A flag os_bootcount_skip is left for devices that are unable to
+                support
+
+                fatwrite in u-boot (in some rare cases). This will allow a
+                device to
+
+                not support rollback-altboot and still function.
+
+
+                This patch requires that CMD_SETEXPR be enabled in u-boot config
+
+                options.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: >-
+                  Devices using u-boot. Enable rollback-altboot by handling
+                  bootcount via meta-balena.
+                changelog-entry: >-
+                  Devices using u-boot. Enable rollback-altboot by handling
+                  bootcount via meta-balena.
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+            - subject: >-
+                Production Devices using u-boot. Enable CONFIG_RESET_TO_RETRY to
+                reset a device in case it drops into a u-boot shell
+              hash: 1f7ead33c284f4dc8e2a3d78b2a922a9b778e05c
+              body: >
+                We'd like to enable some options in all boards header files via
+
+                meta-balena. This patch adds a task to include config_resin.h
+                into
+
+                config_default.h (which is included in all board header files).
+
+                We can then add a config option via meta-balena that will be
+                enabled for
+
+                all devices.
+
+
+                This patch enables CONFIG_RESET_TO_RETRY. If for whatever
+                strange reason
+
+                (accidental fs issue in u-boot etc), this will trigger a u-boot
+                reset
+
+                command the device in 15 seconds.
+
+
+                Note This requires that the device's u-boot supports the reset
+                command
+
+                which it probably should.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: >-
+                  Production Devices using u-boot. Enable CONFIG_RESET_TO_RETRY
+                  to reset a device in case it drops into a u-boot shell
+                changelog-entry: >-
+                  Production Devices using u-boot. Enable CONFIG_RESET_TO_RETRY
+                  to reset a device in case it drops into a u-boot shell
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+            - subject: Remove confusing networkmanager https connectivity warning
+              hash: fbdf643988e4aea76507139b2fc59ef7ad0132af
+              body: >
+                Fixes #1597
+
+
+                The warning doesn't apply for our use case and confuses
+                customers
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Remove confusing networkmanager https connectivity warning
+                changelog-entry: Remove confusing networkmanager https connectivity warning
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+            - subject: Increase fs.inotify.max_user_instances to 512
+              hash: a4f6c8591af9793935a9981a0f0c25fb7b957312
+              body: |
+                This defaults to 128. BoB hit the limit. Increase to 512
+                Fixes #1592
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Increase fs.inotify.max_user_instances to 512
+                changelog-entry: Increase fs.inotify.max_user_instances to 512
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+            - subject: Update balena-supervisor to v10.0.3
+              hash: ad9bdc7236600eb4399761643b772eadd95df662
+              body: ''
+              footer:
+                Changelog-entry: Update balena-supervisor to v10.0.3
+                changelog-entry: Update balena-supervisor to v10.0.3
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Cameron Diver <cameron@balena.io>
+                signed-off-by: Cameron Diver <cameron@balena.io>
+              author: Cameron Diver
+            - subject: Fix balena hello-world healthcheck
+              hash: e0826741f9a829f2af34afbc9bc1f9920f8ae4e6
+              body: >
+                We load the hello-world image after starting the balena daemon.
+
+                ExecStartPost should run after the daemon is initialized but
+                chaining a
+
+                15 second sleep for good measure.
+
+
+                We load the hello-world image here so that devices out in the
+                field and
+
+                on prem devices don't need to pull from dockerhub which would
+                require
+
+                external internet connectivity.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Fix balena hello-world healthcheck
+                changelog-entry: Fix balena hello-world healthcheck
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+            - subject: Add nf_table kernel modules
+              hash: 9bca94f29b29098c7177231ee3a9251f1d48dd32
+              body: |
+                Fixes #1589
+                Also, debian buster defaults to requiring nf_tables
+                rootfs size impact ~+310K
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Add nf_table kernel modules
+                changelog-entry: Add nf_table kernel modules
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+            - subject: 'hostapp-update-hooks: Use correct source for inactive sysroot'
+              hash: f13c837cdc9b1a106ea711785178fc397035ada7
+              body: |
+                Use ext4 FSTYPE to filter out automount with SOURCE
+                "systemd-1" when determining the new parition label
+                in the grub update hook.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+            - subject: >-
+                Add extra healthcheck to balena service. It will spin up a
+                hello-world container as well
+              hash: 15169084fe9355e6be997712a614e383a71555c9
+              body: >
+                Occasionally balena ps and balena info work but the balena
+                daemon is
+
+                unable to start a new container. This is usually when something
+                in runc
+
+                or containerd is not functioning correctly.
+
+
+                Add a healthcheck to spin up a simple hello-world container as
+                well.
+
+
+                The trade-off here is that there will be a few extra writes to
+                disk
+
+                every healthcheck timeout. But there will be a benefit that if
+                runc
+
+                or containerd is in a bad state, the healthcheck will fail and
+                systemd
+
+                will restart the balena daemon to recover the application
+                container
+
+
+                Fixes #1391
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: >-
+                  Add extra healthcheck to balena service. It will spin up a
+                  hello-world container as well
+                changelog-entry: >-
+                  Add extra healthcheck to balena service. It will spin up a
+                  hello-world container as well
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+            - subject: Update balena-supervisor to v9.18.8
+              hash: 41af8ba6ef5b234b819aa0181b7e14e476f68c43
+              body: ''
+              footer:
+                Changelog-entry: Update balena-supervisor to v9.18.8
+                changelog-entry: Update balena-supervisor to v9.18.8
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Cameron Diver <cameron@balena.io>
+                signed-off-by: Cameron Diver <cameron@balena.io>
+              author: Cameron Diver
+            - subject: 'image-resin.bbclass: fixed a typo'
+              hash: 64a4fc9a7cff18a6dced9f352317761ced7dc563
+              body: |
+                Fixing a typo in the image size sanity check to ensure the
+                correct calculation of FAT overhead sectors.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kylemharding@gmail.com>
+                signed-off-by: Kyle Harding <kylemharding@gmail.com>
+              author: Kyle Harding
+            - subject: >-
+                kernel-resin: Add support for CH340 family of usb-serial
+                adapters
+              hash: 941aef5490cf4a120f74cb243c3fbbd8911bcc49
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: >-
+                  kernel-resin: Add support for CH340 family of usb-serial
+                  adapters
+                changelog-entry: >-
+                  kernel-resin: Add support for CH340 family of usb-serial
+                  adapters
+                Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+                signed-off-by: Sebastian Panceac <sebastian@balena.io>
+              author: Sebastian Panceac
+            - subject: >-
+                resin-proxy-config: add missing reserved ip ranges to default
+                noproxy
+              hash: 49ed2ea12d495defe033be6f2a9e155ff2fc7875
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Will Boyce <will@balena.io>
+                signed-off-by: Will Boyce <will@balena.io>
+              author: Will Boyce
+            - subject: Reduce data partition size from 1G to 192M
+              hash: 2270940edfd32a4dd3a3670aa1fb62eb2557f706
+              body: >
+                The data partition contains the supervisor which is only about
+                61M on
+
+                the pi3. We compress the data partition later on so don't notice
+                these
+
+                zeros. But lets reduce the size of the data partition to eat
+                less
+
+                space whenever an uncompressed image is used anywhere. e.g. when
+
+                extracting the zip to dd or using balena-migrate etc.
+
+
+                The partition expands on first boot to fill the rest of the disk
+
+                anyways.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: Reduce data partition size from 1G to 192M
+                changelog-entry: Reduce data partition size from 1G to 192M
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+          version: meta-balena-2.39.0
+          date: 2019-07-31T10:56:32.370Z
+  version: 2.43.0+rev1
+  date: 2019-09-18T11:50:52.999Z
+- commits:
     - subject: Update balena-yocto-scripts to v1.3.7
       hash: 711f1317a39a43f0dc7b67a6f3bc17be724c4cb7
       body: ''
