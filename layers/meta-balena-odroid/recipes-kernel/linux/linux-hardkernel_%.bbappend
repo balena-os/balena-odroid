@@ -41,6 +41,7 @@ SRC_URI += " \
     file://0033-BACKPORT-vfs-add-cross-rename.patch \
     file://0034-aufs-tiny-extract-a-new-func-xino_fwrite_wkq.patch \
     file://0035-aufs-for-4.3-XINO-handles-EINTR-from-the-dying-proce.patch \
+    file://0001-tools-Add-Build.include-script.patch \
 "
 
 # Update to a more recent version to fix aufs build
