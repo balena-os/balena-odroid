@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update balena-yocto-scripts to v1.3.8
+      hash: 0be7349b01c2d8420b433eb228d6c35e9a3311f2
+      body: ''
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to v1.3.8
+        changelog-entry: Update balena-yocto-scripts to v1.3.8
+        Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+        signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+      author: Zubair Lutfullah Kakakhel
+  version: 2.43.0+rev2
+  date: 2019-09-30T14:46:42.681Z
+- commits:
     - subject: Update the meta-balena submodule from v2.38.3 to v2.43.0
       hash: a892a7f454b6f23605b08ca87ce92b02f08b5904
       body: |
