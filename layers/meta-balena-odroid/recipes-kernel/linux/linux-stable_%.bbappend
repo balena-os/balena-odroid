@@ -17,6 +17,10 @@ RESIN_CONFIGS[x509_disable] = " \
 SRC_URI += " \
     file://don-t-default-activate-regdb.patch \
     file://0001-odroid-xu4-Enable-I2C-1.patch \
+    file://0002-NFLX-2019-001-SACK-Panic.patch \
+    file://0004-NFLX-2019-001-SACK-Slowness.patch \
+    file://0005-NFLX-2019-001-Resour-Consump-Low-MSS.patch \
+    file://0006-NFLX-2019-001-Resour-Consump-Low-MSS.patch \
 "
 
 # add support for video input devices, such as webcams (adds uvcvideo.ko kernel module)
