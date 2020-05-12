@@ -8,6 +8,7 @@ module.exports =
 	name: 'ODROID-XU4'
 	arch: 'armv7hf'
 	state: 'released'
+	private: false
 
 	instructions: commonImg.instructions
 	gettingStartedLink:
