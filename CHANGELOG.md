@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.45.1+rev4
+## (2020-07-13)
+
+* Patches for TCP-based remote denial of service vulnerabilities [Vicentiu Galanopulo]
+
 # v2.45.1+rev3
 ## (2020-05-12)
 
