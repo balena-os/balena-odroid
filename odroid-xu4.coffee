@@ -12,9 +12,9 @@ module.exports =
 
 	instructions: commonImg.instructions
 	gettingStartedLink:
-		windows: 'http://docs.resin.io/#/pages/installing/gettingStarted-ODROID-XU4.md#windows'
-		osx: 'http://docs.resin.io/#/pages/installing/gettingStarted-ODROID-XU4.md#on-mac-and-linux'
-		linux: 'http://docs.resin.io/#/pages/installing/gettingStarted-ODROID-XU4.md#on-mac-and-linux'
+		windows: 'https://www.balena.io/docs/learn/getting-started/odroid-xu4/nodejs/'
+		osx: 'https://www.balena.io/docs/learn/getting-started/odroid-xu4/nodejs/'
+		linux: 'https://www.balena.io/docs/learn/getting-started/odroid-xu4/nodejs/'
 	supportsBlink: true
 
 	options: [ networkOptions.group ]

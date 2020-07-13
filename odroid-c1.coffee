@@ -12,9 +12,9 @@ module.exports =
 
 	instructions: commonImg.instructions
 	gettingStartedLink:
-		windows: 'http://docs.resin.io/#/pages/installing/gettingStarted-ODROID-C1.md#windows'
-		osx: 'http://docs.resin.io/#/pages/installing/gettingStarted-ODROID-C1.md#on-mac-and-linux'
-		linux: 'http://docs.resin.io/#/pages/installing/gettingStarted-ODROID-C1.md#on-mac-and-linux'
+		windows: 'https://www.balena.io/docs/learn/getting-started/odroid-c1/nodejs/'
+		osx: 'https://www.balena.io/docs/learn/getting-started/odroid-c1/nodejs/'
+		linux: 'https://www.balena.io/docs/learn/getting-started/odroid-c1/nodejs/'
 	supportsBlink: true
 
 	options: [ networkOptions.group ]
