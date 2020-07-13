@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update links to getting started guide from resin.io to balena.io
+      hash: 2d55b87c08f74ef95fbc511e7620fe59220be2be
+      body: ''
+      footer:
+        Changelog-entry: Update links to getting started guide from resin.io to balena.io
+        changelog-entry: Update links to getting started guide from resin.io to balena.io
+        Signed-off-by: Gareth Davies <gareth@balena.io>
+        signed-off-by: Gareth Davies <gareth@balena.io>
+      author: Gareth Davies
+      nested: []
+  version: 2.45.1+rev5
+  date: 2020-07-13T20:32:57.396Z
+- commits:
     - subject: Patches for TCP-based remote denial of service vulnerabilities
       hash: 6759b78846a5003c88db53effcded25817567bd4
       body: >
