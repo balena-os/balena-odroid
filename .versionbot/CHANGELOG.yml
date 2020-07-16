@@ -1,4 +1,27 @@
 - commits:
+    - subject: >-
+        Revert to older env_resin.h for Odroid C1 due to missing fsuuid command
+        support in old u-boot-hardkernel
+      hash: e23399ecc2fa05c76fcfb7966d2f3d9dae1a5f0d
+      body: |
+        Because the newer env_resin.h in meta-balena now requires fsuuid cmd
+        support in u-boot which we do not have in u-boot-hardkernel, we revert
+        to an older env_resin.h from revision
+        7e00998170a4412591876a024331db839d51279d
+      footer:
+        Changelog-entry: >-
+          Revert to older env_resin.h for Odroid C1 due to missing fsuuid
+          command support in old u-boot-hardkernel
+        changelog-entry: >-
+          Revert to older env_resin.h for Odroid C1 due to missing fsuuid
+          command support in old u-boot-hardkernel
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.52.7+rev2
+  date: 2020-07-16T16:06:37.283Z
+- commits:
     - subject: Update meta-balena from v2.52.6 to v2.52.7
       hash: 8f55217496967abc03cb87b23c871430264857c7
       body: |

@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.52.7+rev2
+## (2020-07-16)
+
+* Revert to older env_resin.h for Odroid C1 due to missing fsuuid command support in old u-boot-hardkernel [Florin Sarbu]
+
 # v2.52.7+rev1
 ## (2020-07-13)
 
