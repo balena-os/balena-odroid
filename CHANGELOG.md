@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.53.9+rev2
+## (2020-08-13)
+
+* Update poky to version warrior-21.0.2 [Florin Sarbu]
+
 # v2.53.9+rev1
 ## (2020-07-24)
 

@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update poky to version warrior-21.0.2
+      hash: a097d52da086b0d869a8853fa862cb0c5208875b
+      body: ''
+      footer:
+        Changelog-entry: Update poky to version warrior-21.0.2
+        changelog-entry: Update poky to version warrior-21.0.2
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.53.9+rev2
+  date: 2020-08-13T11:40:30.488Z
+- commits:
     - subject: Update meta-balena from v2.53.8 to v2.53.9
       hash: 3bd8929490a71dbc25e6ddc7ddd809cb0d24a07d
       body: |
