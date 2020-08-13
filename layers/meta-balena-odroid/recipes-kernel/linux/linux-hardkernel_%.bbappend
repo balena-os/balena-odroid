@@ -5,7 +5,7 @@ FILESEXTRAPATHS_append := ":${THISDIR}/${PN}"
 EXTRA_OEMAKE = " 'CFLAGS_MODULE=-fno-pic'"
 
 SRC_URI += " \
-    file://0001-include-linux-compiler-gcc6.h-Add-duplicate-of-gcc-5.patch \
+    file://0001-tools-Add-Build.include-script.patch \
     file://mali_build.patch \
     file://0002-Revert-fix-d_walk-non-delayed-__d_free-race.patch \
     file://0003-Revert-d_walk-might-skip-too-much.patch \
@@ -41,7 +41,7 @@ SRC_URI += " \
     file://0033-BACKPORT-vfs-add-cross-rename.patch \
     file://0034-aufs-tiny-extract-a-new-func-xino_fwrite_wkq.patch \
     file://0035-aufs-for-4.3-XINO-handles-EINTR-from-the-dying-proce.patch \
-    file://0001-tools-Add-Build.include-script.patch \
+    file://0036-Fix-gcc-8.3.0-compile-issues.patch \
 "
 
 # Update to a more recent version to fix aufs build
