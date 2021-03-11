@@ -21,10 +21,10 @@ module.exports =
 
 	yocto:
 		machine: 'odroid-xu4'
-		image: 'resin-image'
-		fstype: 'resinos-img'
+		image: 'balena-image'
+		fstype: 'balenaos-img'
 		version: 'yocto-sumo'
-		deployArtifact: 'resin-image-odroid-xu4.resinos-img'
+		deployArtifact: 'balena-image-odroid-xu4.balenaos-img'
 		compressed: true
 
 	configuration:

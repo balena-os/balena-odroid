@@ -49,8 +49,8 @@ SRCREV_odroid-c1 = "e256c9f9196a98cbacde730fda602e793b385a27"
 KV_odroid-c1 = "3.10.107"
 
 # These configs set CONFIG_CFG80211=m which breaks the hardkernel build
-RESIN_CONFIGS_remove = "rtl8192cu"
-RESIN_CONFIGS_remove = "ralink"
-RESIN_CONFIGS_remove = "brcmfmac"
+BALENA_CONFIGS_remove = "rtl8192cu"
+BALENA_CONFIGS_remove = "ralink"
+BALENA_CONFIGS_remove = "brcmfmac"
 
 KERNEL_DEVICETREE_odroid-c1 = "meson8b_odroidc.dtb"
