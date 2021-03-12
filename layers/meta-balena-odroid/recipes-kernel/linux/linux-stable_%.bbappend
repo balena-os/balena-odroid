@@ -3,13 +3,13 @@ inherit kernel-resin
 FILESEXTRAPATHS_append := ":${THISDIR}/${PN}:"
 
 # support for Realtek RTL8152/RTL8153 Based USB Ethernet Adapters such as the one featured in the Odroid XU4
-RESIN_CONFIGS_append = " rtl8152"
-RESIN_CONFIGS[rtl8152] = " \
+BALENA_CONFIGS_append = " rtl8152"
+BALENA_CONFIGS[rtl8152] = " \
     CONFIG_USB_RTL8152=m \
 "
 
-RESIN_CONFIGS_append = " x509_disable"
-RESIN_CONFIGS[x509_disable] = " \
+BALENA_CONFIGS_append = " x509_disable"
+BALENA_CONFIGS[x509_disable] = " \
     CONFIG_X509_CERTIFICATE_PARSER=n \
     CONFIG_SYSTEM_TRUSTED_KEYRING=n \
 "
@@ -24,40 +24,40 @@ SRC_URI += " \
 "
 
 # add support for video input devices, such as webcams (adds uvcvideo.ko kernel module)
-RESIN_CONFIGS_append = " uvcvideo"
-RESIN_CONFIGS_DEPS[uvcvideo] = " \
+BALENA_CONFIGS_append = " uvcvideo"
+BALENA_CONFIGS_DEPS[uvcvideo] = " \
     CONFIG_MEDIA_SUPPORT=m \
     CONFIG_MEDIA_USB_SUPPORT=y \
     CONFIG_MEDIA_CAMERA_SUPPORT=y \
 "
-RESIN_CONFIGS[uvcvideo] = " \
+BALENA_CONFIGS[uvcvideo] = " \
     CONFIG_USB_VIDEO_CLASS=m \
 "
 
 # requested by user for XU4 Cloudshell 2.2" TFT LCD support
-RESIN_CONFIGS_append = " fbtft"
-RESIN_CONFIGS[fbtft] = " \
+BALENA_CONFIGS_append = " fbtft"
+BALENA_CONFIGS[fbtft] = " \
     CONFIG_FB_TFT=m \
     CONFIG_FB_TFT_FBTFT_DEVICE=m \
 "
 
 # required for the above TFT LCD
-RESIN_CONFIGS_append = " spidev"
-RESIN_CONFIGS[spidev] = " \
+BALENA_CONFIGS_append = " spidev"
+BALENA_CONFIGS[spidev] = " \
     CONFIG_SPI_SPIDEV=m \
 "
 
 # requested by customer
-RESIN_CONFIGS_append = " snd_aloop"
-RESIN_CONFIGS_DEPS[snd_aloop] = " \
+BALENA_CONFIGS_append = " snd_aloop"
+BALENA_CONFIGS_DEPS[snd_aloop] = " \
     CONFIG_SOUND=y \
     CONFIG_SND=y \
     CONFIG_SND_DRIVERS=y \
 "
 
 # Add support for bluetooth devices include usb adapters
-RESIN_CONFIGS_append = " blueadd"
-RESIN_CONFIGS[blueadd] = " \
+BALENA_CONFIGS_append = " blueadd"
+BALENA_CONFIGS[blueadd] = " \
 	CONFIG_BT=m \
 	CONFIG_BT_BREDR=y \
 	CONFIG_BT_HS=y \
@@ -70,7 +70,7 @@ RESIN_CONFIGS[blueadd] = " \
 	CONFIG_BT_HCIVHCI=y \
 "
 
-RESIN_CONFIGS[snd_aloop] = " \
+BALENA_CONFIGS[snd_aloop] = " \
     CONFIG_SND_ALOOP=m \
 "
 
