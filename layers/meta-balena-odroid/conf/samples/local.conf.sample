@@ -62,6 +62,6 @@ BB_DISKMON_DIRS = "\
 CONF_VERSION = "1"
 
 # Allow use of host docker from recipes
-HOSTTOOLS += "docker iptables"
+HOSTTOOLS += "docker iptables newuidmap newgidmap ip ps"
 
 PREFERRED_PROVIDER_virtual/kernel_odroid-c1 = "linux-hardkernel"
