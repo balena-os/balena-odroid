@@ -1,4 +1,18 @@
 - commits:
+    - subject: Update balena-yocto-scripts from v1.11.0 to v1.14.9
+      hash: a8288299a127ab4e6969e865dcb3f36dbd79dfc3
+      body: |
+        Update balena-yocto-scripts from 1.11.0 to 1.14.9
+      footer:
+        Changelog-entry: Update balena-yocto-scripts from v1.11.0 to v1.14.9
+        changelog-entry: Update balena-yocto-scripts from v1.11.0 to v1.14.9
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2.78.0+rev2
+  date: 2021-09-24T09:55:55.484Z
+- commits:
     - subject: Rename resin-supervisor to balena-supervisor
       hash: 87465638064ddd547ee79242b6e83d0e86c84c30
       body: ''
