@@ -11,7 +11,7 @@ BALENA_BOOT_PARTITION_FILES_odroid-xu4 = " \
     u-boot-${MACHINE}.${UBOOT_SUFFIX}: \
     tzsw.bin.hardkernel: \
     ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-${MACHINE}.bin:/${KERNEL_IMAGETYPE} \
-    zImage-exynos5422-odroidxu4.dtb:/exynos5422-odroidxu4.dtb \
+    exynos5422-odroidxu4.dtb: \
     "
 
 # BOOT components
