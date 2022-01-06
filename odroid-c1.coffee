@@ -23,7 +23,7 @@ module.exports =
 		machine: 'odroid-c1'
 		image: 'balena-image'
 		fstype: 'balenaos-img'
-		version: 'yocto-sumo'
+		version: 'yocto-dunfell'
 		deployArtifact: 'balena-image-odroid-c1.balenaos-img'
 		compressed: true
 
