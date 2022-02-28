@@ -1,6 +1,25 @@
 Change log
 -----------
 
+# v2.78.0+rev9
+## (2022-02-26)
+
+
+<details>
+<summary> Update balena-yocto-scripts to v1.17.2 [Alex Gonzalez] </summary>
+
+> ## balena-yocto-scripts-1.17.2
+> ### (2022-02-25)
+> 
+> * prepare-and-start: Remove balena login [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.17.1
+> ### (2022-01-27)
+> 
+> * balena-deploy.inc: Do no deploy device logo to deprecated endpoint [Florin Sarbu]
+> 
+</details>
+
 # v2.78.0+rev8
 ## (2022-01-21)
 
