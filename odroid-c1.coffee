@@ -7,7 +7,7 @@ module.exports =
 	aliases: [ 'odroid-c1' ]
 	name: 'ODROID-C1+'
 	arch: 'armv7hf'
-	state: 'released'
+	state: 'discontinued'
 	private: false
 
 	instructions: commonImg.instructions
