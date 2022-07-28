@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.88.4+rev7
+## (2022-07-28)
+
+* Mark odroid-c1 as discontinued [Alex Gonzalez]
+* Update contracts to 9db49d2fbb34542f53bf496135c32cccf5df487c [renovate[bot]]
+
 # v2.88.4+rev6
 ## (2022-07-26)
 

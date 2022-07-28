@@ -1,4 +1,33 @@
 - commits:
+    - subject: Mark odroid-c1 as discontinued
+      hash: 1840ab4a3021500d87736b33ee1da77a4e6c9e9f
+      body: |
+        This device is no longer supported by the manufacturer and it is stuck
+        on a v3.10 kernel that does not support overlay2 and cannot build for
+        newer meta-balena versions.
+
+        Note that changing the state in device-type.json is no longer required
+        by the cloud and it is enough to mark is as is_archived, but I am doing
+        it anyway to keep device-type.json consistent until we stop using it.
+      footer:
+        Changelog-entry: Mark odroid-c1 as discontinued
+        changelog-entry: Mark odroid-c1 as discontinued
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: Update contracts to 9db49d2fbb34542f53bf496135c32cccf5df487c
+      hash: e6f4288694fc211137e258a509fc8ae4cc740a8b
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to 9db49d2fbb34542f53bf496135c32cccf5df487c
+        changelog-entry: Update contracts to 9db49d2fbb34542f53bf496135c32cccf5df487c
+      author: renovate[bot]
+      nested: []
+  version: 2.88.4+rev7
+  title: "'odroid-c1: Mark as discontinued'"
+  date: 2022-07-28T08:42:39.537Z
+- commits:
     - subject: Update contracts to 4df6bf241e40b34e4d7051c97ba4f9cf1945c45f
       hash: 525b9c4f1e19d7ddd2df75ef9fb98211969b56ba
       body: Update contracts
