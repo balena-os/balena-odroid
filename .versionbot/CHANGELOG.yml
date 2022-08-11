@@ -1,4 +1,29 @@
 - commits:
+    - subject: Update contracts to 91807ae538dccedb69877eed28ae6752287e2f21
+      hash: 01e8185ad749aa89edfd40f5a2f9aa1236bf8ae4
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to 91807ae538dccedb69877eed28ae6752287e2f21
+        changelog-entry: Update contracts to 91807ae538dccedb69877eed28ae6752287e2f21
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "generic-amd64: update logo to be vendor agnostic"
+              hash: 77be9ac931237432f35a993cfe30395c04f4c27e
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+          version: contracts-2.0.11
+          title: "'generic-amd64: update logo to be vendor agnostic'"
+          date: 2022-08-10T23:53:37.506Z
+  version: 2.88.4+rev12
+  title: "'Update contracts digest to 91807ae'"
+  date: 2022-08-11T00:25:31.223Z
+- commits:
     - subject: Update contracts to d82f4b2d9f182bab4f5b39b4906e0ca17154fa04
       hash: d0652ee3d82f51ddb02502b6f5f758ab6af4d918
       body: Update contracts
