@@ -1,6 +1,25 @@
 Change log
 -----------
 
+# v2.101.11+rev1
+## (2022-09-06)
+
+
+<details>
+<summary> Update contracts to e7520599758cae5f507d7189a3415e95e2ff0309 [renovate[bot]] </summary>
+
+> ## contracts-2.0.14
+> ### (2022-09-06)
+> 
+> * Add node v18.8.0 [Trong Nghia Nguyen]
+> 
+> ## contracts-2.0.13
+> ### (2022-08-26)
+> 
+> * imx8mm-var-som: Add device type [Alexandru Costache]
+> 
+</details>
+
 # v2.101.11
 ## (2022-08-25)
 
