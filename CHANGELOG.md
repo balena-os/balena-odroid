@@ -1,6 +1,295 @@
 Change log
 -----------
 
+# v2.105.11
+## (2022-10-15)
+
+
+<details>
+<summary> Update layers/meta-balena to 433b72275aa61da736904aa3f55c7b987824d523 [renovate[bot]] </summary>
+
+> ## meta-balena-2.105.11
+> ### (2022-10-13)
+> 
+> * Update balena-os/balena-supervisor to v14.2.10 [renovate[bot]]
+> 
+> ## meta-balena-2.105.10
+> ### (2022-10-12)
+> 
+> * classes: kernel-balena: improve aufs branch selection [Alex Gonzalez]
+> 
+> ## meta-balena-2.105.9
+> ### (2022-10-11)
+> 
+> * meta-balena-rust: Fix ABI for arm [Alex Gonzalez]
+> 
+> ## meta-balena-2.105.8
+> ### (2022-10-11)
+> 
+> * meta-balena-thud: Enable GOCACHE [Alex Gonzalez]
+> 
+> ## meta-balena-2.105.7
+> ### (2022-10-06)
+> 
+> * Update balena-os/balena-supervisor to v14.2.8 [renovate[bot]]
+> 
+> ## meta-balena-2.105.6
+> ### (2022-10-06)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 4482393 [renovate[bot]] </summary>
+> 
+>> ### leviathan-2.9.9
+>> #### (2022-10-05)
+>> 
+>> * Revert "worker: Pin to stable release 2.5.10 prior to md support" [Kyle Harding]
+>> 
+>> ### leviathan-2.9.8
+>> #### (2022-10-05)
+>> 
+>> * Switch to Flowzone for CI [Kyle Harding]
+>> * Remove leftover balena.yml file [Kyle Harding]
+>> 
+> </details>
+> 
+> 
+> ## meta-balena-2.105.5
+> ### (2022-10-01)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to a2079bd [renovate[bot]] </summary>
+> 
+>> ### leviathan-2.9.7
+>> #### (Invalid date)
+>> 
+>> * Splie interface name into config [rcooke-warwick]
+>> * core: Specify wireless interface name for the 243390 device type [Alexandru Costache]
+>> 
+> </details>
+> 
+> 
+> ## meta-balena-2.105.4
+> ### (2022-10-01)
+> 
+> * Update balena-os/balena-supervisor to v14.2.7 [renovate[bot]]
+> 
+> ## meta-balena-2.105.3
+> ### (Invalid date)
+> 
+> * flowzone: Run also for pull requests into ESR branches [Alex Gonzalez]
+> * Switch from balenaCI to flowzone [Pagan Gazzard]
+> 
+> ## meta-balena-2.105.2
+> ### (2022-09-22)
+> 
+> * contributing-device-support.md: Clarify repo set-up in balenaOS org [Florin Sarbu]
+> 
+> ## meta-balena-2.105.1
+> ### (2022-09-21)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 15d608b [renovate[bot]] </summary>
+> 
+>> ### leviathan-2.9.6
+>> #### (2022-09-21)
+>> 
+>> * core/contracts: bump contracts to v2.0.16 [Alexandru Costache]
+>> 
+> </details>
+> 
+> 
+> ## meta-balena-2.105.0
+> ### (2022-09-20)
+> 
+> * Update balena-os/balena-supervisor to v14.2.0 [renovate[bot]]
+> 
+> ## meta-balena-2.104.1
+> ### (2022-09-20)
+> 
+> * balena: remove kernel-module-nf-nat-native dependency for host build [Alexandru Costache]
+> 
+> ## meta-balena-2.104.0
+> ### (2022-09-19)
+> 
+> * Update balena-os/balena-supervisor to v14.1.1 [renovate[bot]]
+> 
+> ## meta-balena-2.103.5
+> ### (2022-09-19)
+> 
+> * Update balena-os/balena-supervisor to v14.0.25 [renovate[bot]]
+> 
+> ## meta-balena-2.103.4
+> ### (2022-09-17)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 881cd72 [renovate[bot]] </summary>
+> 
+>> ### leviathan-2.9.5
+>> #### (2022-09-15)
+>> 
+>> * bump contracts to  v2.0.15 [rcooke-warwick]
+>> 
+>> ### leviathan-2.9.4
+>> #### (2022-09-13)
+>> 
+>> * increase timeout on local push sv ping [rcooke-warwick]
+>> 
+>> ### leviathan-2.9.3
+>> #### (2022-09-08)
+>> 
+>> * patch: Remove unused SDK helpers [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### leviathan-2.9.2
+>> #### (2022-09-08)
+>> 
+>> * patch: Remove unused CLI helpers [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### leviathan-2.9.1
+>> #### (2022-09-08)
+>> 
+>> * patch: Remove npm package as dependency [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### leviathan-2.9.0
+>> #### (2022-09-07)
+>> 
+>> * core: Switch to debian base and install standalone balena-cli [Kyle Harding]
+>> * core: Set node engine to match the Dockerfile [Kyle Harding]
+>> * core: Remove balena-cli npm dependency [Kyle Harding]
+>> 
+> </details>
+> 
+> 
+> ## meta-balena-2.103.3
+> ### (2022-09-15)
+> 
+> * resin-init-flasher: skip array members not matching a named array [Joseph Kogut]
+> * resin-init-flasher: support pattern matching of devices [Joseph Kogut]
+> 
+> ## meta-balena-2.103.2
+> ### (2022-09-14)
+> 
+> * mobynit: allow compile task to use network [Joseph Kogut]
+> 
+> ## meta-balena-2.103.1
+> ### (2022-09-13)
+> 
+> * tests: os: only do hdmi test if has capture device [rcooke-warwick]
+> 
+> ## meta-balena-2.103.0
+> ### (2022-09-12)
+> 
+> * README: Add kirkstone support [Alex Gonzalez]
+> * layer.conf: Add kirkstone support [Alex Gonzalez]
+> * kernel-balena-noimage: Remove kernel-image packages from image [Alex Gonzalez]
+> * meta-balena-kirkstone: plymouth: Adapt custom patches [Alex Gonzalez]
+> * meta-balena-kirkstone: systemd: Ammend patches to remove fuzziness warning [Alex Gonzalez]
+> * meta-balena-kirkstone: replace honister with kirkstone [Alex Gonzalez]
+> * meta-balena-kirkstone: use upstream kernel-devsrc recipe [Alex Gonzalez]
+> * meta-balena-kirkstone: use the procps recipe from upstream [Alex Gonzalez]
+> * meta-balena-kirkstone: Add kirkstone integration layer [Alex Gonzalez]
+> * classes: image-balena: Fix journal blocks calculation [Alex Gonzalez]
+> * packagegroup-resin: Move libnss-ato out of packagegroup to avoid build error [Alex Gonzalez]
+> * openvpn: update to version 2.5.6 [Alex Gonzalez]
+> * balena-supervisor: Allow network use in install task [Alex Gonzalez]
+> * docker-disk: Allow compile task to use network [Alex Gonzalez]
+> * chrony: update to version 4.1 to match kirkstone's version [Alex Gonzalez]
+> * os-config: Adapt to kirkstone [Alex Gonzalez]
+> * healthdog: Adapt to kirkstone [Alex Gonzalez]
+> * compatibility: Do not update tpm2-tss below Dunfell [Alex Gonzalez]
+> * tpm2-tss: update to kirkstone [Alex Gonzalez]
+> * tpm2-tools: update to kirkstone [Alex Gonzalez]
+> * tpm2-abrmd: update to kirkstone [Alex Gonzalez]
+> * meta-balena-common: Assure all recipes have branch and protocol in SRC_URI [Alex Gonzalez]
+> * bluez5: update to 5.64 [Alex Gonzalez]
+> * efi-tools: Replace SSTATE_DUPWHITELIST with SSTATE_ALLOW_OVERLAP_FILES [Alex Gonzalez]
+> 
+> ## meta-balena-2.102.6
+> ### (2022-09-07)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 7fe3c5f [renovate[bot]] </summary>
+> 
+>> ### leviathan-2.8.4
+>> #### (2022-09-07)
+>> 
+>> * core: Copy all files/directories except those in dockerignore [Kyle Harding]
+>> * core: Move contracts submodule back to original path [Kyle Harding]
+>> 
+>> ### leviathan-2.8.3
+>> #### (2022-09-07)
+>> 
+>> * patch: Migrate away from config package [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### leviathan-2.8.2
+>> #### (2022-09-06)
+>> 
+>> * worker: Pin to stable release 2.5.10 prior to md support [Kyle Harding]
+>> 
+>> ### leviathan-2.8.1
+>> #### (2022-09-03)
+>> 
+>> * patch: Fix contracts name [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### leviathan-2.8.0
+>> #### (2022-08-26)
+>> 
+>> * patch: Accept 429 HTTP codes using config file [Vipul Gupta (@vipulgupta2048)]
+>> * minor: Add support for Private Contracts [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### leviathan-2.7.4
+>> #### (2022-08-24)
+>> 
+>> * Fix "Declaration emit" error during `npm run docs` [Leandro Motta Barros]
+>> 
+> </details>
+> 
+> 
+> ## meta-balena-2.102.5
+> ### (2022-09-06)
+> 
+> * patch: Add package-lock.json files for tests [Vipul Gupta (@vipulgupta2048)]
+> 
+> ## meta-balena-2.102.4
+> ### (Invalid date)
+> 
+> * udev: run resin-update-state after md assemble [Joseph Kogut]
+> * resin_update_state_probe: do not skip md devices [Joseph Kogut]
+> 
+> ## meta-balena-2.102.3
+> ### (Invalid date)
+> 
+> * renovate: Restore default commit body [Kyle Harding]
+> 
+> ## meta-balena-2.102.2
+> ### (2022-08-29)
+> 
+> * Renovate: Fix package rules for balena supervisor [Kyle Harding]
+> 
+> ## meta-balena-2.102.1
+> ### (2022-08-29)
+> 
+> * meta-balena-thud: initramfs: Fix building with latest meta-balena [Alex Gonzalez]
+> 
+> ## meta-balena-2.102.0
+> ### (2022-08-25)
+> 
+> * meta-balena-common: distro: Add rust preferred versions [Alex Gonzalez]
+> * meta-balena-common: os-config: Update to v1.2.11 [Alex Gonzalez]
+> * meta-balena-integration: Replace parallel_make_argument() [Alex Gonzalez]
+> * meta-balena-integration: Update cmake for versions below Zeus [Alex Gonzalez]
+> * meta-balena-rust: Add condition check for parallel_make_argument() use [Alex Gonzalez]
+> * meta-balena-rust: Provide crate fetcher for Yocto versions without it [Alex Gonzalez]
+> * meta-balena-rust: Modify to use without oe.rust.arch_to_rust_arch() support [Alex Gonzalez]
+> * meta-balena-rust: Add rust recipes to keep the rust version a distribution config [Alex Gonzalez]
+> * meta-balena-rust: Add compatibility layer [Alex Gonzalez]
+> 
+</details>
+
 # v2.101.11+rev5
 ## (2022-10-14)
 
