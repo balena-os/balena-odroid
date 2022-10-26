@@ -1,4 +1,218 @@
 - commits:
+    - subject: Update layers/meta-balena to 6fe97ecc67ba4dc83fb5ff21d801e9062d4179d4
+      hash: 2ac84c512a9f3fa547ab13cd91c7b85441b090b2
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 6fe97ecc67ba4dc83fb5ff21d801e9062d4179d4
+        changelog-entry: Update layers/meta-balena to 6fe97ecc67ba4dc83fb5ff21d801e9062d4179d4
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "meta-resin-sumo: libical: Fix build QA error"
+              hash: a34583a3f5cbac25502ac9ad62f0d0073eb96511
+              body: >
+                Address the following build error:
+
+                ```
+
+                ERROR: libical-2.0.0-r0 do_package: QA Issue: libical: Files/directories were installed but not shipped in any package:
+
+                /usr/lib/cmake
+
+                /usr/lib/cmake/LibIcal
+
+                /usr/lib/cmake/LibIcal/LibIcalTargets.cmake
+
+                /usr/lib/cmake/LibIcal/LibIcalConfig.cmake
+
+                /usr/lib/cmake/LibIcal/LibIcalConfigVersion.cmake
+
+                /usr/lib/cmake/LibIcal/LibIcalTargets-noconfig.cmake
+
+                ```
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.105.20
+          title: ""
+          date: 2022-10-26T14:42:10.358Z
+        - commits:
+            - subject: "meta-resin-sumo: keep tpm2-tools in 5.0"
+              hash: 6c0596989bd182f26da1255ccfa7a55e45a0194e
+              body: >
+                Newer versions fail on the configuration step with:
+
+                Requested 'libcrypto >= 1.1.0' but version of OpenSSL-libcrypto is 1.0.2o
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.105.19
+          title: ""
+          date: 2022-10-26T01:25:34.955Z
+        - commits:
+            - subject: Update tests/leviathan digest to f83df7d
+              hash: fb3a49ca995fb2553f1b635cdf06559a239f92ed
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: renovate[bot]
+              nested:
+                - commits:
+                    - subject: "minor: Add @balena/leviathan-test-helpers package"
+                      hash: 47f061bef9a6bc73782599ad8ab0add43d10883b
+                      body: ""
+                      footer:
+                        Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                      author: Vipul Gupta (@vipulgupta2048)
+                      nested: []
+                  version: leviathan-2.10.0
+                  title: ""
+                  date: 2022-10-25T13:23:40.230Z
+          version: meta-balena-2.105.18
+          title: ""
+          date: 2022-10-25T16:35:47.720Z
+        - commits:
+            - subject: "tests: hup: reduce num. flashes and  hostapp sends"
+              hash: 51f558450d60776470f92341789e14eecc217a65
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.105.17
+          title: ""
+          date: 2022-10-21T15:04:03.760Z
+        - commits:
+            - subject: "common: openvpn: remove resin.conf"
+              hash: ce288ba9138ab385370e2375a64ef8c185feb2c9
+              body: >
+                This config file hasn't been used since commit 2db88c2, which unified
+
+                how managed and unmanaged images operate. Since that commit, openvpn
+
+                starts up if the config file at /etc/openvpn/openvpn.conf is found, and
+
+                otherwise remains inactive. This file is populated by os-config.
+
+
+                Remove the old config to prevent misdirection and cleanup the layer.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.105.16
+          title: ""
+          date: 2022-10-20T02:12:40.759Z
+        - commits:
+            - subject: "Revert \"chrony: update to version 4.1 to match kirkstone's version\""
+              hash: 3ea5184c30f3051d58f1a1befd19c76c17ee4334
+              body: >
+                With the updated version the systemd watchdog events are not received.
+
+
+                Fixes #2823
+
+
+                This reverts commit 5049451b32d2d2c59f2aeb4713b2e6539bffeb49.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.105.15
+          title: ""
+          date: 2022-10-19T16:58:50.881Z
+        - commits:
+            - subject: "patch: Enable RPi3-64 for Device tree tests"
+              hash: 55ac90b20dabbd8efe54f6e84d6c9e8c0d8166e9
+              body: ""
+              footer:
+                Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+              author: Vipul Gupta (@vipulgupta2048)
+              nested: []
+          version: meta-balena-2.105.14
+          title: ""
+          date: 2022-10-18T16:04:41.810Z
+        - commits:
+            - subject: "ntp: Remove race condition from directory creation"
+              hash: 5fd19e26d35d7160e2531277a9a14e194d0b95c6
+              body: >
+                Chronyd checks that the directory specified as `sourcedir` in
+                `chrony.conf`
+
+                (in this case `/var/chrony`) is not world accessible if it exists (chrony
+
+                will create it correctly if it does not exist), and does not start
+
+                if that's the case.
+
+
+                The way that the `/var/chrony` is created when it does not exist opens
+
+                the possibility of the directory existing with the wrong permissions and
+
+                hitting this problem.
+
+
+                This commit creates the directory with the correct permissions from the
+
+                start to avoid the race condition.
+
+
+                It also changes the permissiong from 750 to 770 to match what chrony
+
+                does (see
+
+                https://github.com/mlichvar/chrony/blob/7b197953e8add5515b7e58c4638dc55aa4bb91b7/conf.c#L1761)
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.105.13
+          title: ""
+          date: 2022-10-18T12:38:31.247Z
+        - commits:
+            - subject: "classes: kernel-balena: Allow aufs patching to use network"
+              hash: 549c6922e4d427f37727b6dffb7e5008f5afdfb6
+              body: |
+                On kirkstone, tasks need to be explicitely allowed to access the
+                network.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.105.12
+          title: ""
+          date: 2022-10-17T08:41:58.221Z
+  version: 2.105.20
+  title: ""
+  date: 2022-10-26T19:29:16.358Z
+- commits:
     - subject: Update layers/meta-balena to 433b72275aa61da736904aa3f55c7b987824d523
       hash: 6a1ee33924747c4b822190646d4ebd3bc97009da
       body: Update layers/meta-balena
