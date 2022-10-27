@@ -1,4 +1,20 @@
 - commits:
+    - subject: Update build and deploy workflow to v0.0.12
+      hash: 239cf3b3fe164d18bc7a1948d53eb7ff81a94773
+      body: |
+        This update identifies test job names with the default prefix `test`
+        instead of a hardcoded `testbot-`.
+      footer:
+        Changelog-entry: Update build and deploy workflow to v0.0.12
+        changelog-entry: Update build and deploy workflow to v0.0.12
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2.105.20+rev2
+  title: ""
+  date: 2022-10-27T08:33:51.784Z
+- commits:
     - subject: Update balena-yocto-scripts to 7c5b9c44fbd4039c3387c8b74e8efae8fa9f37d6
       hash: 15163bee88474f0e15ada22d0edec45cbb63e6d4
       body: Update balena-yocto-scripts
