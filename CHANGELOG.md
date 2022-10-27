@@ -1,6 +1,47 @@
 Change log
 -----------
 
+# v2.105.20+rev3
+## (2022-10-27)
+
+
+<details>
+<summary> Update contracts to c311e6f8a9832587b3bb687b22a92574b790c688 [renovate[bot]] </summary>
+
+> ## contracts-2.0.23
+> ### (2022-10-25)
+> 
+> * sw.os+hw.device-type: Add distro-config.tpl for jetson-agx-orin-devkit [Alexandru Costache]
+> 
+> ## contracts-2.0.22
+> ### (2022-10-24)
+> 
+> * hw+device-type: Add jetson-agx-orin-devkit device type [Alexandru Costache]
+> 
+> ## contracts-2.0.21
+> ### (2022-10-20)
+> 
+> * Add node v19.0.0 [Trong Nghia Nguyen]
+> 
+> ## contracts-2.0.20
+> ### (2022-10-14)
+> 
+> * Add Golang v1.19.2 and v1.18.7 [Trong Nghia Nguyen]
+> * Add node v18.11.0 and v16.18.0 [Trong Nghia Nguyen]
+> 
+> ## contracts-2.0.19
+> ### (2022-10-05)
+> 
+> * Update dotnet 6.0 and 3.1 to latest version [Trong Nghia Nguyen]
+> * Add Python v3.10.7 v3.9.14 v3.8.14 and v3.7.14 [Trong Nghia Nguyen]
+> 
+> ## contracts-2.0.18
+> ### (2022-10-05)
+> 
+> * Switch from balenaCI to flowzone [Trong Nghia Nguyen]
+> 
+</details>
+
 # v2.105.20+rev2
 ## (2022-10-27)
 
