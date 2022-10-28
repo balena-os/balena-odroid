@@ -1,4 +1,33 @@
 - commits:
+    - subject: Update layers/meta-balena to 2e9f69012d326b5925304c9d25427c5cc46dfbd4
+      hash: 76c27c260223611d248e8c1402a31a38a935d770
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 2e9f69012d326b5925304c9d25427c5cc46dfbd4
+        changelog-entry: Update layers/meta-balena to 2e9f69012d326b5925304c9d25427c5cc46dfbd4
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "openssh: allow RSA signatures with SHA1 algorithms"
+              hash: df5e9dcd4a8f61ace849d5bb437798d16a440191
+              body: >
+                Openssh v8.8 removes this support by default but the backend still
+
+                needs to be updated to drop these.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.105.21
+          title: ""
+          date: 2022-10-27T08:02:52.407Z
+  version: 2.105.21
+  title: ""
+  date: 2022-10-28T00:38:41.094Z
+- commits:
     - subject: Update contracts to c311e6f8a9832587b3bb687b22a92574b790c688
       hash: ba06f960fa28ac24d1c7979c2634720b2eec3b3d
       body: Update contracts
