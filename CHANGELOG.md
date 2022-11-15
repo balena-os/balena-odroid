@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.105.22+rev3
+## (2022-11-15)
+
+* Remove discontinued odroid-c1 [Alex Gonzalez]
+
 # v2.105.22+rev2
 ## (2022-11-09)
 
