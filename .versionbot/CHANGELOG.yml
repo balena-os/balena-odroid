@@ -1,4 +1,29 @@
 - commits:
+    - subject: Update contracts to 0357433005e9ea7ace7876530d910eeb8386c980
+      hash: 70cc495c8e15e49be0d2004118fe092d84f0c613
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to 0357433005e9ea7ace7876530d910eeb8386c980
+        changelog-entry: Update contracts to 0357433005e9ea7ace7876530d910eeb8386c980
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: Add partials for dotnet v7
+              hash: b6e275498276319e59b8210e5d62f8c86804919d
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+          version: contracts-2.0.31
+          title: ""
+          date: 2022-12-10T03:49:36.476Z
+  version: 2.105.22+rev7
+  title: ""
+  date: 2022-12-10T06:00:17.501Z
+- commits:
     - subject: Update contracts to 7038b0ce71daa96a832540d24fcad5bc5142ff13
       hash: 7c9fe13b83dc515a6a4c5d6fb39980e8f5a1e27f
       body: Update contracts
