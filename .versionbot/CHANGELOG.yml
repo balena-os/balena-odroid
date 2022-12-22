@@ -1,4 +1,30 @@
 - commits:
+    - subject: Update contracts to 4698e4ef55fdc61aa3df8d8494f2cbbd306b26c9
+      hash: 75045721ef3f972189a24a1b0a208189d083438c
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to 4698e4ef55fdc61aa3df8d8494f2cbbd306b26c9
+        changelog-entry: Update contracts to 4698e4ef55fdc61aa3df8d8494f2cbbd306b26c9
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: Fix owa5x slug
+              hash: a310eafb4ebf50b4c91f40dca5ba0122e0949949
+              body: |
+                Only use lowercase in slug name
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+          version: contracts-2.0.36
+          title: ""
+          date: 2022-12-22T11:15:02.988Z
+  version: 2.105.22+rev12
+  title: ""
+  date: 2022-12-22T13:33:12.060Z
+- commits:
     - subject: Update contracts to b65d5bd372587d4aaabba526d34f67c3f63ea90b
       hash: 950c417357dbe04f44b78aebc4e015378b6881e0
       body: Update contracts
