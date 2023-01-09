@@ -1,4 +1,37 @@
 - commits:
+    - subject: Update contracts to cbc450a40296e716e50344b3d625fb9a9b6975f6
+      hash: 1911a048f159341bd957a8a2bbdc4b6e238998b2
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to cbc450a40296e716e50344b3d625fb9a9b6975f6
+        changelog-entry: Update contracts to cbc450a40296e716e50344b3d625fb9a9b6975f6
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "Forecr DSBOARD NX2 Xavier NX eMMC: Add community device-type"
+              hash: 9845bc4266923d6f66c118f14f976780a3b925a6
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+          version: contracts-2.0.38
+          title: ""
+          date: 2023-01-07T16:16:43.024Z
+    - subject: Update balena-yocto-scripts to 56bb055d91481023a6b6cff92d61ebfffa884139
+      hash: b989f3a9d9c6dfb91623277b9799926d3a3a3682
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 56bb055d91481023a6b6cff92d61ebfffa884139
+        changelog-entry: Update balena-yocto-scripts to 56bb055d91481023a6b6cff92d61ebfffa884139
+      author: renovate[bot]
+      nested: []
+  version: 2.105.22+rev15
+  title: ""
+  date: 2023-01-09T10:43:36.486Z
+- commits:
     - subject: Update contracts to d647331a48dfbc6d398139831054d41fa52f79da
       hash: c155269bbee346843e3389383fc395d5d12e6fd2
       body: Update contracts

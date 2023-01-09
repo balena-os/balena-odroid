@@ -1,6 +1,23 @@
 Change log
 -----------
 
+# v2.105.22+rev15
+## (2023-01-09)
+
+
+<details>
+<summary> Update contracts to cbc450a40296e716e50344b3d625fb9a9b6975f6 [renovate[bot]] </summary>
+
+> ## contracts-2.0.38
+> ### (2023-01-07)
+> 
+> * Forecr DSBOARD NX2 Xavier NX eMMC: Add community device-type [Alexandru Costache]
+> 
+
+</details>
+
+* Update balena-yocto-scripts to 56bb055d91481023a6b6cff92d61ebfffa884139 [renovate[bot]]
+
 # v2.105.22+rev14
 ## (2023-01-07)
 
