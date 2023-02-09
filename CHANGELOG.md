@@ -1,6 +1,946 @@
 Change log
 -----------
 
+# v2.110.3
+## (2023-02-09)
+
+
+<details>
+<summary> Update layers/meta-balena to 2c4c90350f1748a5b8d11441d84023c65069f01d [Renovate Bot] </summary>
+
+> ## meta-balena-2.110.3
+> ### (2023-02-09)
+> 
+> * os-helpers: remove shebangs as these are not meant to be executed [Alex Gonzalez]
+> * resindataexpander: Fix formatting [Alex Gonzalez]
+> * resin-init-flasher: Extract code that resolved internal device [Alex Gonzalez]
+> * os-helpers-fs: Add shared code from resin-init-flasher [Alex Gonzalez]
+> * resin-init-flasher: remove unused variable [Alex Gonzalez]
+> * resin-init-flasher: Use the default for the external boot partition mount [Alex Gonzalez]
+> * resin-init-flasher: search for images to copy instead of hardcoding paths [Alex Gonzalez]
+> * resin-init-flasher: Do not  hardcode the path to the internal boot device [Alex Gonzalez]
+> * resin-init-flasher: remove systemd dependency [Alex Gonzalez]
+> * resin-init-flasher: Do not hardcode path to the raw image [Alex Gonzalez]
+> * initrdscript: prepare: expose path to initramfs logs [Alex Gonzalez]
+> * initrdscript: resindataexpander: skip for flasher images [Alex Gonzalez]
+> * docs: add initramfs overview [Alex Gonzalez]
+> 
+> ## meta-balena-2.110.2
+> ### (2023-02-07)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 4f63a2d [Renovate Bot] </summary>
+> 
+>> ### leviathan-2.18.1
+>> #### (2023-02-07)
+>> 
+>> * patch: Automate docs deployment with Flowzone [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### leviathan-2.18.0
+>> #### (2023-02-07)
+>> 
+>> * Update core/contracts digest to 7797750 [Renovate Bot]
+>> 
+>> ### leviathan-2.17.6
+>> #### (2023-02-07)
+>> 
+>> * patch: Update client lockfile [Vipul Gupta (@vipulgupta2048)]
+>> * patch: Update core lockfile [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### leviathan-2.17.5
+>> #### (2023-02-06)
+>> 
+>> * patch: Update core dependencies [Vipul Gupta (@vipulgupta2048)]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-2.110.1
+> ### (2023-02-07)
+> 
+> * renovate: Include to and from versions for supervisor and engine [Kyle Harding]
+> 
+> ## meta-balena-2.110.0
+> ### (2023-02-07)
+> 
+> * Update balena-supervisor to v14.7.1 [Renovate Bot]
+> 
+> ## meta-balena-2.109.2
+> ### (2023-02-07)
+> 
+> * efitools: backport patch to fix build failure [Joseph Kogut]
+> * efitools: fix cross-compilation on arm [Joseph Kogut]
+> * Only include EFI tools if the machine feature is defined [Alex Gonzalez]
+> 
+> ## meta-balena-2.109.1
+> ### (2023-02-06)
+> 
+> * resin-extra-udev-rules: Remove after all device types have been updated [Alex Gonzalez]
+> 
+> ## meta-balena-2.109.0
+> ### (2023-02-05)
+> 
+> * kernel-balena: Remove apparmor support [Alex Gonzalez]
+> 
+> ## meta-balena-2.108.39
+> ### (2023-02-03)
+> 
+> * flasher: handle user mode system w/out secure boot [Joseph Kogut]
+> * flasher: fix keys not enrolling with secure boot enabled [Joseph Kogut]
+> * flasher: fix secure boot setup with enrolled keys [Joseph Kogut]
+> 
+> ## meta-balena-2.108.38
+> ### (2023-02-03)
+> 
+> 
+> <details>
+> <summary> Update leviathan to v2.17.4 [Kyle Harding] </summary>
+> 
+>> ### leviathan-2.17.4
+>> #### (2023-01-28)
+>> 
+>> * patch: Upgrade client to v18 [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### leviathan-2.17.3
+>> #### (2023-01-26)
+>> 
+>> * patch: Update client dependencies [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### leviathan-2.17.2
+>> #### (2023-01-19)
+>> 
+>> * chore(deps): update alpine docker tag to v3.17.1 [renovate[bot]]
+>> 
+>> ### leviathan-2.17.1
+>> #### (2023-01-19)
+>> 
+>> * patch: Convert balenaCloudInteractor to JS [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### leviathan-2.17.0
+>> #### (2023-01-19)
+>> 
+>> * chore(deps): update dependency json5 [security] [renovate[bot]]
+>> 
+>> ### leviathan-2.16.1
+>> #### (2023-01-19)
+>> 
+>> * split swtpm service into separate compose file [Joseph Kogut]
+>> 
+>> ### leviathan-2.16.0
+>> #### (2023-01-18)
+>> 
+>> * chore(deps): update core/contracts digest to 8392bb2 [renovate[bot]]
+>> 
+>> ### leviathan-2.15.1
+>> #### (2023-01-17)
+>> 
+>> * patch: Drop config NPM package [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### leviathan-2.15.0
+>> #### (2023-01-14)
+>> 
+>> * chore(deps): update dependency ansi-regex [security] [renovate[bot]]
+>> 
+>> ### leviathan-2.14.9
+>> #### (2023-01-05)
+>> 
+>> * compose: qemu: add swtpm service [Joseph Kogut]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-2.108.37
+> ### (2023-02-02)
+> 
+> * Update balena-engine to v20.10.26 [Renovate Bot]
+> 
+> ## meta-balena-2.108.36
+> ### (2023-02-02)
+> 
+> * flasher: remove duplicate EFI boot entries [Joseph Kogut]
+> * flasher: create EFI boot entry [Joseph Kogut]
+> * common: os-helpers-fs: fix get_dev_path_from_label w/ luks [Joseph Kogut]
+> * flasher: make secure boot opt-in [Joseph Kogut]
+> * flasher: ensure image is signed before enrollment [Joseph Kogut]
+> * flasher: refactor secure boot block [Joseph Kogut]
+> 
+> ## meta-balena-2.108.35
+> ### (2023-02-01)
+> 
+> * renovate: Add regex manager for balena-engine [Kyle Harding]
+> 
+> ## meta-balena-2.108.34
+> ### (2023-02-01)
+> 
+> * docs: Add secure boot and disk encryption overview [Alex Gonzalez]
+> * hostapp-update-hooks: Fail if new keys are used [Alex Gonzalez]
+> * resin-init-flasher: In setupmode program new keys [Alex Gonzalez]
+> 
+> ## meta-balena-2.108.33
+> ### (2023-02-01)
+> 
+> * tests: os: skip persistent logging test for pi0 [rcooke-warwick]
+> 
+> ## meta-balena-2.108.32
+> ### (2023-02-01)
+> 
+> * efitools: Allow builds for ARM architecture [Alex Gonzalez]
+> 
+> ## meta-balena-2.108.31
+> ### (2023-02-01)
+> 
+> * rollback-health: bind-mount EFI partition when split from boot [Michal Toman]
+> 
+> ## meta-balena-2.108.30
+> ### (Invalid date)
+> 
+> * redsocks: Deploy README and sample configration file [Alexandru Costache]
+> * recipes-bsp/u-boot: Import extra uboot environment from scanned devices [Alexandru Costache]
+> 
+> ## meta-balena-2.108.29
+> ### (2023-01-28)
+> 
+> * bluez: Update to v5.66 [Alex Gonzalez]
+> 
+> ## meta-balena-2.108.28
+> ### (2023-01-26)
+> 
+> * patch: Update balenaOS docs title [Vipul Gupta (@vipulgupta2048)]
+> 
+> ## meta-balena-2.108.27
+> ### (2023-01-20)
+> 
+> * tests: os: fix tests that use glider on rpi0 [rcooke-warwick]
+> 
+> ## meta-balena-2.108.26
+> ### (2023-01-20)
+> 
+> * Enable back connectivity check in NetworkManager [Zahari Petkov]
+> 
+> ## meta-balena-2.108.25
+> ### (2023-01-18)
+> 
+> * tests: os: add basic SB/FDE tests [Joseph Kogut]
+> 
+> ## meta-balena-2.108.24
+> ### (2023-01-18)
+> 
+> * networkmanager: Make iptables wait for xtables.lock [Zahari Petkov]
+> 
+> ## meta-balena-2.108.23
+> ### (2023-01-16)
+> 
+> * balena-keys: rebuild if keys change [Alex Gonzalez]
+> * classes: sign-*: resign if keys change [Alex Gonzalez]
+> 
+> ## meta-balena-2.108.22
+> ### (2023-01-16)
+> 
+> * workflows: esr: use semver compatible versions [Alex Gonzalez]
+> 
+> ## meta-balena-2.108.21
+> ### (2023-01-14)
+> 
+> * efitools: Package lock down EFI image into its own package [Alex Gonzalez]
+> 
+> ## meta-balena-2.108.20
+> ### (2023-01-12)
+> 
+> * workflows: meta-balena-esr: Fix version calculation [Alex Gonzalez]
+> 
+> ## meta-balena-2.108.19
+> ### (2023-01-10)
+> 
+> * redsocks: Increase maximum number of open files [Alex Gonzalez]
+> 
+> ## meta-balena-2.108.18
+> ### (2023-01-09)
+> 
+> * Revert "flasher: output logs to serial console" [Joseph Kogut]
+> 
+> ## meta-balena-2.108.17
+> ### (2023-01-09)
+> 
+> * Update balena-os/balena-supervisor to v14.4.10 [renovate[bot]]
+> 
+> ## meta-balena-2.108.16
+> ### (2023-01-09)
+> 
+> * balena-supervisor: Set the supervisor package version [Kyle Harding]
+> 
+> ## meta-balena-2.108.15
+> ### (2023-01-05)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to e23c1bb [renovate[bot]] </summary>
+> 
+>> ### leviathan-2.14.8
+>> #### (2023-01-05)
+>> 
+>> * chore(deps): update dependency eslint-config-standard to 17.0.0 [renovate[bot]]
+>> 
+>> ### leviathan-2.14.7
+>> #### (2023-01-05)
+>> 
+>> * worker: Deprecate the WORKER_RELEASE env var [Kyle Harding]
+>> 
+>> ### leviathan-2.14.6
+>> #### (2023-01-05)
+>> 
+>> * e2e: Switch from rpi4 to rpi3 for e2e tests [Kyle Harding]
+>> * core: Increase the default timeout for worker connections to 30s [Kyle Harding]
+>> 
+>> ### leviathan-2.14.5
+>> #### (2023-01-04)
+>> 
+>> * renovate: Disable automerge for major and minor updates [Kyle Harding]
+>> 
+>> ### leviathan-2.14.4
+>> #### (2023-01-04)
+>> 
+>> * chore(deps): update dependency typedoc to 0.23.23 [renovate[bot]]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-2.108.14
+> ### (2023-01-04)
+> 
+> * tests: os: chrony: disable NTP w/ dnsmasq dbus API [Joseph Kogut]
+> 
+> ## meta-balena-2.108.13
+> ### (2023-01-04)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 44dceb4 [renovate[bot]] </summary>
+> 
+>> ### leviathan-2.14.3
+>> #### (2023-01-04)
+>> 
+>> * chore(deps): update dependency eslint to 8.31.0 [renovate[bot]]
+>> 
+> 
+> </details>
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 4383482 [renovate[bot]] </summary>
+> 
+>> ### leviathan-2.14.3
+>> #### (2023-01-04)
+>> 
+>> * chore(deps): update dependency eslint to 8.31.0 [renovate[bot]]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-2.108.12
+> ### (2023-01-04)
+> 
+> * tests/hup: Avoid an old engine bug when pulling multiarch images on rpi [Kyle Harding]
+> 
+> ## meta-balena-2.108.11
+> ### (2023-01-03)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to d3485ab [renovate[bot]] </summary>
+> 
+>> ### leviathan-2.13.0
+>> #### (2023-01-03)
+>> 
+>> * Revert "minor: Add @balena/leviathan-test-helpers package" [Kyle Harding]
+>> 
+>> ### leviathan-2.12.4
+>> #### (Invalid date)
+>> 
+>> * chore(deps): update dependency eslint-plugin-standard to 4.1.0 [renovate[bot]]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-2.108.10
+> ### (Invalid date)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 7d6326d [renovate[bot]] </summary>
+> 
+>> ### leviathan-2.12.3
+>> #### (Invalid date)
+>> 
+>> * chore(deps): update dependency eslint-plugin-node to 11.1.0 [renovate[bot]]
+>> 
+>> ### leviathan-2.12.2
+>> #### (2022-12-29)
+>> 
+>> * Run out-of-band e2e tests after Flowzone passes [Kyle Harding]
+>> 
+>> ### leviathan-2.12.1
+>> #### (2022-12-29)
+>> 
+>> * chore(deps): update dependency eslint-plugin-jsdoc to 39.6.4 [renovate[bot]]
+>> 
+>> ### leviathan-2.12.0
+>> #### (2022-12-29)
+>> 
+>> * chore(deps): update core/contracts digest to 4698e4e [renovate[bot]]
+>> 
+>> ### leviathan-2.11.9
+>> #### (2022-12-29)
+>> 
+>> * chore(deps): update dependency balena-os/leviathan-worker to 2.6.13 [renovate[bot]]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-2.108.9
+> ### (2022-12-29)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 1dcb432 [renovate[bot]] </summary>
+> 
+>> ### leviathan-2.11.8
+>> #### (2022-12-28)
+>> 
+>> * chore(deps): update dependency eslint-config-prettier to 8.5.0 [renovate[bot]]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-2.108.8
+> ### (2022-12-28)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to e09fae4 [renovate[bot]] </summary>
+> 
+>> ### leviathan-2.11.7
+>> #### (2022-12-28)
+>> 
+>> * renovate: Remove v prefix from leviathan-worker github-tags [Kyle Harding]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-2.108.7
+> ### (2022-12-28)
+> 
+> * tests: os: fix modem test teardown [rcooke-warwick]
+> 
+> ## meta-balena-2.108.6
+> ### (2022-12-27)
+> 
+> * flasher: output logs to serial console [Joseph Kogut]
+> 
+> ## meta-balena-2.108.5
+> ### (2022-12-21)
+> 
+> * Engine healthcheck: deal with empty uuid file [Leandro Motta Barros]
+> 
+> ## meta-balena-2.108.4
+> ### (2022-12-20)
+> 
+> * distro: For OS development, enable serial console [Alex Gonzalez]
+> 
+> ## meta-balena-2.108.3
+> ### (2022-12-20)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to f06d285 [renovate[bot]] </summary>
+> 
+>> ### leviathan-2.11.6
+>> #### (2022-12-16)
+>> 
+>> * Fix renovate extends syntax to include balena-io config [Kyle Harding]
+>> 
+>> ### leviathan-2.11.5
+>> #### (2022-12-16)
+>> 
+>> * renovate: Inherit settings from balena-io/renovate-config [Kyle Harding]
+>> 
+>> ### leviathan-2.11.4
+>> #### (2022-12-16)
+>> 
+>> * add logging and timeout to balena push [rcooke-warwick]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-2.108.2
+> ### (2022-12-19)
+> 
+> * Update balena-os/balena-supervisor to v14.4.9 [renovate[bot]]
+> 
+> ## meta-balena-2.108.1
+> ### (2022-12-18)
+> 
+> * common: signing: improve debug output on failure [Joseph Kogut]
+> 
+> ## meta-balena-2.108.0
+> ### (2022-12-16)
+> 
+> * Update NetworkManager to 1.40.4 [Zahari Petkov]
+> 
+> ## meta-balena-2.107.40
+> ### (2022-12-16)
+> 
+> * Add upstream resolvconf 1.91 recipe for kirkstone [Zahari Petkov]
+> 
+> ## meta-balena-2.107.39
+> ### (2022-12-16)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to f44bbbd [renovate[bot]] </summary>
+> 
+>> ### leviathan-2.11.3
+>> #### (2022-12-16)
+>> 
+>> * Disable renovate config for now [Kyle Harding]
+>> * Restore worker release env var [Kyle Harding]
+>> 
+>> ### leviathan-2.11.2
+>> #### (2022-12-15)
+>> 
+>> * Update Node.js to v12.22.12 [Renovate Bot]
+>> 
+>> ### leviathan-2.11.1
+>> #### (2022-12-15)
+>> 
+>> * Remove dependabot as renovate is enabled in balena-io/renovate-config [Kyle Harding]
+>> * Pin worker to a release and add renovate regex template [Kyle Harding]
+>> 
+>> ### leviathan-2.11.0
+>> #### (2022-12-15)
+>> 
+>> * Update core/contracts digest to 08f029b [Renovate Bot]
+>> 
+>> ### leviathan-2.10.12
+>> #### (2022-12-15)
+>> 
+>> * Revert "Avoid conflicting docker subnets" [Vipul Gupta]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-2.107.38
+> ### (2022-12-16)
+> 
+> * Update balena-os/balena-supervisor to v14.4.8 [renovate[bot]]
+> 
+> ## meta-balena-2.107.37
+> ### (2022-12-15)
+> 
+> * tests: cloud: simplify apps to speedup suite [rcooke-warwick]
+> 
+> ## meta-balena-2.107.36
+> ### (2022-12-15)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 48ffd13 [renovate[bot]] </summary>
+> 
+>> ### leviathan-2.10.11
+>> #### (2022-12-14)
+>> 
+>> * Avoid conflicting docker networks [Kyle Harding]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-2.107.35
+> ### (2022-12-15)
+> 
+> * patch: Add default debug object to test config [Vipul Gupta (@vipulgupta2048)]
+> 
+> ## meta-balena-2.107.34
+> ### (2022-12-14)
+> 
+> * initrdscripts: Wait for udev processing to complete when unlocking LUKS devices [Michal Toman]
+> 
+> ## meta-balena-2.107.33
+> ### (2022-12-14)
+> 
+> * tests: hup: clean up inactive partition pre hup [rcooke-warwick]
+> 
+> ## meta-balena-2.107.32
+> ### (2022-12-14)
+> 
+> * tests/cloud: Increase the wait time for services to start [Kyle Harding]
+> 
+> ## meta-balena-2.107.31
+> ### (2022-12-14)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 27b78a4 [renovate[bot]] </summary>
+> 
+>> ### leviathan-2.10.10
+>> #### (2022-12-13)
+>> 
+>> * Enable external contributions via flowzone [Kyle Harding]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-2.107.30
+> ### (2022-12-13)
+> 
+> * extra-udev-rules: Update teensy.rules [Alex Gonzalez]
+> * extra-udev-rules: Rename recipe [Alex Gonzalez]
+> 
+> ## meta-balena-2.107.29
+> ### (2022-12-13)
+> 
+> * balena-image-initramfs: disable redundant compression [Joseph Kogut]
+> 
+> ## meta-balena-2.107.28
+> ### (2022-12-12)
+> 
+> * initrdscripts: Only unlock LUKS partitions on the OS drive [Michal Toman]
+> 
+> ## meta-balena-2.107.27
+> ### (2022-12-12)
+> 
+> * chrony: disable reverse dns lookups in healthcheck [Ken Bannister]
+> 
+> ## meta-balena-2.107.26
+> ### (2022-12-12)
+> 
+> * connectivity: Add linux firmware for iwlwifi 9260 [Alex Gonzalez]
+> 
+> ## meta-balena-2.107.25
+> ### (2022-12-11)
+> 
+> * image_types_balena: fix inconsistency with flasher image partition naming [Alex Gonzalez]
+> 
+> ## meta-balena-2.107.24
+> ### (2022-12-09)
+> 
+> * Update balena-os/balena-supervisor to v14.4.6 [renovate[bot]]
+> 
+> ## meta-balena-2.107.23
+> ### (2022-12-09)
+> 
+> * patch: Add product documentation [Vipul Gupta (@vipulgupta2048)]
+> 
+> ## meta-balena-2.107.22
+> ### (2022-12-09)
+> 
+> * tests: os: fsck: make compatible with old yocto releaes [rcooke-warwick]
+> 
+> ## meta-balena-2.107.21
+> ### (2022-12-08)
+> 
+> * tests/connectivity: Run the proxy tests with the actual redsocks uid of the DUT [Florin Sarbu]
+> 
+> ## meta-balena-2.107.20
+> ### (2022-12-07)
+> 
+> * kernel-balena: enable zstd compression [Joseph Kogut]
+> 
+> ## meta-balena-2.107.19
+> ### (2022-12-06)
+> 
+> * image_types_balena: generate bmap file [Joseph Kogut]
+> * flasher: write disk image skipping sparse blocks [Joseph Kogut]
+> * image_types_balena: create sparse disk image [Joseph Kogut]
+> 
+> ## meta-balena-2.107.18
+> ### (2022-12-04)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to fe4d6a1 [renovate[bot]] </summary>
+> 
+>> ### leviathan-2.10.9
+>> #### (2022-12-02)
+>> 
+>> * Revert "docker-compose: stop using the default docker bridge" [Kyle Harding]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-2.107.17
+> ### (2022-12-02)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to de97fa2 [renovate[bot]] </summary>
+> 
+>> ### leviathan-2.10.8
+>> #### (Invalid date)
+>> 
+>> * patch: Improve archivelogs journalctl command [Vipul Gupta (@vipulgupta2048)]
+>> * core: Reduce to 30 the retries number when trying to get the IP address of the DUT [Florin Sarbu]
+>> 
+>> ### leviathan-2.10.7
+>> #### (Invalid date)
+>> 
+>> * docker-compose: stop using the default docker bridge [Alex Gonzalez]
+>> 
+>> ### leviathan-2.10.6
+>> #### (2022-11-29)
+>> 
+>> * os/balenaos: Remove hidden attribute from DUT wireless connection file [Alexandru Costache]
+>> 
+>> ### leviathan-2.10.5
+>> #### (2022-11-29)
+>> 
+>> * patch: Add debug: unstable to docs [Vipul Gupta (@vipulgupta2048)]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-2.107.16
+> ### (2022-12-01)
+> 
+> * Refactor and clean up the purge data tests [Kyle Harding]
+> 
+> ## meta-balena-2.107.15
+> ### (2022-12-01)
+> 
+> * Updated CBS Docs Updated link to the CDS Product Repo [Ryan H]
+> 
+> ## meta-balena-2.107.14
+> ### (Invalid date)
+> 
+> * test: os: fix search for active interface [rcooke-warwick]
+> 
+> ## meta-balena-2.107.13
+> ### (2022-11-29)
+> 
+> * balena-image-flasher: Include LUKS variant of GRUB config with FDE in place [Michal Toman]
+> 
+> ## meta-balena-2.107.12
+> ### (2022-11-28)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 61016ad [renovate[bot]] </summary>
+> 
+>> ### leviathan-2.10.4
+>> #### (2022-11-25)
+>> 
+>> * bump contracts to 2.0.27 [rcooke-warwick]
+>> 
+>> ### leviathan-2.10.3
+>> #### (2022-11-24)
+>> 
+>> * On Apple Silicon we should install balena CLI via npm [Kyle Harding]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-2.107.11
+> ### (2022-11-25)
+> 
+> * add os testing docs [rcooke-warwick]
+> 
+> ## meta-balena-2.107.10
+> ### (2022-11-25)
+> 
+> * balena-image.bb: Include bits for LUKS when FDE is enabled [Michal Toman]
+> 
+> ## meta-balena-2.107.9
+> ### (2022-11-24)
+> 
+> * resin-init-flasher: Fix double /dev/ prefix when encrypting partitions [Michal Toman]
+> * grub-conf: fix partition indexes in LUKS config [Michal Toman]
+> * os-helpers-fs: add dependency on parted [Michal Toman]
+> * hostapp-update-hooks: use stage2 bootloader GRUB config when using LUKS [Michal Toman]
+> * balena-rollback: Fix partition index detection for luks devices [Michal Toman]
+> * balena-rollback: Find following symbolic links [Alex Gonzalez]
+> * hostapp-update-hooks: Find following symlinks [Alex Gonzalez]
+> * hostapp-update-hooks: Fix partition index detection for luks devices [Alex Gonzalez]
+> 
+> ## meta-balena-2.107.8
+> ### (2022-11-24)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to bdf8eb2 [renovate[bot]] </summary>
+> 
+>> ### leviathan-2.10.2
+>> #### (2022-11-23)
+>> 
+>> * add high level architecture overview [rcooke-warwick]
+>> 
+>> ### leviathan-2.10.1
+>> #### (2022-11-23)
+>> 
+>> * Add conditions for Apple Silicon workstations [Kyle Harding]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-2.107.7
+> ### (2022-11-23)
+> 
+> * tests: ssh-auth: rework local authentication with cloud keys to work in testbots [Alex Gonzalez]
+> * ssh-auth: do not use a separate custom key [Alex Gonzalez]
+> * Revert "test: ssh-auth: fix test cases using custom keys" [Alex Gonzalez]
+> 
+> ## meta-balena-2.107.6
+> ### (2022-11-22)
+> 
+> * Update balena-os/balena-supervisor to v14.4.4 [renovate[bot]]
+> 
+> ## meta-balena-2.107.5
+> ### (2022-11-22)
+> 
+> * Update balena-os/balena-supervisor to v14.4.2 [renovate[bot]]
+> 
+> ## meta-balena-2.107.4
+> ### (2022-11-19)
+> 
+> * Update balena-os/balena-supervisor to v14.4.1 [renovate[bot]]
+> 
+> ## meta-balena-2.107.3
+> ### (2022-11-19)
+> 
+> * kernel-balena: Kernel version check should include provided version [Alex Gonzalez]
+> 
+> ## meta-balena-2.107.2
+> ### (2022-11-18)
+> 
+> * chronyd: allow service status notification socket access to all [Alex Gonzalez]
+> * chrony: update to version 4.2 [Alex Gonzalez]
+> 
+> ## meta-balena-2.107.1
+> ### (2022-11-17)
+> 
+> * docs: add RAID setup info [Joseph Kogut]
+> 
+> ## meta-balena-2.107.0
+> ### (2022-11-17)
+> 
+> * Update balena-os/balena-supervisor to v14.4.0 [renovate[bot]]
+> 
+> ## meta-balena-2.106.8
+> ### (2022-11-17)
+> 
+> * classes: kernel-balena: add wireguard module [Alex Gonzalez]
+> 
+> ## meta-balena-2.106.7
+> ### (2022-11-15)
+> 
+> * test: ssh-auth: fix test cases using custom keys [Alex Gonzalez]
+> 
+> ## meta-balena-2.106.6
+> ### (2022-11-15)
+> 
+> * Update balena-os/balena-supervisor to v14.3.3 [renovate[bot]]
+> 
+> ## meta-balena-2.106.5
+> ### (2022-11-14)
+> 
+> * openvpn: fix a race condition that leaves system with no running supervisor [Alex Gonzalez]
+> 
+> ## meta-balena-2.106.4
+> ### (2022-11-12)
+> 
+> * ssh-auth: setConfig: run synchronously [Alex Gonzalez]
+> * cloud: ssh-auth: use custom path for custom key [Alex Gonzalez]
+> * balena-config-vars: Set permissions for cache file [Alex Gonzalez]
+> 
+> ## meta-balena-2.106.3
+> ### (2022-11-11)
+> 
+> * common: kernel-devsrc: fix pseudo abort [Joseph Kogut]
+> 
+> ## meta-balena-2.106.2
+> ### (2022-11-10)
+> 
+> * flasher: minor formatting [Joseph Kogut]
+> * flasher: fix detection and exclusion of installation media [Joseph Kogut]
+> * flasher: properly expand device_pattern globs [Joseph Kogut]
+> 
+> ## meta-balena-2.106.1
+> ### (2022-11-10)
+> 
+> * tests: cloud: use cloud ssh to avoid race cond [rcooke-warwick]
+> 
+> ## meta-balena-2.106.0
+> ### (2022-11-10)
+> 
+> * Update balena-os/balena-supervisor to v14.3.0 [renovate[bot]]
+> 
+> ## meta-balena-2.105.32
+> ### (2022-11-09)
+> 
+> * Enable network access for tasks talking to the signing service [Michal Toman]
+> 
+> ## meta-balena-2.105.31
+> ### (2022-11-08)
+> 
+> * Add meta-balena-esr workflow [Alex Gonzalez]
+> 
+> ## meta-balena-2.105.30
+> ### (2022-11-08)
+> 
+> * tests: os: ensure by-state links are created [Joseph Kogut]
+> 
+> ## meta-balena-2.105.29
+> ### (2022-11-07)
+> 
+> * prepare-openvpn: do not use cached configuration [Alex Gonzalez]
+> 
+> ## meta-balena-2.105.28
+> ### (2022-11-06)
+> 
+> * patch: Delete conf.js for test suites [Vipul Gupta (@vipulgupta2048)]
+> 
+> ## meta-balena-2.105.27
+> ### (2022-11-04)
+> 
+> * wpa-supplicant: Sync with v2.10 from upstream [Zahari Petkov]
+> 
+> ## meta-balena-2.105.26
+> ### (2022-11-04)
+> 
+> * patch: Skip HUP suite if no releases found [Vipul Gupta (@vipulgupta2048)]
+> 
+> ## meta-balena-2.105.25
+> ### (2022-11-04)
+> 
+> * Update balena-os/balena-supervisor to v14.2.20 [renovate[bot]]
+> 
+> ## meta-balena-2.105.24
+> ### (2022-11-03)
+> 
+> * Update balena-os/balena-supervisor to v14.2.18 [renovate[bot]]
+> 
+> ## meta-balena-2.105.23
+> ### (2022-11-01)
+> 
+> * tests: hup: handle exception when unwrapping non-flasher image [Joseph Kogut]
+> 
+
+</details>
+
 # v2.105.22+rev19
 ## (2023-02-09)
 
