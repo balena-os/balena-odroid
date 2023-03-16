@@ -1,4 +1,41 @@
 - commits:
+    - subject: Prevent duplicate CI workflow executions
+      hash: 162916614becb94264e3b8c956bb78be1c063dbd
+      body: ""
+      footer:
+        Changelog-entry: Prevent duplicate CI workflow executions
+        changelog-entry: Prevent duplicate CI workflow executions
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+    - subject: trigger deploy builds on multi-digit revisions too
+      hash: 9360a2ce89e15118632756bbc4c56ae1f0518ec7
+      body: >
+        According to github action syntax [1], there is no special character
+
+        to denote a match on zero or more of the preceding character, so
+
+        replace `[0-9]?` which only matches zero or one of the preceding
+
+        characters with a `*`.
+
+
+        [1] https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
+
+
+        [skip ci]
+      footer:
+        Changelog-entry: trigger deploy builds on multi-digit revisions too
+        changelog-entry: trigger deploy builds on multi-digit revisions too
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2.112.14+rev1
+  title: ""
+  date: 2023-03-16T18:36:29.009Z
+- commits:
     - subject: Update layers/meta-balena to 80ca81f9e4ec9d4b2e4d21bc1cf12bd59220be5a
       hash: c9291da8c78ee3b94a63ab1574daf240f1ee5419
       body: Update layers/meta-balena

@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.112.14+rev1
+## (2023-03-16)
+
+* Prevent duplicate CI workflow executions [Kyle Harding]
+* trigger deploy builds on multi-digit revisions too [Alex Gonzalez]
+
 # v2.112.14
 ## (2023-02-22)
 
