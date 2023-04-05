@@ -1,6 +1,26 @@
 Change log
 -----------
 
+# v2.113.34+rev1
+## (2023-04-05)
+
+
+<details>
+<summary> Update contracts to a7fa4ca620414f2a2742210c5f97e0c207fa660b [Renovate Bot] </summary>
+
+> ## contracts-2.0.56
+> ### (2023-04-04)
+> 
+> * jetson-orin-nx-xavier-nx-devkit: Add contract for device type [Alexandru Costache]
+> 
+> ## contracts-2.0.55
+> ### (2023-03-29)
+> 
+> * iot-gate-imx8plus: Update provisioning instructions [Alexandru]
+> 
+
+</details>
+
 # v2.113.34
 ## (2023-04-05)
 
