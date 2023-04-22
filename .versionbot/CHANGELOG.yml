@@ -1,4 +1,43 @@
 - commits:
+    - subject: Update layers/meta-balena to e2663a747325b2cb71476fde889244ad424ec8a4
+      hash: 1813bcf9e8dbe6d42306bf1d8250b2013cd4733c
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to e2663a747325b2cb71476fde889244ad424ec8a4
+        changelog-entry: Update layers/meta-balena to e2663a747325b2cb71476fde889244ad424ec8a4
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "tests: os: configure to use installer's migrator"
+              hash: 0715805137a721f6d551e3087f7eb5231036c004
+              body: >
+                Configuring the flasher image to force the migration. We use this to
+
+                skip migration tests when not configured.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "test: os: add installer migration test"
+              hash: fa327dce24a147846662ad110cc5b9d43f9a0604
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.114.9
+          title: ""
+          date: 2023-04-22T20:25:50.077Z
+  version: 2.114.9
+  title: ""
+  date: 2023-04-22T23:26:51.269Z
+- commits:
     - subject: Update layers/meta-balena to f7fe9a9bb773aa19cee244ab6f1b275ff182d40d
       hash: 27348abb2426a7f119724e506573777344f316eb
       body: Update layers/meta-balena
