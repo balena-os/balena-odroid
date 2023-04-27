@@ -1,6 +1,22 @@
 Change log
 -----------
 
+# v2.114.13
+## (2023-04-27)
+
+
+<details>
+<summary> Update layers/meta-balena to 90dd8d13b6e4015fa4fb8a3407ddf37eab443cd6 [Renovate Bot] </summary>
+
+> ## meta-balena-2.114.13
+> ### (2023-04-27)
+> 
+> * hostapp-update-hooks: use unsafe fatrw copy for bootfiles [Alex Gonzalez]
+> * balena-config-vars: introduce unsafe fatrw copy [Alex Gonzalez]
+> 
+
+</details>
+
 # v2.114.12+rev1
 ## (2023-04-27)
 
