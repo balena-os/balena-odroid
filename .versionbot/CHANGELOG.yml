@@ -1,4 +1,150 @@
 - commits:
+    - subject: Update layers/meta-balena to d0b1a5a80c691e752dd5b396ce7da995507dd619
+      hash: 4c9ae08a57cf1567cdb7083ce26e921131a92f48
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to d0b1a5a80c691e752dd5b396ce7da995507dd619
+        changelog-entry: Update layers/meta-balena to d0b1a5a80c691e752dd5b396ce7da995507dd619
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "resin-init-flasher: add more comments around efi/boot partition split"
+              hash: 63663b30f8962be8b6d8070340fe89e435f8915b
+              body: |
+                This is hard to follow when reading the code without context.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+            - subject: "resin-init-flasher: reboot into signed flasher when provisioning
+                secure boot"
+              hash: ceedc55646898e4eacb840f89710f39c58674323
+              body: >
+                When programming keys for secure boot, some devices do not clear
+
+                the setup mode flag after a new PK is installed. In this case
+
+                flasher will reboot in order to ensure the keys are actually saved
+
+                and the device comes back with secure boot enabled. Since we changed
+
+                flasher to be unsigned by default, this reboot causes a security
+
+                violation.
+
+
+                With this patch flasher will add a new boot entry before issuing
+
+                the reboot so that signed flasher comes up and the installation process
+
+                can continue.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+            - subject: "resin-init-flasher: Fill db EFI variable from esl file instead of
+                auth"
+              hash: d1e045b826c48168d75163cf9bb9fb1a387ed4f2
+              body: >
+                Currently the db.auth file is signed as "append" in order to
+                make HUP work.
+
+                Most UEFI firmwares will accept such file even for "replace", which we do
+
+                during the initial provisioning, however we have seen devices that will
+
+                only allow appending, which makes flasher fail.
+
+
+                With this patch flasher will use the esl file for initial programming
+
+                of the db variable.
+
+
+                PK and KEK are unaffected.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.114.24
+          title: ""
+          date: 2023-05-11T20:31:43.765Z
+        - commits:
+            - subject: "tests: suites: remove default migration force configuration"
+              hash: 6cbb6a983574158cb8531b24e3baeff8518ebe1a
+              body: |
+                Instead we will configure this on specific Jenkins jobs.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "resin-init-flasher: avoid partition labels clashes"
+              hash: 6af87bf9a3cae40ab7b9cad844b8ed71f6d004f8
+              body: >
+                When using labels to mount partitions, restrict it to a specific
+                drive
+
+                to avoid clashes.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "initrdscripts: recovery: set adb default timeouts in minutes"
+              hash: ecb720889cc870670b2e683913f28251f7ccbd88
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "tests: move installerForceMigration suite configuration to balenaOS
+                section"
+              hash: 020f7da433b0743e5c045239a24e3ed00445b8dc
+              body: >
+                The balenaOS section is the logical place for this configuration
+                to be.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "tests: simplify accessing config.json data"
+              hash: 831c12fd9bd49fec048cb20509fe5ac6255e8da8
+              body: |
+                There is no longer need to go through the context for this.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.114.23
+          title: ""
+          date: 2023-05-06T19:31:19.959Z
+  version: 2.114.24
+  title: ""
+  date: 2023-05-11T22:38:56.905Z
+- commits:
     - subject: Update balena-yocto-scripts to 57226ffa5abafc3001cb275ad6520895c938842a
       hash: 2e1acc0f3f060c8e3e4bdc3880f52392d88b8720
       body: Update balena-yocto-scripts
