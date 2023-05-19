@@ -1,4 +1,36 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 063493eb51bbaecce4fde37f6fe042bfdc647b71
+      hash: 247694c9ea59e6de1fe09810516ec357f497c446
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 063493eb51bbaecce4fde37f6fe042bfdc647b71
+        changelog-entry: Update balena-yocto-scripts to 063493eb51bbaecce4fde37f6fe042bfdc647b71
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "balena-deploy: add secureBoot feature into contract"
+              hash: 67e694d63918e9911de99f497c39d84dfef28df7
+              body: >
+                When building signed images, add the secureBoot feature flag
+                into the
+
+                OS contract. This is needed for other components to identify secureBoot
+
+                compatible software releases.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.19.29
+          title: ""
+          date: 2023-05-19T11:42:58.818Z
+  version: 2.115.1+rev1
+  title: ""
+  date: 2023-05-19T14:49:05.368Z
+- commits:
     - subject: Update layers/meta-balena to 5bf3a7b37f4e33264629144c9bf355b4d81c1dee
       hash: e740aa06bb2b5cdf8e0490ec41b50125819de938
       body: Update layers/meta-balena
