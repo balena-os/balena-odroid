@@ -1,4 +1,49 @@
 - commits:
+    - subject: Update balena-yocto-scripts to f2a164e0acaaa66795d5f31af248f1743dd0ffb7
+      hash: 4e7cef60745f19a7b97aa7425a2ecd0be951dd21
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to f2a164e0acaaa66795d5f31af248f1743dd0ffb7
+        changelog-entry: Update balena-yocto-scripts to f2a164e0acaaa66795d5f31af248f1743dd0ffb7
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "generate_ami: opt-in secure boot when using signed images"
+              hash: 7925369a76060ad9e2adb16856e78cd3ca09b02c
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-generate-ami: comply with default AMI quotas"
+              hash: 27d34aa2a35b0bf6d7c1ffb563c1ad65d773e1fc
+              body: >
+                Comply with AWS public AMI quota, taking into account we have
+                two
+
+                architectures that publish AMI images and we need free slots for custom
+
+                version request.
+
+
+                Make the oldest public image back to private before publishing a new image.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.19.30
+          title: ""
+          date: 2023-05-23T18:02:32.156Z
+  version: 2.115.1+rev2
+  title: ""
+  date: 2023-05-23T19:05:45.865Z
+- commits:
     - subject: Update balena-yocto-scripts to 063493eb51bbaecce4fde37f6fe042bfdc647b71
       hash: 247694c9ea59e6de1fe09810516ec357f497c446
       body: Update balena-yocto-scripts
