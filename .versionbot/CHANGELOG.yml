@@ -1,4 +1,39 @@
 - commits:
+    - subject: Update layers/meta-balena to c087c2dbcff4ed666bbad7901fe0f28794c99bc0
+      hash: 00c6610b01d700b0e3c28b83f17647c314077875
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to c087c2dbcff4ed666bbad7901fe0f28794c99bc0
+        changelog-entry: Update layers/meta-balena to c087c2dbcff4ed666bbad7901fe0f28794c99bc0
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "resin-init-flasher: Increase size of LUKS header to 16MB"
+              hash: 024a6dfc244247f739f5c6bf72c8bf55cbe8b6e1
+              body: >
+                After switching to LUKS2, the header size increased from 2MB to
+                16MB.
+
+                While HUP of older systems works, it is impossible to provision
+
+                new encrypted systems.
+
+
+                This patch fixes the header size in flasher.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.115.18
+          title: ""
+          date: 2023-06-29T08:26:11.052Z
+  version: 2.115.18
+  title: ""
+  date: 2023-06-29T10:26:53.220Z
+- commits:
     - subject: Update layers/meta-balena to 2df4a2410980aa482ebc6355e329a055917fa09d
       hash: e2be8b50b7885c44179eba6ffd8d37a20b3c4bc9
       body: Update layers/meta-balena
