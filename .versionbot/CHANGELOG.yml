@@ -1,4 +1,20 @@
 - commits:
+    - subject: Update build instructions in README
+      hash: f8732c571aa400ca46a50f6ff27620a5c1f831fa
+      body: |
+        Update the build instructions with
+        steps for containerized builds.
+      footer:
+        Changelog-entry: Update build instructions in README
+        changelog-entry: Update build instructions in README
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 3.0.15+rev4
+  title: ""
+  date: 2023-08-11T09:30:07.181Z
+- commits:
     - subject: Update contracts to bd81b500fe74976567485afa39f6bbab3e60dd77
       hash: 79beea4747fe1b37cc3130df03885d8dee5dcdf9
       body: Update contracts
