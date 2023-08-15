@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v3.0.15+rev5
+## (2023-08-15)
+
+
+<details>
+<summary> Update contracts to d09ff464591acafff8da686110ecc315f94745fa [Self-hosted Renovate Bot] </summary>
+
+> ## contracts-2.0.68
+> ### (2023-08-15)
+> 
+> * iot-gate-imx8plus: Improve provisioning instructions for Windows [Alexandru Costache]
+> 
+
+</details>
+
 # v3.0.15+rev4
 ## (2023-08-11)
 
