@@ -1,4 +1,31 @@
 - commits:
+    - subject: Update contracts to ca46c341b263adfd70071288d669f7479983f326
+      hash: 7fa831c4e6c437c69320142215c0d60e0cd98395
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to ca46c341b263adfd70071288d669f7479983f326
+        changelog-entry: Update contracts to ca46c341b263adfd70071288d669f7479983f326
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: Add the BeagleBone AI-64.
+              hash: 4296cf27d047c669da781c1c7b304bab5fa848fe
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Add the BeagleBone AI-64.
+                changelog-entry: Add the BeagleBone AI-64.
+                Signed-off-by: Lisandro Pérez Meyer <lperezmeyer@ics.com>
+                signed-off-by: Lisandro Pérez Meyer <lperezmeyer@ics.com>
+              author: Lisandro Damián Nicanor Pérez Meyer
+          version: contracts-2.0.71
+          title: ""
+          date: 2023-08-29T11:19:00.577Z
+  version: 3.0.15+rev8
+  title: ""
+  date: 2023-08-29T13:38:07.514Z
+- commits:
     - subject: Update contracts to d61d9118688241409d15a3ba10e963f9a202e347
       hash: 57d70e6b952158157945dc2e95ef94b605b696cc
       body: Update contracts
