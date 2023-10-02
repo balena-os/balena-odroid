@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v3.0.15+rev17
+## (2023-10-02)
+
+
+<details>
+<summary> Update contracts to d68265ebeac98e7814829da7e7f6bb2a9aff8e39 [Self-hosted Renovate Bot] </summary>
+
+> ## contracts-2.0.76
+> ### (2023-10-02)
+> 
+> * hw.device-type: Add Eurotec Lowpad lcbzu9 device [Francois Loubser]
+> 
+
+</details>
+
 # v3.0.15+rev16
 ## (2023-09-28)
 

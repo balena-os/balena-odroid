@@ -1,4 +1,29 @@
 - commits:
+    - subject: Update contracts to d68265ebeac98e7814829da7e7f6bb2a9aff8e39
+      hash: 304835bcbac709d92dede8e250afbf7a2eb69123
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to d68265ebeac98e7814829da7e7f6bb2a9aff8e39
+        changelog-entry: Update contracts to d68265ebeac98e7814829da7e7f6bb2a9aff8e39
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "hw.device-type: Add Eurotec Lowpad lcbzu9 device"
+              hash: dab4d718a6012af2774111fb00c0a4d2f3497d24
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Francois Loubser <francois.loubser@topic.nl>
+                signed-off-by: Francois Loubser <francois.loubser@topic.nl>
+              author: Francois Loubser
+          version: contracts-2.0.76
+          title: ""
+          date: 2023-10-02T06:46:15.804Z
+  version: 3.0.15+rev17
+  title: ""
+  date: 2023-10-02T10:35:42.062Z
+- commits:
     - subject: Update balena-yocto-scripts to 29e8e0678085db54226956617ae66b59f5a28f8d
       hash: 96678cc5951425a493118dc658a6502a79bd5203
       body: Update balena-yocto-scripts
