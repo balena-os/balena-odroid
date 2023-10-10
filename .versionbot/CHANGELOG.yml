@@ -1,4 +1,31 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 37a4aa0421848226b41dda508e5fc05fdcc01389
+      hash: ec4ba4c5b5869cab912bb7ec4248f24177f327d5
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 37a4aa0421848226b41dda508e5fc05fdcc01389
+        changelog-entry: Update balena-yocto-scripts to 37a4aa0421848226b41dda508e5fc05fdcc01389
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "Dockerfile_yocto-build-env: Add screen"
+              hash: 7ca8164eec0ba2903b5a463166fdb2d9370d3ba4
+              body: |
+                To enable us to use `bitbake -c devshell foo` in container
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex J Lennon <ajlennon@dynamicdevices.co.uk>
+                signed-off-by: Alex J Lennon <ajlennon@dynamicdevices.co.uk>
+              author: Alex J Lennon
+              nested: []
+          version: balena-yocto-scripts-1.19.37
+          title: ""
+          date: 2023-10-10T13:49:21.732Z
+  version: 3.0.15+rev22
+  title: ""
+  date: 2023-10-10T15:13:59.373Z
+- commits:
     - subject: Update balena-yocto-scripts to e26625baaf2c9cca33933e4baac7b448d644ee30
       hash: 169e421eea24ce7e208046117daf4a7111f0f877
       body: Update balena-yocto-scripts

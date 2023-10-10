@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v3.0.15+rev22
+## (2023-10-10)
+
+
+<details>
+<summary> Update balena-yocto-scripts to 37a4aa0421848226b41dda508e5fc05fdcc01389 [Self-hosted Renovate Bot] </summary>
+
+> ## balena-yocto-scripts-1.19.37
+> ### (2023-10-10)
+> 
+> * Dockerfile_yocto-build-env: Add screen [Alex J Lennon]
+> 
+
+</details>
+
 # v3.0.15+rev21
 ## (2023-10-10)
 
