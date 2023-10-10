@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v3.0.15+rev21
+## (2023-10-10)
+
+
+<details>
+<summary> Update balena-yocto-scripts to e26625baaf2c9cca33933e4baac7b448d644ee30 [Self-hosted Renovate Bot] </summary>
+
+> ## balena-yocto-scripts-1.19.36
+> ### (2023-10-10)
+> 
+> * flowzone: allow external contributions [Alex Gonzalez]
+> 
+
+</details>
+
 # v3.0.15+rev20
 ## (2023-10-09)
 
