@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v3.0.15+rev26
+## (2023-10-20)
+
+
+<details>
+<summary> Update contracts to 42e712dfe54929870e1ef51fc95cff10f760ab08 [Self-hosted Renovate Bot] </summary>
+
+> ## contracts-2.0.80
+> ### (2023-10-20)
+> 
+> * hw.device-type: Modify bluechiptechnology-tm3 [crichardson]
+> 
+
+</details>
+
 # v3.0.15+rev25
 ## (2023-10-19)
 
