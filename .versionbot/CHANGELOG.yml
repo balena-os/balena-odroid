@@ -1,4 +1,32 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 39430b27390c28c4b055fb8711005600112a6951
+      hash: eeecebae25d50916227f83077295b5f7c5c34ff9
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 39430b27390c28c4b055fb8711005600112a6951
+        changelog-entry: Update balena-yocto-scripts to 39430b27390c28c4b055fb8711005600112a6951
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "Dockerfile_yocto-build-env: Install rsync and uudecode host
+                dependencies"
+              hash: 20a981f81a47cf86c62efb57838baa4d45776560
+              body: |
+                These are required for the UCM-iMX9 build
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexnadru Costache <alexandru@balena.io>
+                signed-off-by: Alexnadru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: balena-yocto-scripts-1.19.39
+          title: ""
+          date: 2023-10-20T13:47:52.543Z
+  version: 3.0.15+rev27
+  title: ""
+  date: 2023-10-20T16:38:45.033Z
+- commits:
     - subject: Update contracts to 42e712dfe54929870e1ef51fc95cff10f760ab08
       hash: 58819779a784b75359c4c11e289d0e9f4417014e
       body: Update contracts
