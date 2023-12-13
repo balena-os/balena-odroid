@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v3.0.15+rev32
+## (2023-12-13)
+
+
+<details>
+<summary> Update contracts to 591fda9174610519f89842e651f3186eac8862eb [Self-hosted Renovate Bot] </summary>
+
+> ## contracts-2.0.84
+> ### (2023-12-13)
+> 
+> * iot-gate-imx8plus: Update flashing instructions and name [Alexandru Costache]
+> 
+
+</details>
+
 # v3.0.15+rev31
 ## (2023-11-24)
 
