@@ -1,4 +1,27 @@
 - commits:
+    - subject: Update contracts to 31188f585dc7d7f9e58c138e4c3257e9c2c274c0
+      hash: bd3e0132d96657a408eb46ea01951b8e41493f7b
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to 31188f585dc7d7f9e58c138e4c3257e9c2c274c0
+        changelog-entry: Update contracts to 31188f585dc7d7f9e58c138e4c3257e9c2c274c0
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "patch: Remove wiki link reference to flash Tinker Board"
+              hash: 2d9a5bbea64deda704298e8ee41834e9d180d4da
+              body: ""
+              footer:
+                Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+              author: Vipul Gupta (@vipulgupta2048)
+          version: contracts-2.0.85
+          title: ""
+          date: 2023-12-21T13:26:59.714Z
+  version: 3.0.15+rev33
+  title: ""
+  date: 2023-12-21T15:36:03.445Z
+- commits:
     - subject: Update contracts to 591fda9174610519f89842e651f3186eac8862eb
       hash: 90954eb59f43eabf1b21c04b7a51d213d22c1e68
       body: Update contracts
