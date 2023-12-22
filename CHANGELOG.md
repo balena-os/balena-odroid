@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v3.0.15+rev34
+## (2023-12-22)
+
+
+<details>
+<summary> Update balena-yocto-scripts to 0008306e565a95aa51d04a8a0fcc318df3df59a2 [Self-hosted Renovate Bot] </summary>
+
+> ## balena-yocto-scripts-1.19.41
+> ### (2023-12-22)
+> 
+> * automation/balena-deploy: Pin to known working version of balena-img [Alexandru Costache]
+> 
+
+</details>
+
 # v3.0.15+rev33
 ## (2023-12-21)
 
