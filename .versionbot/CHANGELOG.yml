@@ -1,4 +1,29 @@
 - commits:
+    - subject: Update contracts to b0c1495877e23b27af209082e6cc9959b94fd541
+      hash: 473e7156d9890edac680d32e86054342bfbe8adb
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to b0c1495877e23b27af209082e6cc9959b94fd541
+        changelog-entry: Update contracts to b0c1495877e23b27af209082e6cc9959b94fd541
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "hw.device-type: Add Variscite DART-MX8M-PLUS"
+              hash: dd4e9de9d010e49040adf8d9f4ce8a4d68c69cce
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+          version: contracts-2.0.86
+          title: ""
+          date: 2023-12-28T11:16:43.472Z
+  version: 3.0.15+rev35
+  title: ""
+  date: 2023-12-28T13:14:46.367Z
+- commits:
     - subject: Update balena-yocto-scripts to 0008306e565a95aa51d04a8a0fcc318df3df59a2
       hash: 75c1d1cf898829ab82c1c00ead4fa5fafda40499
       body: Update balena-yocto-scripts

@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v3.0.15+rev35
+## (2023-12-28)
+
+
+<details>
+<summary> Update contracts to b0c1495877e23b27af209082e6cc9959b94fd541 [Self-hosted Renovate Bot] </summary>
+
+> ## contracts-2.0.86
+> ### (2023-12-28)
+> 
+> * hw.device-type: Add Variscite DART-MX8M-PLUS [Florin Sarbu]
+> 
+
+</details>
+
 # v3.0.15+rev34
 ## (2023-12-22)
 
