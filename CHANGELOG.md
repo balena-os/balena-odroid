@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v3.0.15+rev37
+## (2024-01-03)
+
+
+<details>
+<summary> Update contracts to 802e95f85092e2bacc14014823b8167add968edd [Self-hosted Renovate Bot] </summary>
+
+> ## contracts-2.0.88
+> ### (2024-01-03)
+> 
+> * jetson-orin-nx-seeed-j4012: Add Seeed J4012 device-type [Alexandru Costache]
+> 
+
+</details>
+
 # v3.0.15+rev36
 ## (2023-12-29)
 
