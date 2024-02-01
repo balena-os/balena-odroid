@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v3.0.15+rev41
+## (2024-02-01)
+
+
+<details>
+<summary> Update contracts to 75a97647a44cfe534f93926ab039afca6570cb86 [Self-hosted Renovate Bot] </summary>
+
+> ## contracts-2.0.92
+> ### (2024-02-01)
+> 
+> * hw.device-type: Add phyboard-lyra-am62xx-2 device [Atanas Bunchev]
+> 
+
+</details>
+
 # v3.0.15+rev40
 ## (2024-01-31)
 
