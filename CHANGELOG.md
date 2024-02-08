@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v3.0.15+rev45
+## (2024-02-08)
+
+
+<details>
+<summary> Update contracts to 4f7dba1c6408a17c5a07e353443b068410fd8aa2 [Self-hosted Renovate Bot] </summary>
+
+> ## contracts-2.0.93
+> ### (2024-02-08)
+> 
+> * hw.device-type: Add Kontron i.MX8M Mini device [joris-bright]
+> 
+
+</details>
+
 # v3.0.15+rev44
 ## (2024-02-08)
 

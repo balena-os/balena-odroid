@@ -1,4 +1,29 @@
 - commits:
+    - subject: Update contracts to 4f7dba1c6408a17c5a07e353443b068410fd8aa2
+      hash: 2e75fd56e0f11d919eff3bf48f55290e56df7e0c
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to 4f7dba1c6408a17c5a07e353443b068410fd8aa2
+        changelog-entry: Update contracts to 4f7dba1c6408a17c5a07e353443b068410fd8aa2
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "hw.device-type: Add Kontron i.MX8M Mini device"
+              hash: bfae3a09557f6bb7e3fffb888337339d9b900ebf
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: joris-bright <joris@bright-energy.eu>
+                signed-off-by: joris-bright <joris@bright-energy.eu>
+              author: joris-bright
+          version: contracts-2.0.93
+          title: ""
+          date: 2024-02-08T08:40:46.444Z
+  version: 3.0.15+rev45
+  title: ""
+  date: 2024-02-08T14:44:05.248Z
+- commits:
     - subject: Update balena-yocto-scripts to 6ccd3b1013b6d25ea9990a07a06bee864fe0a172
       hash: 1bd7e6315ec81ec1e72cb22c17830a2d56836e87
       body: Update balena-yocto-scripts
