@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v3.0.15+rev46
+## (2024-02-11)
+
+
+<details>
+<summary> Update balena-yocto-scripts to 0cb57aede8dea798c14ddfc6546525b920504970 [Self-hosted Renovate Bot] </summary>
+
+> ## balena-yocto-scripts-1.21.3
+> ### (2024-02-11)
+> 
+> * Enable S3 Server Side Encryption flags [Kyle Harding]
+> 
+
+</details>
+
 # v3.0.15+rev45
 ## (2024-02-08)
 
