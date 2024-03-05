@@ -1,4 +1,18 @@
 - commits:
+    - subject: pass input parameters to common esr workflow
+      hash: dd1d90e4c1a71af9cd71df80a18956ad63856058
+      body: ""
+      footer:
+        Changelog-entry: pass input parameters to common esr workflow
+        changelog-entry: pass input parameters to common esr workflow
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 3.0.15+rev51
+  title: ""
+  date: 2024-03-05T19:25:27.826Z
+- commits:
     - subject: Update balena-os/github-workflows to v0.0.27
       hash: 421c606a17166ac0f770f7d61f216320cd34b6e8
       body: Update balena-os/github-workflows
