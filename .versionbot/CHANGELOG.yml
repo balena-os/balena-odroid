@@ -1,4 +1,29 @@
 - commits:
+    - subject: Update contracts to 908a50dc79192e66ab3fd518f166be05382c2c6e
+      hash: c57c9b14f6cf4233c26ee77e0af9ab5774ab68a1
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to 908a50dc79192e66ab3fd518f166be05382c2c6e
+        changelog-entry: Update contracts to 908a50dc79192e66ab3fd518f166be05382c2c6e
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "hw.device-type: Add beaglebone-play device"
+              hash: 67c4505e12b1ef6abfc37c9466470e062875bf00
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Sidd-Gupta sidd.gupta@zylum.in
+                signed-off-by: Sidd-Gupta sidd.gupta@zylum.in
+              author: delhiryder
+          version: contracts-2.0.96
+          title: ""
+          date: 2024-03-14T16:14:23.733Z
+  version: 3.0.15+rev53
+  title: ""
+  date: 2024-03-14T17:56:13.280Z
+- commits:
     - subject: Update balena-yocto-scripts to 97ebe58289e398c96dbc6f789e0119010b85da7f
       hash: a968a3c8c779b3a754cf73d2fe1c7088ca8cbc66
       body: Update balena-yocto-scripts
