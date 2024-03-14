@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v3.0.15+rev54
+## (2024-03-14)
+
+
+<details>
+<summary> Update balena-yocto-scripts to 775e16968edc4c3803834bc524687ae4316ab6e4 [Self-hosted Renovate Bot] </summary>
+
+> ## balena-yocto-scripts-1.21.5
+> ### (2024-03-14)
+> 
+> * Merge AMI publishing dependencies into yocto-build-env [Kyle Harding]
+> 
+
+</details>
+
 # v3.0.15+rev53
 ## (2024-03-14)
 
