@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v3.0.15+rev58
+## (2024-04-08)
+
+
+<details>
+<summary> Update contracts to 928d8e7a5295414c87548e8eca8ddea88205fb10 [Self-hosted Renovate Bot] </summary>
+
+> ## contracts-2.0.100
+> ### (2024-04-08)
+> 
+> * Add Advantech ECU1370 to hardware contract. [Lisandro Pérez Meyer]
+> 
+
+</details>
+
 # v3.0.15+rev57
 ## (2024-04-08)
 

@@ -1,4 +1,29 @@
 - commits:
+    - subject: Update contracts to 928d8e7a5295414c87548e8eca8ddea88205fb10
+      hash: 3319497ace825b7c36d5dd00f005beab4ad22554
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to 928d8e7a5295414c87548e8eca8ddea88205fb10
+        changelog-entry: Update contracts to 928d8e7a5295414c87548e8eca8ddea88205fb10
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: Add Advantech ECU1370 to hardware contract.
+              hash: 0dfe4758230bef9d6c97f533019aaba93cdc1520
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Lisandro Pérez Meyer <lpmeyer@ics.com>
+                signed-off-by: Lisandro Pérez Meyer <lpmeyer@ics.com>
+              author: Lisandro Pérez Meyer
+          version: contracts-2.0.100
+          title: ""
+          date: 2024-04-08T18:29:36.856Z
+  version: 3.0.15+rev58
+  title: ""
+  date: 2024-04-08T20:34:37.086Z
+- commits:
     - subject: Update balena-yocto-scripts to 35108dbe920e2b96e976065df205e265d19d86a5
       hash: a807b2024bc5fe8e5b9aaae748902b7001774d1c
       body: Update balena-yocto-scripts
