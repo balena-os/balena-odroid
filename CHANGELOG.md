@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v3.0.15+rev60
+## (2024-04-11)
+
+
+<details>
+<summary> Update contracts to bdc5ec8ab29021205ce85c9b59f4952b1c4a1283 [Self-hosted Renovate Bot] </summary>
+
+> ## contracts-2.0.102
+> ### (2024-04-11)
+> 
+> * Remove Fedora 36 since it's EOL [Thodoris Greasidis]
+> 
+
+</details>
+
 # v3.0.15+rev59
 ## (2024-04-10)
 
