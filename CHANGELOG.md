@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v3.0.15+rev64
+## (2024-04-30)
+
+
+<details>
+<summary> Update balena-yocto-scripts to 019219edcbd508bdb1027bf56f20f8696fddba83 [Self-hosted Renovate Bot] </summary>
+
+> ## balena-yocto-scripts-1.21.9
+> ### (Invalid date)
+> 
+> * balena-lib: improve base tag detection [Alex Gonzalez]
+> 
+
+</details>
+
 # v3.0.15+rev63
 ## (2024-04-29)
 
