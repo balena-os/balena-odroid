@@ -1,6 +1,22 @@
 Change log
 -----------
 
+# v3.0.15+rev66
+## (2024-06-02)
+
+
+<details>
+<summary> Update contracts to 94c4f90e950560f6287a87bea93a7a250c942665 [Self-hosted Renovate Bot] </summary>
+
+> ## contracts-2.0.104
+> ### (2024-06-02)
+> 
+> * jetson-orin-nano-seeed-j3010: Specify RAM size for the Seeed J3010 [Alexandru Costache]
+> * jetson-orin-nano-seeed-j3010: add Seeed J3010 device-type [Alex Suykov]
+> 
+
+</details>
+
 # v3.0.15+rev65
 ## (2024-05-02)
 
