@@ -1,4 +1,44 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 2bb54e7c3c715176446a895ed765346c52d480b2
+      hash: e75da4f2d09e105fadfd6ab16bb159f0c9855730
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 2bb54e7c3c715176446a895ed765346c52d480b2
+        changelog-entry: Update balena-yocto-scripts to 2bb54e7c3c715176446a895ed765346c52d480b2
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: Prevent duplicate workflow runs for multiple triggers
+              hash: e0132cfba86fcc05527dc4702d6841723752be38
+              body: |
+                This may need to be force merged.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: Add catchall job to yocto-build-deploy for merge requirements
+              hash: 6b023b572a35d18743cf4a5d36b9d2f7443fc744
+              body: |
+                This is a helper job to avoid having to mark all build/test
+                matrices as required, as this job will always run and return
+                success or failure.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.22.1
+          title: ""
+          date: 2024-06-07T13:45:18.699Z
+  version: 3.0.15+rev69
+  title: ""
+  date: 2024-06-07T14:45:50.763Z
+- commits:
     - subject: Update balena-yocto-scripts to b5b12bc2f8e08f90634d766afe30623c9899f323
       hash: 26334f0e570cc3222996ebeed522f31cd267f2e3
       body: Update balena-yocto-scripts
