@@ -1,4 +1,34 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 1ce733b37d5c143e1f68e28ff9fa9ac4ef709b87
+      hash: dfe6a286fd63afcda1aa1cc108d6872556b6c866
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 1ce733b37d5c143e1f68e28ff9fa9ac4ef709b87
+        changelog-entry: Update balena-yocto-scripts to 1ce733b37d5c143e1f68e28ff9fa9ac4ef709b87
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: Update the triggers on the example test workflow
+              hash: 1f09e509e09a1a44b62772b9e197fe183c72744d
+              body: |
+                We do not need to run the workflow on close/merge, and we
+                can skip the manual workflow runs on this project as
+                each device type will have it's own workflow in the device
+                repos supporting manual triggers.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.22.2
+          title: ""
+          date: 2024-06-12T17:54:57.718Z
+  version: 3.0.15+rev70
+  title: ""
+  date: 2024-06-12T20:46:50.202Z
+- commits:
     - subject: Update balena-yocto-scripts to 2bb54e7c3c715176446a895ed765346c52d480b2
       hash: e75da4f2d09e105fadfd6ab16bb159f0c9855730
       body: Update balena-yocto-scripts
