@@ -1,4 +1,35 @@
 - commits:
+    - subject: Update balena-yocto-scripts to cd813faad0e261ad00f791c8788c8f70a0a32a2d
+      hash: 36453dbd4fb16528a82ca33307fbe17439c169bd
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to cd813faad0e261ad00f791c8788c8f70a0a32a2d
+        changelog-entry: Update balena-yocto-scripts to cd813faad0e261ad00f791c8788c8f70a0a32a2d
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "jenkins_generate_ami: pass yocto scripts version as an env var to
+                helper container"
+              hash: af71169b93e855c8ecb378b5de3d4a1c12f44510
+              body: >
+                The ami deploys in jenkins fail at the moment because the
+                balena-lib.inc script fails to fetch the version of the yocto
+                scripts when running inside the helper image. Passing the
+                version to the helper image via an env var helps this
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: balena-yocto-scripts-1.22.3
+          title: ""
+          date: 2024-06-13T19:04:31.350Z
+  version: 3.0.15+rev71
+  title: ""
+  date: 2024-06-13T21:50:48.487Z
+- commits:
     - subject: Update balena-yocto-scripts to 1ce733b37d5c143e1f68e28ff9fa9ac4ef709b87
       hash: dfe6a286fd63afcda1aa1cc108d6872556b6c866
       body: Update balena-yocto-scripts
