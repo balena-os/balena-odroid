@@ -1,6 +1,23 @@
 Change log
 -----------
 
+# v3.0.15+rev72
+## (2024-06-14)
+
+
+<details>
+<summary> Update balena-yocto-scripts to bdd131fd36a3edcc9a1bb2af493794ced60379a6 [Self-hosted Renovate Bot] </summary>
+
+> ## balena-yocto-scripts-1.22.4
+> ### (2024-06-14)
+> 
+> * Update job conditions to allow non-PR events for internal branches [Kyle Harding]
+> * Hardcode environment paths at the job level [Kyle Harding]
+> * Replace test inputs with a single JSON matrix input [Kyle Harding]
+> 
+
+</details>
+
 # v3.0.15+rev71
 ## (2024-06-13)
 
