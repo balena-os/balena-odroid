@@ -1,4 +1,30 @@
 - commits:
+    - subject: Update contracts to 773c77cc902a5896a8fa75663d2aa661c0f4e1e3
+      hash: 1ea30807348510257942371da294aba60604e800
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to 773c77cc902a5896a8fa75663d2aa661c0f4e1e3
+        changelog-entry: Update contracts to 773c77cc902a5896a8fa75663d2aa661c0f4e1e3
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "hw.device-type: Disable bluetooth until this feature is officially
+                supported"
+              hash: bc3746dd50d63824e3069cd0098227d47e9f22ed
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Sidd-Gupta sidd.gupta@zylum.in
+                signed-off-by: Sidd-Gupta sidd.gupta@zylum.in
+              author: delhiryder
+          version: contracts-2.0.106
+          title: ""
+          date: 2024-07-12T09:11:52.729Z
+  version: 3.0.15+rev73
+  title: ""
+  date: 2024-07-12T12:42:17.155Z
+- commits:
     - subject: Update balena-yocto-scripts to bdd131fd36a3edcc9a1bb2af493794ced60379a6
       hash: 1fb74bb71443e6a43ae6809c499164f5b7793dc7
       body: Update balena-yocto-scripts
