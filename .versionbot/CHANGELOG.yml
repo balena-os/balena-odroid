@@ -1,4 +1,29 @@
 - commits:
+    - subject: Update contracts to 17b44ca078f3bca2193858559d1276cc48680531
+      hash: fa613d01320419eac875d5fce03f0b8d4c4e75e7
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to 17b44ca078f3bca2193858559d1276cc48680531
+        changelog-entry: Update contracts to 17b44ca078f3bca2193858559d1276cc48680531
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "beagleplay: Fix provisioning instructions"
+              hash: 996350221bcc6ff73d83239af7ffd96653d36a2c
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru
+          version: contracts-2.0.107
+          title: ""
+          date: 2024-07-15T10:43:40.476Z
+  version: 3.0.15+rev74
+  title: ""
+  date: 2024-07-15T11:53:56.961Z
+- commits:
     - subject: Update contracts to 773c77cc902a5896a8fa75663d2aa661c0f4e1e3
       hash: 1ea30807348510257942371da294aba60604e800
       body: Update contracts
