@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v3.0.15+rev75
+## (2024-07-25)
+
+* Update layers/meta-rust to a5136be2ba408af1cc8afcde1c8e3d787dadd934 [balena-renovate[bot]]
+
 # v3.0.15+rev74
 ## (2024-07-15)
 

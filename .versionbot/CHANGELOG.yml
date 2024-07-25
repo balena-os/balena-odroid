@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update layers/meta-rust to a5136be2ba408af1cc8afcde1c8e3d787dadd934
+      hash: 98d13fcf334a1b60696c9c0885a69c19191b6a33
+      body: Update layers/meta-rust
+      footer:
+        Changelog-entry: Update layers/meta-rust to a5136be2ba408af1cc8afcde1c8e3d787dadd934
+        changelog-entry: Update layers/meta-rust to a5136be2ba408af1cc8afcde1c8e3d787dadd934
+      author: balena-renovate[bot]
+      nested: []
+  version: 3.0.15+rev75
+  title: ""
+  date: 2024-07-25T19:33:56.578Z
+- commits:
     - subject: Update contracts to 17b44ca078f3bca2193858559d1276cc48680531
       hash: fa613d01320419eac875d5fce03f0b8d4c4e75e7
       body: Update contracts
