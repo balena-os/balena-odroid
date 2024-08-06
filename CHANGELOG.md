@@ -1,6 +1,26 @@
 Change log
 -----------
 
+# v3.0.15+rev76
+## (2024-08-06)
+
+
+<details>
+<summary> Update contracts to 6d69a05508a9232ba593962c62dc9dd133dee616 [balena-renovate[bot]] </summary>
+
+> ## contracts-2.0.109
+> ### (2024-08-06)
+> 
+> * hw.device-type: Update provisioning instructions for AGX Orin 64GB [Alexandru]
+> 
+> ## contracts-2.0.108
+> ### (2024-07-25)
+> 
+> * hw.device-type: Add new device-type Jetson AGX Orin 64GB Devkit [Alexandru Costache]
+> 
+
+</details>
+
 # v3.0.15+rev75
 ## (2024-07-25)
 
