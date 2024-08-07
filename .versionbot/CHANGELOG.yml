@@ -1,4 +1,29 @@
 - commits:
+    - subject: Update contracts to 1663445fde467777e3d878e76193ea6fe9c1aefe
+      hash: 6c11aa4d6d458578939690ed0bced60ca8aa3664
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to 1663445fde467777e3d878e76193ea6fe9c1aefe
+        changelog-entry: Update contracts to 1663445fde467777e3d878e76193ea6fe9c1aefe
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: Add CompuLab iotdin-imx8p to harware contract.
+              hash: 2b0148ba2c6b34d8f74a5b2afe9405419f81e7ab
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Valentin Raevsky <valentin@compulab.co.il>
+                signed-off-by: Valentin Raevsky <valentin@compulab.co.il>
+              author: Valentin Raevsky
+          version: contracts-2.0.110
+          title: ""
+          date: 2024-08-07T13:28:36.285Z
+  version: 3.0.15+rev77
+  title: ""
+  date: 2024-08-07T17:24:05.239Z
+- commits:
     - subject: Update contracts to 6d69a05508a9232ba593962c62dc9dd133dee616
       hash: 6eb9a50f2e9bde06468aff657b79e68ff3e0159d
       body: Update contracts
